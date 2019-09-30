@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from '../src';
+import index from '../src/index.tsx';
+import App from '../src/components/App';
 
-describe('Index', () => {
+describe('index', () => {
 it('renders without crashing', () => {
-  //ReactDOM.render(<App/>, document.getElementById('root'));
-  //ReactDOM.unmountComponentAtNode(div);
+  const div = document.createElement('div');
+  ReactDOM.render(<App/>, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
 });

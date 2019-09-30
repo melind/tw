@@ -10,6 +10,11 @@
     "react-scripts": "3.1.2",
     "typescript": "^3.6.3"
   },
+  "jest": { 
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+      }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -49,6 +54,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-module-name-mapper": "^1.2.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.10.0",
