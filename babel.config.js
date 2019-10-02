@@ -5,9 +5,10 @@ module.exports = {
     "@babel/env",
     "@babel/react",
     "@babel/preset-typescript",
+    "@babel/register"
   ],
   plugins: [
-    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-dynamic-import"
   ],
   env: {
     dev: {

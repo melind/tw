@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
     "mongoose": "^5.7.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2",
+    "remove": "^0.1.5",
     "typescript": "^3.6.3"
   },
   "jest": {
@@ -24,7 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "buildtsc": "tsc",
-    "jest": "jest"
+    "jest": "jest",
+    "start-server": "ts-node-dev -r esm ./src/server/server.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,9 +52,13 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
+    "@babel/register": "^7.6.2",
+    "@babel/runtime": "7.0.0-beta.36",
+    "@types/body-parser": "^1.17.1",
     "@types/dotenv": "^6.1.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/express": "^4.16.1",
     "@types/jest": "^24.0.18",
     "@types/mongoose": "^5.5.18",
     "@types/node": "^12.7.7",
@@ -66,6 +75,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.10.1",
+    "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0",
     "webpack": "^4.41.0",
