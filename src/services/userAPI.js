@@ -1,15 +1,21 @@
   
 import axios from 'axios';
 
+const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+};
+
 const API_URL = process.env.REACT_APP_API_URL;
+console.log(API_URL);
+
 export default {
 
-    signupUser: (name, signup) => {
-        return axios.post(API_URL + '/signup', {
-            ...signup, [name]: signup[name]})
+    signupUser: (formState) => {
+        return axios.post( API_URL + '/signup', formState, {headers: headers})
         },
 
-    loginUser: (pseudo, password) => { 
-        return axios.post(API_URL + '/login', {pseudo, password})
+    loginUser: (formState) => { 
+        return axios.post( API_URL + '/login', formState)
         }
 }

@@ -10,10 +10,16 @@ const stateInitial = {
 
  export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
  export const LOGIN_ERROR = "LOGIN_ERROR";
-
+export const LOGIN= "LOGIN";
 
 const reducer = (state = stateInitial, action : {type: string, payload: any}) => {
     switch(action.type){
+        case LOGIN:
+            return {
+                ...state,// = stateInitial
+                ...action.payload,// = overwrite stateInitial with data frop appli
+
+            }
         case LOGIN_SUCCESS:
             return {
                 ...state,// = stateInitial
@@ -36,12 +42,12 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
 };
         /*-----------    redux thunk  -------------*/
         // action creator which return function
-export const login = (name) => (dispatch, getState) => {
+export const login = (formState) => (dispatch, getState) => {
     // collect user info of the stateInitial
     // state.login
     const { login } = getState();
     // axios check post info from the user
-    return userAPI.loginUser(name)
+    return userAPI.loginUser(formState)
         .then(res => {
             // inform my reducer this is a success
             console.log(res.data);

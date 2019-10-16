@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 import rootReducer from './reducer';
 
 
@@ -31,5 +31,6 @@ import rootReducer from './reducer';
 
 // Je peux donner tous mes middlewares en 2eme argument de createStore
 //const store = createStore(rootReducer, allMiddlewaresToUse );
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(reduxThunk));
+
 export default store;

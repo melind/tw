@@ -26,10 +26,10 @@ La fonction est exécutée pour tout type de demande HTTP sur le chemin/user/:id
 //router.get('/home', authMiddleware, HomeController.home);
 
 
-router.get('/home', HomeController.home);
+router.get('/', HomeController.home);
 
 router.route('/signup')
-  .get(AuthController.getLogin)
+  .get(AuthController.getSignup)
   .post(bodyParser, AuthController.postSignup);
 
 router.route('/login')

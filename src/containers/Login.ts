@@ -20,10 +20,10 @@ const mapStateToProps = /*(state: {//state detrermine by reducer
     subscriber: state.login.subscriber
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
-   // fetchRoom: () => {
-   //     dispatch(fetchRoom(props.match.params.id))
-   // }
+const mapDispatchToProps = (dispatch) => ({
+    onSubmit: (formState) => {
+        dispatch(login(formState))
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

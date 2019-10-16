@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import './index.css';
 
-const Login = ({pseudo, password, loggedin, subscriber}) => {
+const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
 
   const handleChange = (e) => {
@@ -14,7 +14,12 @@ const Login = ({pseudo, password, loggedin, subscriber}) => {
   }
  const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("props of signup  after submit: ",  formState);
         console.log("value input: ",formState.pseudo);
+        
+        const {pseudo,  password, subscriber, loggedin} = formState;
+        console.log("props update by input value:", pseudo, password, subscriber, loggedin);
+        onSubmit(formState);
     }
     return (
 

@@ -21,12 +21,13 @@ const mapStateToProps = /*(state: {//state detrermine by reducer
    pseudo: state.signup.pseudo, 
    mail: state.signup.mail,
    password: state.signup.password,
-   subscriber: state.signup.subscriber
+   subscriber: state.signup.subscriber,
+   loggedin: state.signup.loggedin
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   onChange: (name) => {
-        dispatch(signUp(name));// transfer input_name value ?
+   onSubmit: (formState) => {
+        dispatch(signUp(formState));// transfer input_name value ?
     }
 });
 
