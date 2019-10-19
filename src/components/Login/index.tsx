@@ -1,7 +1,9 @@
 import React, { useState} from 'react';
 import './index.css';
+import Home from '../Home';
 
 const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
+  console.log("states come from reducer:", pseudo, subscriber);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
 
   const handleChange = (e) => {
@@ -20,6 +22,8 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
         const {pseudo,  password, subscriber, loggedin} = formState;
         console.log("props update by input value:", pseudo, password, subscriber, loggedin);
         onSubmit(formState);
+
+        if(loggedin) return <Home/>
     }
     return (
 
@@ -27,7 +31,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
         <h1>Connectez-Vous</h1>
         <form onSubmit={handleSubmit}>
           <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input>
-          <input name="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input>
+          <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input>
           <button type="submit">Valider</button>
 
         </form>

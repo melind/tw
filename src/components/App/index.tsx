@@ -14,18 +14,18 @@ const App = () => {
     <div >
      
       <Switch>
-                <Route path="/" exact component={Home} />
+                <Route path="/" exact render={() => (
+                    <div className="App"> 
+                     <header className="App-header"> 
+                     <h1>Accueil des non connectés </h1> 
+                     </header>
+                    </div>
+                )} />
+                <Route path="/home"  component={Home} />
                 <Route path="/signup"  component={Signup} />
                 <Route path="/login" component={Login}/>
                 <Route path="/404" component={NotFoundPage} />
                     <Redirect to="/404" />
-                <Route render={() => (
-                    <div className="App"> 
-                     <header className="App-header"> 
-                     <h1>Ici c'est le component APP pas l'accueil</h1> 
-                     </header>
-                    </div>
-                )} />         
             </Switch>
     </div>
     

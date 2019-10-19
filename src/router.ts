@@ -1,13 +1,18 @@
 
 import express from 'express';
 import bodyparser from 'body-parser';
-import AuthController from './controllers/authController';
-import HomeController from './controllers/homeController';
 
-const router: express.Router = express.Router();
+
+import HomeController from './controllers/homeController';
+import AuthController from './controllers/authController';
+import DeleteController from './controllers/deleteController';
+
+import authMiddleware from './middlewares/authMiddleware';
+
 
 const bodyParser = bodyparser.urlencoded({extended: true});
 
+const router: express.Router = express.Router();
 // on définit des routes
 //module.exports = function (app) {
     /*Cet exemple illustre une route et sa fonction de gestionnaire (système de middleware). 
@@ -26,7 +31,9 @@ La fonction est exécutée pour tout type de demande HTTP sur le chemin/user/:id
 //router.get('/home', authMiddleware, HomeController.home);
 
 
-router.get('/', HomeController.home);
+//router.get('/', HomeController.index);
+
+router.get('/home', authMiddleware, HomeController.home);
 
 router.route('/signup')
   .get(AuthController.getSignup)
@@ -36,9 +43,9 @@ router.route('/login')
   .get(AuthController.getLogin)
   .post(bodyParser, AuthController.postLogin);
 
-//router.get('/logout', AuthController.logout);
+router.get('/logout', AuthController.logout);
 
-
+router.get('/deleteAccount', DeleteController.deleteAccount);
 
 
 export default router;

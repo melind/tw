@@ -10,16 +10,9 @@ const stateInitial = {
 
  export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
  export const LOGIN_ERROR = "LOGIN_ERROR";
-export const LOGIN= "LOGIN";
 
 const reducer = (state = stateInitial, action : {type: string, payload: any}) => {
     switch(action.type){
-        case LOGIN:
-            return {
-                ...state,// = stateInitial
-                ...action.payload,// = overwrite stateInitial with data frop appli
-
-            }
         case LOGIN_SUCCESS:
             return {
                 ...state,// = stateInitial
@@ -50,7 +43,8 @@ export const login = (formState) => (dispatch, getState) => {
     return userAPI.loginUser(formState)
         .then(res => {
             // inform my reducer this is a success
-            console.log(res.data);
+            //and take data from response of auhtController.postLogin
+            console.log("data collected :", res.data);
             dispatch(signSuccess(res.data));
         })
         .catch(err => {

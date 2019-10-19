@@ -28,11 +28,8 @@ export default class AuthController {
     static postSignup(request: Request, response: Response) {
 
         /*-----------------   data of the form   -----------------*/
-
+        console.log("body", request.body);
         let {pseudo, mail, password}  = request.body;
-        //let pseudo: string = request.body;
-        //let mail: string = request.body;
-        //let password: string = request.body;
 
         let date= new Date();
         let admin = false;
@@ -41,13 +38,17 @@ export default class AuthController {
         mail = mail.trim();
         password = password.trim();
         
-/* pas besoin de verifier si user existe dans bdd vu sue je use unique in bdd*/
-if (!pseudo || !mail || !password) {
-    //Le cas où l'email ou bien le password ne serait pas soumit ou nul
-             return response.status(400).json({
-            text: "Requête invalide"
-    });
-  } 
+        /* pas besoin de verifier si user existe dans bdd vu sue je use unique in bdd
+        pas besoin de async await*/
+        if (!pseudo || !mail || !password) {
+            //Le cas où l'email ou bien le password ne serait pas soumit ou nul
+                      response.status(400).json({
+                                                         text: "Requête invalide"
+                                                      });       
+                    
+                     
+                                               
+          } 
   
 
         /*------------------  Creation of a new user -- -----------*/
@@ -62,15 +63,15 @@ if (!pseudo || !mail || !password) {
                 // Save in the database
         newUser.save( (error, product) => {
             if (error) {
-                return response.status(500).json({ error });
-  console.log(error);
+                response.status(500).json({ error });
+                console.log("saving error: ",error);
             }
   
             else {
                 
                 response.status(200).json({
-                 text: "Succès for post signup"
-                
+                  text: "Succès for post signup",
+                  pseudo, mail, password
                        });
                 console.log('product = user ', product);
                 console.log('user = ', pseudo, mail, password);
@@ -84,10 +85,10 @@ if (!pseudo || !mail || !password) {
    static getLogin(request: Request, response: Response) {
       
         response.status(200).json({
-                                    text: "Hi from get login"
-                                   });
+          text: "Hi from get login"
+        });
 
-           console.log("Hello from get login");
+        console.log("Hello from get login");
     }
 
 
@@ -98,40 +99,36 @@ if (!pseudo || !mail || !password) {
     static async postLogin(request: Request, response: Response) {
 
         /*-----------------   data of the form   -----------------*/
+        /* when a promise encounters an error it throws 
+        an exception that will be catched inside a catch method on the promise */
+        try { 
+                let {pseudo, password} = request.body;
+                pseudo = pseudo.trim();
+                password = password.trim();
 
-        let {pseudo, password} = request.body;
-        pseudo = pseudo.trim();
-        password = password.trim();
-
-        if (!pseudo || !password) {
-    //Le cas où l'email ou bien le password ne serait pas soumit ou nul
-        return response.status(400).json({
-                                           text: "Requête invalide"
-                                        });
-  }
+    
 
         /*----------- Check if the user exist in database ---------*/
 
                 //  verify the pseudo 
-       
-                  const user: IUser  = await User.findOne({pseudo});
+      
+                const user: IUser  = await User.findOne({pseudo});
                  
 
                     if (!user) {
-                        return
                         response.status(400).json({
-                   text: "Cet utilisateur n'existe pas"
-                  }); 
+                          text: "Cet utilisateur n'existe pas"
+                        }); 
                          
-                } 
+                    } 
 
                        // verify the password 
-                 const goodPassword = await bcrypt.compareSync(password, user.password);     
-                 if (!goodPassword) {
-                     return 
-                     response.status(401).json({
-                                              text: "Mauvais mot de passe"
-                                              });
+                const goodPassword = await bcrypt.compareSync(password, user.password);     
+                    
+                    if (!goodPassword) {
+                      response.status(401).json({
+                        text: "Mauvais mot de passe"
+                      });
                      
                  }
                     // create a session for the user
@@ -141,57 +138,54 @@ if (!pseudo || !mail || !password) {
                  
   
                     
-                   const token = jsonwebtoken.sign({
-                                 nickname: user.pseudo,
-                                 admin: user.admin,
-                                 exp: Math.floor(Date.now() / 1000) + (60 * 60),//exp dans 1h
-                                 test: 'coucou'
-                             },
-                             process.env.JWT_PRIVATE_KEY,
-                             /*{
-                                "algorithm": process.env.ALGORYTHME,
-                              } marche pas du soup par défaut*/
-                             );
+                const token = jsonwebtoken.sign({
+                              nickname: user.pseudo,
+                              admin: user.admin,
+                              exp: Math.floor(Date.now() / 1000) + (60 * 60),//exp dans 1h
+                              test: 'coucou'
+                          },
+                          process.env.JWT_PRIVATE_KEY,
+                          /*{
+                             "algorithm": process.env.ALGORYTHME,
+                           } marche pas du coup par défaut HS256*/
+                          );
                              
                  response.cookie('jwt', token);  
                  response.status(200).json({
-                                       text: "Succès for post login",
-                                         token: token
-                                             });
-                    
-
-                            console.log("user :", user, "token is :", token);
-                           
-       /*         (err) => {
-        if (err) {
-          return console.trace(err);
-        }
-      }    */           
-                   
-         /*catch (error) { 
-           return response.status(500).json({
-               error
+                    text: "Succès for post login",
+                    token: token,
+                    pseudo, password
                     });
-         }*/
+                    
+                 console.log("user :", user, "token is :", token);
+                     
+        }   
+
+        catch (error) { 
+           return response.status(500).json({
+                    error
+                  });
+        }
       
       
     
         
 
-       
+    }
 
-    /* static logout(request: Request, response: Response) {
-     il faut détruire le jeton => on détruit le cookie
-    response.clearCookie('jwt');
-    
-    request.session.destroy( (err) => {
-      if(err) {
-        console.error(err);
-      }
-    });
-    response.redirect('/');
+    static logout(request: Request, response: Response) {
+          //destroy token by destroying cookie
+        response.clearCookie('jwt');
+        response.status(200).json({
+            text: "Succès for logout"
+        });
 
-  }*/
+        console.log("hello from get logout!");
+             /*request.session.destroy( (err) => {
+                     if(err) {
+                       console.error(err);
+                     }
+               });*/
  
-  }
+    }
 }
