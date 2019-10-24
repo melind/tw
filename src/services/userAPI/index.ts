@@ -1,6 +1,7 @@
   
 import axios from 'axios';
 import qs from 'qs';
+import cookie from 'react-cookie';
 const headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
@@ -16,9 +17,19 @@ export default {
         },
 
     loginUser: (formState) => { 
+        axios.defaults.withCredentials = true;
         return axios.post( API_URL + '/login', qs.stringify(formState), {headers: headers})
         },
+    
+    logOut: () => { 
+        axios.defaults.withCredentials = true;
+        return axios.get( API_URL + '/logout')
+    },
 
+    isAuth: () => {
+        if (!cookie.load('jwt'))
+        return false 
+      },
     infoUser: (formState) => { 
         return axios.get( API_URL + '/infoUser', formState)
     }, 
@@ -29,5 +40,10 @@ export default {
 
     deleteUser: (formState) => { 
         return axios.delete( API_URL + '/deleteAccount', formState)
-        }  
+    },
+
+    home: () => { 
+        axios.defaults.withCredentials = true;
+        return axios.get( API_URL + '/home')
+    },  
 }

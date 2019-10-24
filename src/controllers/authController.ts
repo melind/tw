@@ -63,7 +63,7 @@ export default class AuthController {
                 // Save in the database
         newUser.save( (error, product) => {
             if (error) {
-                response.status(500).json({ error });
+               
                 console.log("saving error: ",error);
             }
   
@@ -132,29 +132,34 @@ export default class AuthController {
                      
                  }
                     // create a session for the user
-               // request.session.pseudo = user.pseudo;cote server
-                    // JSONWEBTOKEN and cookie  cote client
+               // request.session.pseudo = user.pseudo;stocker cote server
+                    // JSONWEBTOKEN and cookie stocker  cote client qui le renverra
 
                  
-  
+                let csrf = Math.random().toString(36).substr(2, 9);
+                request.session.csrf = csrf;
+                console.log("csrf", csrf);
                     
                 const token = jsonwebtoken.sign({
                               nickname: user.pseudo,
                               admin: user.admin,
                               exp: Math.floor(Date.now() / 1000) + (60 * 60),//exp dans 1h
-                              test: 'coucou'
+                              
                           },
                           process.env.JWT_PRIVATE_KEY,
                           /*{
                              "algorithm": process.env.ALGORYTHME,
                            } marche pas du coup par défaut HS256*/
-                          );
-                             
-                 response.cookie('jwt', token);  
+                           
+                          );  
+                 response.cookie('jwt', token, { 
+                   //httpOnly: true, //cookie not available through client js code (xss)!!! pas de cookie.load
+                   //secure: true // true to force https
+                 });  
                  response.status(200).json({
                     text: "Succès for post login",
                     token: token,
-                    pseudo, password
+                    pseudo, password,csrf
                     });
                     
                  console.log("user :", user, "token is :", token);
@@ -162,9 +167,7 @@ export default class AuthController {
         }   
 
         catch (error) { 
-           return response.status(500).json({
-                    error
-                  });
+           return error
         }
       
       
@@ -176,16 +179,17 @@ export default class AuthController {
     static logout(request: Request, response: Response) {
           //destroy token by destroying cookie
         response.clearCookie('jwt');
+        request.session.destroy( (err) => {
+                     if(err) {
+                       console.error(err);
+                     }
+               });
+ 
         response.status(200).json({
             text: "Succès for logout"
         });
 
         console.log("hello from get logout!");
-             /*request.session.destroy( (err) => {
-                     if(err) {
-                       console.error(err);
-                     }
-               });*/
- 
+             
     }
 }

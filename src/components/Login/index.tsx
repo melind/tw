@@ -1,7 +1,8 @@
 import React, { useState} from 'react';
+import { Redirect } from 'react-router-dom';
 import './index.css';
 import Home from '../Home';
-
+import userAPI from '../../services/userAPI';
 const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
   console.log("states come from reducer:", pseudo, subscriber);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
@@ -23,8 +24,12 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
         console.log("props update by input value:", pseudo, password, subscriber, loggedin);
         onSubmit(formState);
 
-        if(loggedin) return <Home/>
+         
     }
+   
+       if(loggedin) return <Redirect to="/home" />
+        
+    
     return (
 
         <div>

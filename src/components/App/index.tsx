@@ -7,6 +7,7 @@ import Home from '../Home';
 import Signup from '../../containers/Signup';
 import Login from '../../containers/Login';
 import NotFoundPage from '../NotFoundPage';
+import PrivateRoute from '../PrivateRoute';
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
                      </header>
                     </div>
                 )} />
-                <Route path="/home"  component={Home} />
+                <PrivateRoute path="/home"  component={Home} />
                 <Route path="/signup"  component={Signup} />
                 <Route path="/login" component={Login}/>
                 <Route path="/404" component={NotFoundPage} />

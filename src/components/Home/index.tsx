@@ -1,11 +1,18 @@
 import React from 'react';
 import './index.css';
+import userAPI from '../../services/userAPI';
+import Nav from '../Nav';
 
 const Home = () => {
 
-    return (
+   
 
-        <div>Welcome to To Watch</div>
+    userAPI.home(); 
+    return (
+        
+        <Nav />
+        
+        
 
     )
     

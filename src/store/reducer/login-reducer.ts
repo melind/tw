@@ -38,7 +38,7 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
 export const login = (formState) => (dispatch, getState) => {
     // collect user info of the stateInitial
     // state.login
-    const { login } = getState();
+   // const { login } = getState();
     // axios check post info from the user
     return userAPI.loginUser(formState)
         .then(res => {
