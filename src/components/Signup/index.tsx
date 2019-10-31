@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
-import { Redirect } from 'react-router-dom';
-import Home from '../Home';
-import validate from 'validate.js';
-import Regex from 'regex';
+import { Redirect, Link } from 'react-router-dom';
+import  displayError  from '../validation';
+
 // component = function return element to display
 const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
     console.log("states come from reducer:", pseudo, mail, subscriber);
     const [formState, setFormState] = useState({pseudo, mail, password, subscriber});
-  const [error, setErrorState] = useState({'mail': '', 'pseudo': '', 'password': ''});
     const handleChange = (e) => {
         const name: string = e.target.name;
         const value: string = e.target.value;
@@ -20,7 +18,10 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
     }
     
    
-   
+
+   const result = displayError(formState); 
+   console.log("error from resulut de signupé: ",result , "0", result[0]);
+
  const handleSubmit = (e) => {
         e.preventDefault();
         console.log("props of signup  after submit: ",  formState);
@@ -28,34 +29,9 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
         
         const {pseudo, mail, password, subscriber} = formState;
         console.log("props update by input value:", pseudo, mail, password, subscriber);
-        onSubmit(formState);
+        if (result[0] === undefined && result[2] === undefined) { 
+        onSubmit(formState);}
    
-     const constraints = {
-            mail: {
-              presence: true,
-              format: {
-                pattern: "^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"//limit 4 marche pas ???
-              }
-            },
-            password: {
-              presence: true,
-              length: {
-                minimum: 8,
-                message: "must be at least 8 characters"
-              }
-            },
-            pseudo: {
-              presence: true,
-            }
-        };
-        
-        const result = validate(formState, constraints);
-        if (result) { 
-        console.log("result: ",result);
-      setErrorState({...error, ...result});
-      console.log("error of typing",error)
-        }
-       
     }
     
     if(subscriber === true) return <Redirect to="/login" />
@@ -72,8 +48,8 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
           <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input>
           <button type="submit" >Valider</button>
         </form>
-        <p> {error.mail} {error.password} {error.pseudo}</p>
-        
+        <p>  {result}</p>
+        <Link to="/login">Déjà inscrit ?</Link>
         </div>
 
     )

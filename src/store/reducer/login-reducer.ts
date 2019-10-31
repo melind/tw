@@ -44,12 +44,14 @@ export const login = (formState) => (dispatch, getState) => {
         .then(res => {
             // inform my reducer this is a success
             //and take data from response of auhtController.postLogin
-            console.log("data collected :", res.data);
+            console.log("data collected :", res.data, res.data.text);
+            //alert( res.data.text);
             dispatch(signSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
+            //alert();
             dispatch(signError());
         })
 };

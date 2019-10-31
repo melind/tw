@@ -13,6 +13,8 @@ export default class AuthController {
   password: string;
   date: Date;
   admin: boolean;
+
+  /** static permet nom_classs.nom_methode = AuthController.getSignup */
     
     static getSignup(request: Request, response: Response) {
       
@@ -134,7 +136,10 @@ export default class AuthController {
                     // create a session for the user
                // request.session.pseudo = user.pseudo;stocker cote server
                     // JSONWEBTOKEN and cookie stocker  cote client qui le renverra
-
+                if (pseudo && password) {
+                      
+                       
+                  
                  
                 let csrf = Math.random().toString(36).substr(2, 9);
                 request.session.csrf = csrf;
@@ -165,9 +170,10 @@ export default class AuthController {
                  console.log("user :", user, "token is :", token);
                      
         }   
-
+                 } 
         catch (error) { 
            return error
+           
         }
       
       

@@ -5,7 +5,7 @@ const stateInitial = {
     pseudo: '',
     mail: '',
     password: '',
-    subscriber: false
+    subscriber: false,
  };
 
  export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";

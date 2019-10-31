@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './index.css';
 import Home from '../Home';
 import userAPI from '../../services/userAPI';
@@ -40,6 +40,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
           <button type="submit">Valider</button>
 
         </form>
+        <Link to="/signup">Pas encore inscrit ?</Link>
         </div>
 
     )

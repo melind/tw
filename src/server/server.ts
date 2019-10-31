@@ -26,7 +26,7 @@ app.use(cookieparser());
 app.use(expressSession({
   resave: true,
   saveUninitialized: false,
-  secret: 'azertysqjsdnfpqjfqkjn'
+  secret: 'melimelo'
 }));
 app.use(cors({
   "origin": [URL_CORS, URL_CORS_TWO],

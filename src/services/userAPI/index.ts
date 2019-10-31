@@ -22,23 +22,27 @@ export default {
         },
     
     logOut: () => { 
-        axios.defaults.withCredentials = true;
+       // axios.defaults.withCredentials = true;
         return axios.get( API_URL + '/logout')
     },
 
     isAuth: () => {
+        //axios.defaults.withCredentials = true;
         if (!cookie.load('jwt'))
         return false 
       },
-    infoUser: (formState) => { 
-        return axios.get( API_URL + '/infoUser', formState)
+    infoUser: () => { 
+        axios.defaults.withCredentials = true;
+        return axios.get( API_URL + '/infoUser')
     }, 
 
     updateUser: (formState) => { 
+        axios.defaults.withCredentials = true;
         return axios.put( API_URL + '/updateUser', formState)
     }, 
 
     deleteUser: (formState) => { 
+        axios.defaults.withCredentials = true;
         return axios.delete( API_URL + '/deleteAccount', formState)
     },
 
