@@ -6,6 +6,7 @@ const stateInitial = {
     password: '',
     loggedin: false,
     subscriber: false,
+    error: ''
  };
 
  export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -16,7 +17,7 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
         case LOGIN_SUCCESS:
             return {
                 ...state,// = stateInitial
-                ...action.payload,// = overwrite stateInitial with data frop appli
+                ...action.payload,// = overwrite stateInitial with data from appli
                 loggedin: true,
                 subscriber: true,
                 error: false,
@@ -51,7 +52,7 @@ export const login = (formState) => (dispatch, getState) => {
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
-            //alert();
+            if (err.response.data.text) {alert(err.response.data.text);}
             dispatch(signError());
         })
 };

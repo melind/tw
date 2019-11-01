@@ -1,10 +1,9 @@
 import React, { useState} from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import './index.css';
-import Home from '../Home';
-import userAPI from '../../services/userAPI';
-const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
-  console.log("states come from reducer:", pseudo, subscriber);
+
+const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error}) => {
+  console.log("states come from reducer:", pseudo, subscriber, error);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
 
   const handleChange = (e) => {
@@ -40,6 +39,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit}) => {
           <button type="submit">Valider</button>
 
         </form>
+        <p>{error}</p>
         <Link to="/signup">Pas encore inscrit ?</Link>
         </div>
 

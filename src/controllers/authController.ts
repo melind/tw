@@ -39,19 +39,29 @@ export default class AuthController {
         pseudo = pseudo.trim();
         mail = mail.trim();
         password = password.trim();
+
         
-        /* pas besoin de verifier si user existe dans bdd vu sue je use unique in bdd
+        /* pas besoin de verifier si user existe dans bdd vu que je use unique in bdd
         pas besoin de async await*/
         if (!pseudo || !mail || !password) {
             //Le cas où l'email ou bien le password ne serait pas soumit ou nul
                       response.status(400).json({
-                                                         text: "Requête invalide"
-                                                      });       
+                                                 text: "Requête invalide"
+                                                 });       
                     
                      
                                                
           } 
-  
+
+          const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+          const regexMail = regex.test(mail);
+          console.log("regex: ",regexMail);
+           if (!regexMail) {
+             response.status(400).json({
+                                         text: "Format mail invalide"
+                                        });   
+            }
+         
 
         /*------------------  Creation of a new user -- -----------*/
 
@@ -67,6 +77,9 @@ export default class AuthController {
             if (error) {
                
                 console.log("saving error: ",error);
+                response.status(400).json({
+                                           error
+                                                 })
             }
   
             else {
@@ -108,7 +121,14 @@ export default class AuthController {
                 pseudo = pseudo.trim();
                 password = password.trim();
 
-    
+                
+
+                if (!pseudo|| !password) {
+                  response.status(400).json({
+                    text: "Requete invalide"
+                  }); 
+                   
+              } 
 
         /*----------- Check if the user exist in database ---------*/
 
@@ -134,8 +154,8 @@ export default class AuthController {
                      
                  }
                     // create a session for the user
-               // request.session.pseudo = user.pseudo;stocker cote server
-                    // JSONWEBTOKEN and cookie stocker  cote client qui le renverra
+               // request.session.stocké cote server
+                    // JSONWEBTOKEN and cookie stocké  cote client qui le renverra
                 if (pseudo && password) {
                       
                        

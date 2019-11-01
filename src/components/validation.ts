@@ -1,4 +1,4 @@
-import React from 'react';
+
 import validate from 'validate.js';
 
 const displayError = (props) => {
@@ -25,9 +25,9 @@ const displayError = (props) => {
             }
            }
        };
-       //result = undefined if input is empty so let error
+       //result = undefined if input is empty so let error for pseudo
        const result = validate(props, constraints);
-      if (result)
+       if (result)
        console.log("result: ",result);
    
       return [result.mail, " ", result.password];

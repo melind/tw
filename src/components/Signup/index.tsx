@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
 import  displayError  from '../validation';
-
 // component = function return element to display
-const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
-    console.log("states come from reducer:", pseudo, mail, subscriber);
+const Signup = ({pseudo, mail, password, subscriber, onSubmit, error}) => {
+    console.log("states come from reducer:", pseudo, mail, subscriber, error);
     const [formState, setFormState] = useState({pseudo, mail, password, subscriber});
     const handleChange = (e) => {
         const name: string = e.target.name;
@@ -16,11 +15,9 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
         console.log("handleChange :", name, "value: ", value);
             
     }
-    
-   
 
    const result = displayError(formState); 
-   console.log("error from resulut de signupé: ",result , "0", result[0]);
+   console.log("error from result validation de signup: ",result , "0", result[0]);
 
  const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,11 +41,11 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit}) => {
         <h1>Inscrivez-vous</h1>
          <form onSubmit={handleSubmit} action="/signup" method="POST" >
           <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input>
-          <input name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} ></input>
+          <input name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input>
           <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input>
           <button type="submit" >Valider</button>
         </form>
-        <p>  {result}</p>
+        <p>  {result} {error}</p>
         <Link to="/login">Déjà inscrit ?</Link>
         </div>
 

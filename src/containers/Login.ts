@@ -17,7 +17,8 @@ const mapStateToProps = /*(state: {//state detrermine by reducer
    pseudo: state.login.pseudo,
     password: state.login.password,
     loggedin: state.login.loggedin,
-    subscriber: state.login.subscriber
+    subscriber: state.login.subscriber,
+    error: state.login.error
 });
 
 const mapDispatchToProps = (dispatch) => ({

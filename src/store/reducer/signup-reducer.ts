@@ -41,7 +41,7 @@ export const signUp = (formState) => (dispatch, getState) => {
     // collect user info of the stateInitial
     // state.signup
    const { signup } = getState();
-    console.log("state du reducer: ", signup, "state provenent du composant: ", formState);
+    console.log("state dfrom reducer: ", signup, "state from component: ", formState);
     // axios collect post info from the user via name input
     return  userAPI.signupUser(formState)
         .then( (res) => {
@@ -54,6 +54,10 @@ export const signUp = (formState) => (dispatch, getState) => {
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
+            if (err.response.data.error.keyValue.pseudo || err.response.data.error.keyValue.mail) {
+                alert((err.response.data.error.keyValue.pseudo ||  err.response.data.error.keyValue.mail) + " existe déjà!");
+                }
+            //console.log( err.response.data.error.keyValue.pseudo, err.response.data.error.keyValue.mail );
             dispatch(signupError());
         });
 };
