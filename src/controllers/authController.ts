@@ -205,12 +205,13 @@ export default class AuthController {
     static logout(request: Request, response: Response) {
           //destroy token by destroying cookie
         response.clearCookie('jwt');
+        
         request.session.destroy( (err) => {
                      if(err) {
                        console.error(err);
                      }
                });
- 
+        //response.clearCookie('connect.sid');
         response.status(200).json({
             text: "Succès for logout"
         });

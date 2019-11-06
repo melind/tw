@@ -2,14 +2,14 @@ import React, { useState, useEffect }  from 'react';
 import './index.css';
 
 
-const Account = () => {
+const Media = () => {
 //{pseudo, mail, password, date, onSubmit}
     return (
 
-        <div>Votre compte</div>
+        <div>Média</div>
 
     )
     
 } 
 
-export default Account;
+export default Media;

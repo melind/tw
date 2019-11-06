@@ -26,6 +26,8 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
         case LOGIN_ERROR:
             return {
                 ...state,
+                loggedin: false,
+                subscriber: false,
                 error: "Connexion échoué",
 
             }
@@ -47,23 +49,23 @@ export const login = (formState) => (dispatch, getState) => {
             //and take data from response of auhtController.postLogin
             console.log("data collected :", res.data, res.data.text);
             //alert( res.data.text);
-            dispatch(signSuccess(res.data));
+            dispatch(loginSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
             if (err.response.data.text) {alert(err.response.data.text);}
-            dispatch(signError());
+            dispatch(loginError());
         })
 };
 /*-----------    action creator  -------------*/
 // function that create actions (= payload = data from the application for the store)
-export const signSuccess = (payload) => ({
+export const loginSuccess = (payload) => ({
     type: LOGIN_SUCCESS,
     payload
 });
 
-export const signError = () => ({
+export const loginError = () => ({
     type: LOGIN_ERROR,
 });
 

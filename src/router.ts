@@ -6,6 +6,9 @@ import bodyparser from 'body-parser';
 import HomeController from './controllers/homeController';
 import AuthController from './controllers/authController';
 import DeleteController from './controllers/deleteController';
+import MovieController from './controllers/movieController';
+import SearchController from './controllers/searchController';
+import GenreController from './controllers/genreController';
 
 import authMiddleware from './middlewares/authMiddleware';
 
@@ -31,7 +34,7 @@ La fonction est exécutée pour tout type de demande HTTP sur le chemin/user/:id
 //router.get('/home', authMiddleware, HomeController.home);
 
 
-//router.get('/', HomeController.index);
+router.get('/', HomeController.index);
 
 router.get('/home', authMiddleware, HomeController.home);
 
@@ -45,7 +48,14 @@ router.route('/login')
 
 router.get('/logout', AuthController.logout);
 
-router.get('/deleteAccount', DeleteController.deleteAccount);
+router.get('/deleteAccount',  authMiddleware, DeleteController.deleteAccount);
 
+router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
+
+router.post('/search',  SearchController.searchMedia);
+
+router.get('/genresList',  GenreController.genresList);
+
+router.get('/moviesByGenres/:id',  GenreController.moviesByGenre);
 
 export default router;

@@ -3,7 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import './index.css';
 
 const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error}) => {
-  console.log("states come from reducer:", pseudo, subscriber, error);
+  console.log("states come from reducer:", pseudo, "abonné ",subscriber, "erreur ",error);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
 
   const handleChange = (e) => {
@@ -16,16 +16,16 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error}) => {
   }
  const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("props of signup  after submit: ",  formState);
+        console.log("props of signup send after submit: ",  formState);
         console.log("value input: ",formState.pseudo);
         
         const {pseudo,  password, subscriber, loggedin} = formState;
-        console.log("props update by input value:", pseudo, password, subscriber, loggedin);
+        console.log("props update send  by input value:", pseudo, password, subscriber, loggedin);
         onSubmit(formState);
 
          
     }
-   
+     
        if(loggedin) return <Redirect to="/home" />
         
     

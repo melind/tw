@@ -25,6 +25,7 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
         case SIGNUP_ERROR:
             return {
                 ...state,
+                subscriber: false,
                 error: "Inscription non réussi",
 
             }

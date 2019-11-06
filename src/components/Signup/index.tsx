@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
-import  displayError  from '../validation';
+import  displayError  from '../../lib/validation';
 // component = function return element to display
 const Signup = ({pseudo, mail, password, subscriber, onSubmit, error}) => {
     console.log("states come from reducer:", pseudo, mail, subscriber, error);

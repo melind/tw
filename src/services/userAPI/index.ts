@@ -22,15 +22,15 @@ export default {
         },
     
     logOut: () => { 
-       // axios.defaults.withCredentials = true;
+        axios.defaults.withCredentials = true;
         return axios.get( API_URL + '/logout')
     },
 
     isAuth: () => {
-        //axios.defaults.withCredentials = true;
-        if (!cookie.load('jwt'))
-        return false 
+        if (cookie.load('jwt'))
+        return true 
       },
+      
     infoUser: () => { 
         axios.defaults.withCredentials = true;
         return axios.get( API_URL + '/infoUser')
@@ -41,6 +41,11 @@ export default {
         return axios.put( API_URL + '/updateUser', formState)
     }, 
 
+    isAdmin: () => { 
+        axios.defaults.withCredentials = true;
+        return true
+    },
+
     deleteUser: (formState) => { 
         axios.defaults.withCredentials = true;
         return axios.delete( API_URL + '/deleteAccount', formState)
@@ -49,5 +54,10 @@ export default {
     home: () => { 
         axios.defaults.withCredentials = true;
         return axios.get( API_URL + '/home')
-    },  
+    }, 
+
+    index: () => { 
+        return axios.get( API_URL + '/')
+    },
+
 }

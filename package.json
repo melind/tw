@@ -25,6 +25,7 @@
     "redux-thunk": "^2.3.0",
     "remove": "^0.1.5",
     "typescript": "^3.6.3",
+    "use-force-update": "^1.0.7",
     "validate.js": "^0.13.1"
   },
   "jest": {
@@ -42,7 +43,8 @@
     "eject": "react-scripts eject",
     "buildtsc": "tsc",
     "jest": "jest",
-    "start-server": "ts-node-dev -r esm ./src/server/server.ts"
+    "start-server": "ts-node-dev -r esm ./src/server/server.ts",
+    "ts-jest": "ts-jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,7 +67,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
-    "@babel/register": "^7.6.2",
+    "@babel/register": "^7.7.0",
     "@babel/runtime": "7.0.0-beta.36",
     "@types/bcryptjs": "^2.4.2",
     "@types/body-parser": "^1.17.1",
@@ -98,6 +100,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.10.1",
+    "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0",

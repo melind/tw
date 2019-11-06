@@ -5,7 +5,8 @@ module.exports = {
     "@babel/env",
     "@babel/react",
     "@babel/preset-typescript",
-    "@babel/register"
+    "@babel/preset-register",
+    "@babel/register",
   ],
   plugins: [
     "@babel/plugin-syntax-dynamic-import"
