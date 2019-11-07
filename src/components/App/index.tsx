@@ -11,6 +11,7 @@ import Account from '../../containers/Account';
 import NotFoundPage from '../NotFoundPage';
 import Media from '../Media';
 import Genres from '../Genres';
+import Genrestv from '../Genrestv';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
 const App = () => {
@@ -33,8 +34,9 @@ const App = () => {
                 )} />
                 <PrivateRoute  path="/home"  component={Home} />
                 <PrivateRoute path="/account"  component={Account} />
-                <PrivateRoute path="/media"  component={Media} />
+                <PrivateRoute path="/media/:media/:id"  component={Media} />
                 <PrivateRoute path="/genres/:id"  component={Genres} />
+                <PrivateRoute path="/genrestv/:id"  component={Genrestv} />
                 <PublicRoute path="/signup"  component={Signup} />
                 <PublicRoute path="/login" component={Login}/>
                 <Route path="/404" component={NotFoundPage} />

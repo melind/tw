@@ -5,14 +5,11 @@ import movieAPI from '../../services/movieAPI';
 const Genres = (props) => {
 
 
-  const [movies, setMovies] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
     console.log("props",props.match.params.id); 
-
     let id = props.match.params.id;
-
-    async function moviesByGenreList() { 
-
-       const genreMovies = await movieAPI.moviesByGenres(id)
+    async function tvShowsByGenreList() { 
+       const genreTvShows = await movieAPI.tvShowsByGenres(id)
        .then(res => {
            console.log("data collected :", res.data);
            return res.data;
@@ -21,23 +18,22 @@ const Genres = (props) => {
        .catch(err => {
            console.log(err);
        });
-       
-       setMovies(genreMovies.moviesGenre.results);
-       console.log("const list of movies  = ", genreMovies, genreMovies.moviesGenre.results);
+       setTvShows(genreTvShows.tvShowGenre.results);
+       console.log("const list of tvShows  = ", genreTvShows, genreTvShows.tvShowGenre.results);
        }
    
        useEffect(() => {
-       moviesByGenreList();
+       tvShowsByGenreList();
        }, []); 
 
-   console.log("movies", movies);
+   console.log("tvShows", tvShows);
    
    
   
     return (
       <div>
       
-      <ul >{movies.map((result) => <li  key={result.id}>{result.title} </li>)}</ul>
+      <ul >{tvShows.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
         </div>
         
     )

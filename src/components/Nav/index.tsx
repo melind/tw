@@ -15,6 +15,7 @@ const Nav = ({loggedout, onClick}) => {
   }
  
   const [genre, setGenre] = useState([]);
+  const [genreTv, setGenreTv] = useState([]);
 
     async function listOfGenres() { 
        const listGenres = await movieAPI.genres()
@@ -29,11 +30,24 @@ const Nav = ({loggedout, onClick}) => {
        console.log("const listgenre = ",listGenres, listGenres.genres.genres);
        }
    
+    async function listOfTvGenres() { 
+     const listGenres = await movieAPI.genresTv()
+     .then(res => {
+         console.log("data collected :", res.data);
+         return res.data;
+     })
+     .catch(err => {
+         console.log(err);
+     });
+     setGenreTv(listGenres.genres.genres);
+     console.log("const listgenreTv = ",listGenres, listGenres.genres.genres);
+     }
+
        useEffect(() => {
-       listOfGenres();
+       listOfGenres(); listOfTvGenres();
        }, []); 
 
-   console.log("genre", genre);
+   console.log("genre", genre,"genreTv", genreTv);
    
    if (loggedout) {
       
@@ -43,7 +57,8 @@ const Nav = ({loggedout, onClick}) => {
   
     return (
       <div>
-      <ul >{genre.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
+      <ul >movies {genre.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
+      <ul >tv shows {genreTv.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
         <button type="submit" onClick={logOut} >deconnectez-vous</button>
         </div>
         

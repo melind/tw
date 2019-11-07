@@ -9,6 +9,7 @@ import DeleteController from './controllers/deleteController';
 import MovieController from './controllers/movieController';
 import SearchController from './controllers/searchController';
 import GenreController from './controllers/genreController';
+import MediaController from './controllers/mediaController';
 
 import authMiddleware from './middlewares/authMiddleware';
 
@@ -54,8 +55,14 @@ router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
 
 router.post('/search',  SearchController.searchMedia);
 
-router.get('/genresList',  GenreController.genresList);
+router.get('/genresMovieList',  GenreController.genresMovieList);
 
 router.get('/moviesByGenres/:id',  GenreController.moviesByGenre);
+
+router.get('/genresTvShowList',  GenreController.genresListTvShow);
+
+router.get('/tvShowsByGenres/:id',  GenreController.tvShowByGenre);
+
+router.get('/media/:media/:id',  MediaController.mediaDetails);
 
 export default router;

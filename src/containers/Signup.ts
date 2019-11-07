@@ -5,19 +5,21 @@ import { signUp } from '../store/reducer/signup-reducer';
 
 // match props os state to component
 
-const mapStateToProps = /*(state: {//state detrermine by reducer
+const mapStateToProps = /*(state:{ 
    pseudo: string,
    mail: string,
    password: string,
-   subscriber: boolean
-}) => ({ //props compnonent
-   pseudo: state.signup.pseudo, 
+   subscriber: boolean,
+   error: boolean},
+    
+   ({pseudo: state.signup.pseudo, 
    mail: state.signup.mail,
    password: state.signup.password,
-   subscriber: state.signup.subscriber
-});  ou*/
+   subscriber: state.signup.subscriber,
+   error: state.signup.error
+   }));*/
  
-(state, props) => ({
+(state) => ({
    pseudo: state.signup.pseudo, 
    mail: state.signup.mail,
    password: state.signup.password,

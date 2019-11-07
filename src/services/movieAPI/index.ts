@@ -17,13 +17,28 @@ export default {
 
     genres: () => {
         axios.defaults.withCredentials = true;
-        return axios.get( API_URL + '/genresList')
+        return axios.get( API_URL + '/genresMovieList')
         },    
 
     moviesByGenres: (id) => {
        axios.defaults.withCredentials = true;
        return axios.get( API_URL + `/moviesByGenres/${id}`)
        },  
+
+    genresTv: () => {
+       axios.defaults.withCredentials = true;
+       return axios.get( API_URL + '/genresTvShowList')
+       }, 
+
+    tvShowsByGenres: (id) => {
+       axios.defaults.withCredentials = true;
+       return axios.get( API_URL + `/tvShowsByGenres/${id}`)
+       }, 
+
+    media: (media, id) => {
+       axios.defaults.withCredentials = true;
+       return axios.get( API_URL + `/media/${media}/${id}`)
+       }, 
 
     search: () => {
      axios.defaults.withCredentials = true;
