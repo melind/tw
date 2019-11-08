@@ -1,26 +1,31 @@
 import { connect } from 'react-redux';
 import Account from '../components/Account';
-import { DisplayAccount, AccountUpdate } from '../store/reducer/account-reducer';
+import { displayAccount, accountUpdate, init, deleteAccount } from '../store/reducer/account-reducer';
 
-// match props os state to component
+
 
 const mapStateToProps = 
  
 (state) => ({
-   pseudo: state.Account.pseudo, 
-   mail: state.Account.mail,
-   password: state.Account.password,
-   date: state.Account.date
+   pseudo: state.account.pseudo, 
+   mail: state.account.mail,
+   password: state.account.password,
+   date: state.account.date
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  o : () => {
-        dispatch(DisplayAccount());
+  display : () => {
+        dispatch(displayAccount());
     },
-    onSubmit: (formState) => {
-        dispatch(AccountUpdate(formState));// transfer input_name value ?
-    }
-
+  onSubmit: (formState) => {
+        dispatch(accountUpdate(formState));// transfer input_name value ?
+    },
+  init: () => {
+      dispatch(init());
+  },
+  onClick: () => {
+      dispatch(deleteAccount());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

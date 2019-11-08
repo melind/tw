@@ -11,8 +11,6 @@ init();
 
   const logOut = () => {
   userAPI.logOut();
-   //console.log(  "loggedout after", loggedout);
-   //return <Redirect from="/home" to="/" />
    onClick();
 
   }

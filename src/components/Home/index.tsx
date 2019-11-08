@@ -37,7 +37,7 @@ console.log("nowmovie",nowMovie);
     return (
         <div>
             
-        <Nav  loggedout />
+        <Nav   />
         Hi <ul>{nowMovie.map((result) => <li key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/></li>)}</ul>
         
         </div> 

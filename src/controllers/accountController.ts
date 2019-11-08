@@ -8,15 +8,36 @@ import jsonwebtoken from 'jsonwebtoken';
 
 export default class AccountController {
 
-/*    displayAccount(request: Request, response: Response) {
+    static async displayAccount(request: Request, response: Response) {
+
+           
+           const token: any = request.cookies.jwt;
+
+           if(token){ 
+
+           const decodedToken: any = jsonwebtoken.verify(token,process.env.JWT_PRIVATE_KEY);
+           const pseudo = decodedToken.nickname
 
            const user: IUser  = await User.findOne({pseudo});
+            if (user) {
+            response.status(200).json({
+                                    user,
+                                   });
+            }
+            }
+             if (!token) {
+                      response.status(400).json({
+                        text: "No user coockie"
+                      })
+            }
+           console.log("Hello from account display");
+        
+          
+    } 
 
-            user.find
 
 
-
-      },
+      /*
 
       updateAccount(request: Request, response: Response) {
 
@@ -28,5 +49,6 @@ export default class AccountController {
 
       }*/
    
+
 
 }

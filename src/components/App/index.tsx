@@ -11,12 +11,12 @@ import Login from '../../containers/Login';
 import Account from '../../containers/Account';
 import NotFoundPage from '../NotFoundPage';
 import Media from '../Media';
-import Nav from '../../containers/Nav';
 import Genres from '../Genres';
 import Genrestv from '../Genrestv';
 import Logout from '../Logout';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
+
 const App = () => {
   userAPI.index();
   return (

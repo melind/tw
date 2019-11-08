@@ -12,7 +12,9 @@ const stateInitial = {
  export const ACCOUNT_ERROR = "ACCOUNT_ERROR";
  export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
  export const UPDATE_ERROR = "UPDATE_ERROR";
-
+ export const DELETE_SUCCESS = "DELETE_SUCCESS";
+ export const DELETE_ERROR = "DELETE_ERROR";
+ export const INIT = "INIT";
 const reducer = (state = stateInitial, action : {type: string, payload : any}) => {
     switch(action.type){
         case ACCOUNT_SUCCESS: 
@@ -33,12 +35,33 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
             return {
                 ...state, 
                 ...action.payload,
+                error: false
 
             }
         case UPDATE_ERROR:
             return {
                 ...state,
                 error: "mise à jour non réussi",
+
+            }
+        case DELETE_SUCCESS: 
+            return {
+                ...state, 
+                ...stateInitial,
+                error: false
+
+            }
+        case DELETE_ERROR:
+            return {
+                ...state,
+                error: "désinscription non réussi",
+
+            }
+        case INIT: 
+            return {
+                ...state, 
+                ...stateInitial,
+                error: false
 
             }
         default:
@@ -48,7 +71,7 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
 
         /*-----------    redux thunk  -------------*/
         // action creator which return function
-export const DisplayAccount = () => (dispatch, getState) => {
+export const displayAccount = () => (dispatch, getState) => {
     // name of the input
     // collect user info of the stateInitial
     // state.A CCOUNT
@@ -61,16 +84,16 @@ export const DisplayAccount = () => (dispatch, getState) => {
             //and take data from response of accountController.displayAccount
             
             console.log("data collected: ",  res.data);
-            dispatch(ACCOUNTSuccess(res.data));
+            dispatch(accountSuccess(res.data.user));
         })
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
-            dispatch(ACCOUNTError());
+            dispatch(accountError());
         });
 };
 
-export const AccountUpdate = (formState) => (dispatch, getState) => {
+export const accountUpdate = (formState) => (dispatch, getState) => {
     // name of the input
     // collect user info of the stateInitial
     // state.A CCOUNT
@@ -83,12 +106,34 @@ export const AccountUpdate = (formState) => (dispatch, getState) => {
             //and take data from response of accountController.updateAccount
             
             console.log("data collected: ",  res.data);
-            dispatch(UPDATESuccess(res.data));
+            dispatch(updateSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
-            dispatch(UPDATEError());
+            dispatch(updateError());
+        });
+};
+
+export const deleteAccount = () => (dispatch, getState) => {
+    // name of the input
+    // collect user info of the stateInitial
+    // state.A CCOUNT
+    //const { account } = getState();
+    //console.log("state du reducer: ", account, "state provenent du composant: ", formState);
+    // axios collect post info from the user via name input
+    return  userAPI.deleteUser()
+        .then( (res) => {
+            // inform my reducer this is a success 
+            //and take data from response of accountController.updateAccount
+            
+            console.log();
+            dispatch(deleteSuccess());
+        })
+        .catch(err => {
+            // inform my reducer there is an error
+            console.log(err);
+            dispatch(deleteError());
         });
 };
 /*-----------    action creator  -------------*/
@@ -96,21 +141,34 @@ export const AccountUpdate = (formState) => (dispatch, getState) => {
 
 
 
-export const ACCOUNTSuccess = (payload) => ({
+export const accountSuccess = (payload) => ({
     type: ACCOUNT_SUCCESS,
     payload
 });
 
-export const ACCOUNTError = () => ({
-    type: ACCOUNT_ERROR,
+export const accountError = () => ({
+    type: ACCOUNT_ERROR
 });
 
-export const UPDATESuccess = (payload) => ({
-    type: ACCOUNT_SUCCESS,
+export const updateSuccess = (payload) => ({
+    type: UPDATE_SUCCESS,
     payload
 });
 
-export const UPDATEError = () => ({
-    type: ACCOUNT_ERROR,
+export const updateError = () => ({
+    type: UPDATE_ERROR
+});
+
+
+export const deleteSuccess = () => ({
+    type: DELETE_SUCCESS
+});
+
+export const deleteError = () => ({
+    type: DELETE_ERROR
+});
+
+export const init = () => ({
+    type: INIT
 });
 export default reducer;

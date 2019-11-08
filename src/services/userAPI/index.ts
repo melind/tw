@@ -33,12 +33,12 @@ export default {
       
     infoUser: () => { 
         axios.defaults.withCredentials = true;
-        return axios.get( API_URL + '/infoUser')
+        return axios.get( API_URL + '/account')
     }, 
 
     updateUser: (formState) => { 
         axios.defaults.withCredentials = true;
-        return axios.put( API_URL + '/updateUser', qs.stringify(formState))
+        return axios.put( API_URL + '/updateUser', qs.stringify(formState), {headers: headers})
     }, 
 
     isAdmin: () => { 
@@ -47,8 +47,8 @@ export default {
     },
 
     deleteUser: () => { 
-        axios.defaults.withCredentials = true;
-        return axios.delete( API_URL + '/deleteAccount')
+        //axios.defaults.withCredentials = true;
+        return axios.delete( API_URL + '/deleteAccount', {headers: headers})
     },
 
     home: () => { 

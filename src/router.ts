@@ -5,6 +5,7 @@ import bodyparser from 'body-parser';
 
 import HomeController from './controllers/homeController';
 import AuthController from './controllers/authController';
+import AccountController from './controllers/accountController';
 import DeleteController from './controllers/deleteController';
 import MovieController from './controllers/movieController';
 import SearchController from './controllers/searchController';
@@ -49,7 +50,9 @@ router.route('/login')
 
 router.get('/logout', AuthController.logout);
 
-router.get('/deleteAccount',  authMiddleware, DeleteController.deleteAccount);
+router.get('/account', AccountController.displayAccount);
+
+router.delete('/deleteAccount',   DeleteController.deleteAccount);
 
 router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
 
