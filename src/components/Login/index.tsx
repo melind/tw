@@ -1,11 +1,16 @@
-import React, { useState} from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
+import { Redirect, Link} from 'react-router-dom';
 import './index.css';
 
-const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error}) => {
+const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) => {
+
+ 
+ init();
+
   console.log("states come from reducer:", pseudo, "abonné ",subscriber, "erreur ",error);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
-
+ 
+ 
   const handleChange = (e) => {
       const name: string = e.target.name;
       const value: string = e.target.value;
@@ -22,21 +27,21 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error}) => {
         const {pseudo,  password, subscriber, loggedin} = formState;
         console.log("props update send  by input value:", pseudo, password, subscriber, loggedin);
         onSubmit(formState);
-
-         
-    }
-     
-       if(loggedin) return <Redirect to="/home" />
         
+        
+    }
+    if(loggedin) return <Redirect to="/home" />
+   
+     
     
     return (
 
         <div>
         <h1>Connectez-Vous</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input>
           <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input>
-          <button type="submit">Valider</button>
+          <button type="submit" >Valider</button>
 
         </form>
         <p>{error}</p>

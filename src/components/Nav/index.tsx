@@ -1,18 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import './index.css';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link} from 'react-router-dom';
 import userAPI from '../../services/userAPI';
 import movieAPI from '../../services/movieAPI';
 
-const Nav = ({loggedout, onClick}) => {
+const Nav = ({loggedout, onClick, init}) => {
 
+init();
   console.log( "loggedout",loggedout);
 
   const logOut = () => {
-   userAPI.logOut();
-   console.log(  "loggedout after", loggedout);
-   onClick(loggedout);
+  userAPI.logOut();
+   //console.log(  "loggedout after", loggedout);
+   //return <Redirect from="/home" to="/" />
+   onClick();
+
   }
+   console.log(  "loggedout after", loggedout);
+ 
  
   const [genre, setGenre] = useState([]);
   const [genreTv, setGenreTv] = useState([]);
@@ -26,6 +31,8 @@ const Nav = ({loggedout, onClick}) => {
       setSearch(event.target.value); 
       console.log("search",search);
       searchMedia(search);
+      
+      
       }; 
 
     async function listOfGenres() { 
@@ -73,21 +80,18 @@ const Nav = ({loggedout, onClick}) => {
        }, []); 
 
    console.log("genre", genre,"genreTv", genreTv, "searchMediaResult", searchMediaResult);
-   
-   if (loggedout) {
-      
-    return <Redirect to="/" />;
-}
-  
-  
+
+  if(loggedout) return <Redirect to="/" />
+
     return (
       <div>
       <ul >movies {genre.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
       <ul >tv shows {genreTv.map((result) => <li  key={result.id}>{result.name} </li>)}</ul>
-       <form action="" method="POST ">
+       <form  action="" method="POST ">
        <input name="search" placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
        </form>
-        <button type="submit" onClick={logOut} >deconnectez-vous</button>
+        <Link to="/" onClick={logOut}>deconnectez-vous</Link>
+       
         </div>
         
     )

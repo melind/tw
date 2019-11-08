@@ -5,13 +5,14 @@ const stateInitial = {
     pseudo: '',
     password: '',
     loggedin: false,
-    subscriber: false,
+    subscriber: true,
     error: ''
  };
 
  export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
  export const LOGIN_ERROR = "LOGIN_ERROR";
-
+ export const INIT = "INIT";
+ 
 const reducer = (state = stateInitial, action : {type: string, payload: any}) => {
     switch(action.type){
         case LOGIN_SUCCESS:
@@ -29,6 +30,15 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
                 loggedin: false,
                 subscriber: false,
                 error: "Connexion échoué",
+
+            }
+        case INIT:
+            return {
+                ...state,
+                ...stateInitial,
+                loggedin: false,
+                subscriber:false,
+                error: false
 
             }
 
@@ -69,7 +79,9 @@ export const loginError = () => ({
     type: LOGIN_ERROR,
 });
 
+export const init = () => ({
+    type: INIT
+});
 
 
-
-export default reducer;
+export default reducer; 

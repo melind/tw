@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Nav from '../components/Nav';
-import { logoutSuccess } from '../store/reducer/nav-reducer';
+import { logoutSuccess, init } from '../store/reducer/nav-reducer';
 
 // match props os state to component
 
@@ -11,9 +11,13 @@ const mapStateToProps =
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   onClick: (payload) => {
-        dispatch(logoutSuccess(payload));// content of onClick Navcomponent
+   onClick: () => {
+        dispatch(logoutSuccess());// content of onClick Navcomponent
+    },
+   init: () => {
+        dispatch(init())
     }
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);

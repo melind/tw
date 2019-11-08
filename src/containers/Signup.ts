@@ -1,7 +1,7 @@
   
 import { connect } from 'react-redux';
 import Signup from '../components/Signup';
-import { signUp } from '../store/reducer/signup-reducer';
+import { signUp, init } from '../store/reducer/signup-reducer';
 
 // match props os state to component
 
@@ -30,6 +30,9 @@ const mapStateToProps = /*(state:{
 const mapDispatchToProps = (dispatch) => ({
    onSubmit: (formState) => {
         dispatch(signUp(formState));// transfer input_name value ?
+    },
+    init: () => {
+        dispatch(init())
     }
 });
 

@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} //contains the React Router props when the initial component is rendered
     render={(props) => {
-      if (userAPI.isAuth()) {//if props == true = qqchose qui chge
+      if (userAPI.isAuth()) {
         return <Component {...props} />;
       }
         else {

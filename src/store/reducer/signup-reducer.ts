@@ -10,7 +10,7 @@ const stateInitial = {
 
  export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
  export const SIGNUP_ERROR = "SIGNUP_ERROR";
-
+ export const INIT = "INIT";
 
 const reducer = (state = stateInitial, action : {type: string, payload : any}) => {
     switch(action.type){
@@ -27,6 +27,14 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
                 ...state,
                 subscriber: false,
                 error: "Inscription non réussi",
+
+            }
+        case INIT:
+            return {
+                ...state,
+                ...stateInitial,
+                subscriber:false,
+                error: false
 
             }
 
@@ -77,4 +85,7 @@ export const signupError = () => ({
     type: SIGNUP_ERROR,
 });
 
+export const init = () => ({
+    type: INIT
+});
 export default reducer;

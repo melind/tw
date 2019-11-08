@@ -6,7 +6,7 @@ import { DisplayAccount, AccountUpdate } from '../store/reducer/account-reducer'
 
 const mapStateToProps = 
  
-(state, props) => ({
+(state) => ({
    pseudo: state.Account.pseudo, 
    mail: state.Account.mail,
    password: state.Account.password,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect, Link  } from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
 import userAPI from '../../services/userAPI';
@@ -6,14 +7,16 @@ import Nav from '../../containers/Nav';
 
 const Home = () => {
 
+
 userAPI.home();
 
 const [nowMovie, setNowMovie] = useState([]);
+
  async function movies() { 
     const movie = await movieAPI.nowPlaying()
     .then(res => {
         console.log("data collected :", res.data);
-        return res.data;
+        return res.data; 
         
     })
     .catch(err => {
@@ -24,15 +27,17 @@ const [nowMovie, setNowMovie] = useState([]);
     }
 
     useEffect(() => {
-    movies();
+    movies();;
     }, []); 
 console.log("nowmovie",nowMovie);
 
-
+ 
+    
+ 
     return (
         <div>
             
-        <Nav  loggedout onClick/>
+        <Nav  loggedout />
         Hi <ul>{nowMovie.map((result) => <li key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/></li>)}</ul>
         
         </div> 

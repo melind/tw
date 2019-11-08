@@ -43,6 +43,6 @@ export default {
     search: (search) => {
      axios.defaults.withCredentials = true;
      return axios.post( API_URL + '/home', qs.stringify(search),{headers: headers})
-     //,qs(search)qs.stringify(search),{headers: headers}
+    
      }, 
 }

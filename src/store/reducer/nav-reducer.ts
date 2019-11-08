@@ -6,6 +6,7 @@ const stateInitial = {
 
  export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
  export const LOGOUT_ERROR = "LOGOUT_ERROR";
+ export const INIT = "INIT";
 
 const reducer = (state = stateInitial, action: {type: string, payload : any}) => {
     switch(action.type){
@@ -23,6 +24,15 @@ const reducer = (state = stateInitial, action: {type: string, payload : any}) =>
                 error: "Déconnexion non réussi",
 
             }
+        case INIT:
+            return {
+                ...state,
+                ...stateInitial,
+                loggedout:false,
+                error: false
+
+            }
+        
         default:
             return state;
     }
@@ -35,14 +45,16 @@ const reducer = (state = stateInitial, action: {type: string, payload : any}) =>
 // function that create actions (= payload = data from the application for the store = update stateInitial)
 
 
-
-export const logoutSuccess = (payload) => ({
+export const logoutSuccess = () => ({
     type: LOGOUT_SUCCESS,
-    payload
 });
 
 export const logoutError = () => ({
     type: LOGOUT_ERROR,
+});
+
+export const init = () => ({
+    type: INIT
 });
 
 export default reducer;

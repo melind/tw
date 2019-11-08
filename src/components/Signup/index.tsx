@@ -3,8 +3,12 @@ import './index.css';
 import { Redirect, Link } from 'react-router-dom';
 import  displayError  from '../../lib/validation';
 // component = function return element to display
-const Signup = ({pseudo, mail, password, subscriber, onSubmit, error}) => {
+const Signup = ({pseudo, mail, password, subscriber, onSubmit, error, init}) => {
+    
+    init();
+
     console.log("states come from reducer:", pseudo, mail, subscriber, error);
+
     const [formState, setFormState] = useState({pseudo, mail, password, subscriber});
     const handleChange = (e) => {
         const name: string = e.target.name;
@@ -30,8 +34,10 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit, error}) => {
         onSubmit(formState);}
    
     }
+
+
     
-    if(subscriber === true) return <Redirect to="/login" />
+    if(subscriber) return  <Redirect to="/login" />
      
    
 

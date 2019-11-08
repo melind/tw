@@ -163,6 +163,7 @@ export default class AuthController {
                  
                 let csrf = Math.random().toString(36).substr(2, 9);
                 request.session.csrf = csrf;
+                
                 console.log("csrf", csrf);
                     
                 const token = jsonwebtoken.sign({
@@ -217,6 +218,7 @@ export default class AuthController {
         });
 
         console.log("hello from get logout!");
+        
              
     }
 }
