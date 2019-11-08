@@ -7,7 +7,7 @@ const stateInitial = {
  export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
  export const LOGOUT_ERROR = "LOGOUT_ERROR";
 
-const reducer = (state = stateInitial, action : {type: string, payload : any}) => {
+const reducer = (state = stateInitial, action: {type: string, payload : any}) => {
     switch(action.type){
         case LOGOUT_SUCCESS: 
             return {

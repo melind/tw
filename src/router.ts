@@ -53,7 +53,7 @@ router.get('/deleteAccount',  authMiddleware, DeleteController.deleteAccount);
 
 router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
 
-router.post('/search',  SearchController.searchMedia);
+router.post('/home', bodyParser, SearchController.searchMedia);
 
 router.get('/genresMovieList',  GenreController.genresMovieList);
 

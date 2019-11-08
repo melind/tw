@@ -10,6 +10,7 @@ import Login from '../../containers/Login';
 import Account from '../../containers/Account';
 import NotFoundPage from '../NotFoundPage';
 import Media from '../Media';
+import Nav from '../Nav';
 import Genres from '../Genres';
 import Genrestv from '../Genrestv';
 import PrivateRoute from '../PrivateRoute';

@@ -8,7 +8,6 @@ const Home = () => {
 
 userAPI.home();
 
-
 const [nowMovie, setNowMovie] = useState([]);
  async function movies() { 
     const movie = await movieAPI.nowPlaying()

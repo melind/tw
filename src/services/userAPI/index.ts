@@ -38,7 +38,7 @@ export default {
 
     updateUser: (formState) => { 
         axios.defaults.withCredentials = true;
-        return axios.put( API_URL + '/updateUser', formState)
+        return axios.put( API_URL + '/updateUser', qs.stringify(formState))
     }, 
 
     isAdmin: () => { 
@@ -46,9 +46,9 @@ export default {
         return true
     },
 
-    deleteUser: (formState) => { 
+    deleteUser: () => { 
         axios.defaults.withCredentials = true;
-        return axios.delete( API_URL + '/deleteAccount', formState)
+        return axios.delete( API_URL + '/deleteAccount')
     },
 
     home: () => { 

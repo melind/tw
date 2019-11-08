@@ -40,8 +40,9 @@ export default {
        return axios.get( API_URL + `/media/${media}/${id}`)
        }, 
 
-    search: () => {
+    search: (search) => {
      axios.defaults.withCredentials = true;
-     return axios.post( API_URL + '/search')
+     return axios.post( API_URL + '/home', qs.stringify(search),{headers: headers})
+     //,qs(search)qs.stringify(search),{headers: headers}
      }, 
 }
