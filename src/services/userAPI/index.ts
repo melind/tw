@@ -36,10 +36,20 @@ export default {
         return axios.get( API_URL + '/account')
     }, 
 
-    updateUser: (formState) => { 
+    updatePseudo: (formState) => { 
         axios.defaults.withCredentials = true;
-        return axios.put( API_URL + '/updateUser', qs.stringify(formState), {headers: headers})
+        return axios.put( API_URL + '/updatePseudo', qs.stringify(formState), {headers: headers})
     }, 
+
+    updateMail: (formState) => { 
+        axios.defaults.withCredentials = true;
+        return axios.put( API_URL + '/updateMail', qs.stringify(formState), {headers: headers})
+    },
+
+    updatePassword: (formState) => { 
+        axios.defaults.withCredentials = true;
+        return axios.put( API_URL + '/updatePassword', qs.stringify(formState), {headers: headers})
+    },
 
     isAdmin: () => { 
         axios.defaults.withCredentials = true;
@@ -47,7 +57,7 @@ export default {
     },
 
     deleteUser: () => { 
-        //axios.defaults.withCredentials = true;
+        axios.defaults.withCredentials = true;
         return axios.delete( API_URL + '/deleteAccount', {headers: headers})
     },
 

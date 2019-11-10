@@ -5,7 +5,8 @@ const stateInitial = {
     pseudo: '',
     mail: '',
     password: '',
-    date: ''
+    date: '',
+    update:'',
  };
 
  export const ACCOUNT_SUCCESS = "ACCOUNT_SUCCESS";
@@ -15,6 +16,7 @@ const stateInitial = {
  export const DELETE_SUCCESS = "DELETE_SUCCESS";
  export const DELETE_ERROR = "DELETE_ERROR";
  export const INIT = "INIT";
+
 const reducer = (state = stateInitial, action : {type: string, payload : any}) => {
     switch(action.type){
         case ACCOUNT_SUCCESS: 
@@ -35,12 +37,14 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
             return {
                 ...state, 
                 ...action.payload,
+                update: true,
                 error: false
 
             }
         case UPDATE_ERROR:
             return {
                 ...state,
+                update:false,
                 error: "mise à jour non réussi",
 
             }
@@ -72,18 +76,18 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
         /*-----------    redux thunk  -------------*/
         // action creator which return function
 export const displayAccount = () => (dispatch, getState) => {
-    // name of the input
+    
     // collect user info of the stateInitial
-    // state.A CCOUNT
+    
     const { account } = getState();
     console.log("state du reducer: ", account);
-    // axios collect post info from the user via name input
+    // collect user info
     return  userAPI.infoUser()
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.displayAccount
             
-            console.log("data collected: ",  res.data);
+            console.log("data collected : ",  res.data);
             dispatch(accountSuccess(res.data.user));
         })
         .catch(err => {
@@ -93,41 +97,86 @@ export const displayAccount = () => (dispatch, getState) => {
         });
 };
 
-export const accountUpdate = (formState) => (dispatch, getState) => {
+export const accountPseudo = (formState) => (dispatch, getState) => {
     // name of the input
     // collect user info of the stateInitial
-    // state.A CCOUNT
+    
     const { account } = getState();
-    console.log("state du reducer: ", account, "state provenent du composant: ", formState);
+    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
     // axios collect post info from the user via name input
-    return  userAPI.updateUser(formState)
+    return  userAPI.updatePseudo(formState)
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.updateAccount
             
-            console.log("data collected: ",  res.data);
+            console.log("data collected update: ",  res.data);
+            dispatch(updateSuccess(res.data));
+        })
+        .catch(err => {
+            // inform my reducer there is an error
+            console.log(err.response);
+            if (err.response.data.error.keyValue.pseudo ) {
+                alert((err.response.data.error.keyValue.pseudo)  + " existe déjà!");};
+          
+            dispatch(updateError());
+        });
+};
+
+export const accountMail = (formState) => (dispatch, getState) => {
+    // name of the input
+    // collect user info of the stateInitial
+    
+    const { account } = getState();
+    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
+    // axios collect post info from the user via name input
+    return  userAPI.updateMail(formState)
+        .then( (res) => {
+            // inform my reducer this is a success 
+            //and take data from response of accountController.updateAccount
+            
+            console.log("data collected update: ",  res.data);
+            dispatch(updateSuccess(res.data));
+        })
+        .catch(err => {
+            // inform my reducer there is an error
+            console.log(err.response);
+            if (err.response.data.error.keyValue.mail) {
+                alert((err.response.data.error.keyValue.mail) + " existe déjà!");};
+          
+            dispatch(updateError());
+        });
+};
+
+
+export const accountPassword = (formState) => (dispatch, getState) => {
+    // name of the input
+    // collect user info of the stateInitial
+    
+    const { account } = getState();
+    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
+    // axios collect post info from the user via name input
+    return  userAPI.updatePassword(formState)
+        .then( (res) => {
+            // inform my reducer this is a success 
+            //and take data from response of accountController.updateAccount
+            
+            console.log("data collected update: ",  res.data);
             dispatch(updateSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
             console.log(err);
+          
             dispatch(updateError());
         });
 };
 
 export const deleteAccount = () => (dispatch, getState) => {
-    // name of the input
-    // collect user info of the stateInitial
-    // state.A CCOUNT
-    //const { account } = getState();
-    //console.log("state du reducer: ", account, "state provenent du composant: ", formState);
-    // axios collect post info from the user via name input
+   
     return  userAPI.deleteUser()
         .then( (res) => {
             // inform my reducer this is a success 
-            //and take data from response of accountController.updateAccount
             
-            console.log();
             dispatch(deleteSuccess());
         })
         .catch(err => {

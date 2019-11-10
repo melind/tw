@@ -2,11 +2,10 @@ import {Request, Response, NextFunction} from 'express';
 
 import jsonwebtoken from 'jsonwebtoken';
 export default function (request: Request, response: Response, next: NextFunction) {
-  // on veux rediriger les utilisateurs non connectés
-  // pour cela, on va vérifier la présence et la validité du JWT dans les cookies
+  // check cookie presence and good jwt
 
-  // on laisse l'accès libre à la page login et signin
-  if ( ['/login','/signup'].includes(request.url) ) {
+  // no need to check for this pages so we get their url (http://....)
+  if ( ['/','/login','/signup'].includes(request.url) ) {
     next();
   } else {
     

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Account from '../components/Account';
-import { displayAccount, accountUpdate, init, deleteAccount } from '../store/reducer/account-reducer';
+import { displayAccount, init, deleteAccount } from '../store/reducer/account-reducer';
 
 
 
@@ -16,9 +16,6 @@ const mapStateToProps =
 const mapDispatchToProps = (dispatch) => ({
   display : () => {
         dispatch(displayAccount());
-    },
-  onSubmit: (formState) => {
-        dispatch(accountUpdate(formState));// transfer input_name value ?
     },
   init: () => {
       dispatch(init());

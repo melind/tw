@@ -9,11 +9,13 @@ import H from '../H';
 import Signup from '../../containers/Signup';
 import Login from '../../containers/Login';
 import Account from '../../containers/Account';
+import Pseudo from '../../containers/Pseudo';
+import Mail from '../../containers/Mail';
+import Password from '../../containers/Password';
 import NotFoundPage from '../NotFoundPage';
 import Media from '../Media';
 import Genres from '../Genres';
 import Genrestv from '../Genrestv';
-import Logout from '../Logout';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
 
@@ -28,6 +30,9 @@ const App = () => {
                 <Route path="/" exact component={H} />
                 <PrivateRoute  path="/home"  component={Home} />
                 <PrivateRoute path="/account" component={Account} />
+                <PrivateRoute path="/updatePseudo" component={Pseudo} />
+                <PrivateRoute path="/updateMail" component={Mail} />
+                <PrivateRoute path="/updatePassword" component={Password} />
                 <PrivateRoute path="/media/:media/:id"  component={Media} />
                 <PrivateRoute path="/genres/:id"  component={Genres} />
                 <PrivateRoute path="/genrestv/:id"  component={Genrestv} />

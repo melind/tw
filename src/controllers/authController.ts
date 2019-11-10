@@ -36,9 +36,9 @@ export default class AuthController {
         let date= new Date();
         let admin = false;
 
-        pseudo = pseudo.trim();
-        mail = mail.trim();
-        password = password.trim();
+        pseudo = pseudo.replace(/ /g,"");
+        mail = mail.replace(/ /g,"");
+        password = password.replace(/ /g,"");
 
         
         /* pas besoin de verifier si user existe dans bdd vu que je use unique in bdd

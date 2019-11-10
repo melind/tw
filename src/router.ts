@@ -52,6 +52,12 @@ router.get('/logout', AuthController.logout);
 
 router.get('/account', AccountController.displayAccount);
 
+router.put('/updatePseudo', bodyParser, AccountController.updatePseudo);
+
+router.put('/updateMail', bodyParser, AccountController.updateMail);
+
+router.put('/updatePassword', bodyParser, AccountController.updatePassword);
+
 router.delete('/deleteAccount',   DeleteController.deleteAccount);
 
 router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
