@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
-//import  displayError  from '../../lib/validationPassword';
+import  displayError  from '../../lib/validationPassword';
 // component = function return element to display
 const Password = ({password, update, error, onSubmit, init}) => {
     
@@ -20,8 +20,7 @@ const Password = ({password, update, error, onSubmit, init}) => {
             
     }
 
-  // const result = displayError(formState); 
- //console.log("error from result validation de update: ",result , "0", result[0]);
+   const result = displayError(formState); 
 
  const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,9 +29,9 @@ const Password = ({password, update, error, onSubmit, init}) => {
         
         const {password} = formState;
         console.log("props update by input value:", password,  );
-       // if (!result) { 
+      
           onSubmit(formState);
-       // }
+      
         
    
     }
@@ -45,12 +44,12 @@ const Password = ({password, update, error, onSubmit, init}) => {
 
         <div>
         <h1>Modifications</h1>
-         <form  action="/updatePassword" method="POST" >
+         <form onSubmit={handleSubmit} action="/updatePassword" method="POST" >
           <input name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></input>
          
-          <button type="submit" onSubmit={handleSubmit} >Valider</button>
+          <button type="submit"  >Valider</button>
         </form>
-        <p>   {error}</p>
+        <p>  {result} {error}</p>
         </div>
 
     )

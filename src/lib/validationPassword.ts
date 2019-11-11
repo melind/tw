@@ -8,6 +8,13 @@ const displayError = (props) => {
                minimum: 8,
                message: "Doit contenir 8 caractères"
              }
+           }, 
+           pseudo: {
+             presence: true,
+             length: {
+              minimum: 1000,
+              message: "Doit contenir 8 caractères"
+            }
            }
        };
        //result = undefined if input is empty so let error for pseudo

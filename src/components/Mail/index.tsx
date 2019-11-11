@@ -21,7 +21,6 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
     }
 
    const result = displayError(formState); 
- //console.log("error from result validation de update: ",result , "0", result[0]);
 
  const handleSubmit = (e) => {
         e.preventDefault();
