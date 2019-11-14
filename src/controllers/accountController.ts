@@ -245,11 +245,16 @@ export default class AccountController {
                 let {password} = request.body;
 
 
-                 if (!password) {
+                 if (!password ) {
                   response.status(400).json({
                     text: "Requete invalide"
                   });
                 }
+                if (password.length <8){
+                  response.status(400).json({
+                                         text: "mot de passe pas assez long"
+                                        });
+                 }
 
                  if (password) { 
                    password = password.replace(/ /g,""); //marche pas

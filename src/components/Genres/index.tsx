@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
 
@@ -37,7 +38,9 @@ const Genres = (props) => {
     return (
       <div>
       
-      <ul >{movies.map((result) => <li  key={result.id}>{result.title} </li>)}</ul>
+      <ul >{movies.map((result) => <Link  to={`/media/movie/${result.id}`} target="_parent" key={result.id}><li  key={result.id}>{result.title}</li></Link>)}</ul>
+
+      <Link to="/home">Accueil</Link>
         </div>
         
     )

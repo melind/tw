@@ -9,8 +9,13 @@ display();
 
 console.log({pseudo, mail, password, date});
 
+date = date.slice(0, 10);
+
+console.log(date.slice(0, 10));
 const handleDelete = () => {
-    onClick();
+    
+        onClick();
+    
 }
 
 const handleInit = () => {
@@ -19,12 +24,13 @@ const handleInit = () => {
 
     return (
 
-        <div><h1>Votre compte</h1>Pseudo: {pseudo} adresse mail: {mail} 
-        Date d'inscription: {date} 
-        <Link to="/" onClick={handleDelete}>Désinscription</Link>
-        <Link to="/updatePseudo" onClick={handleInit}>Modifier votre pseudo</Link>
-        <Link to="/updateMail" onClick={handleInit}>Modifier votreadresse mail</Link>
-        <Link to="/updatePassword" onClick={handleInit}>Modifier votre mot de passe</Link>
+        <div className="account"><h1>Votre compte</h1>Pseudo: {pseudo} < br/> adresse mail: {mail} < br/>
+        Date d'inscription: {date} < br/>
+        <Link to="/" onClick={handleDelete}>Désinscription</Link> < br/>  
+        <Link to="/updatePseudo" onClick={handleInit}>Modifier votre pseudo</Link> < br/>
+        <Link to="/updateMail" onClick={handleInit}>Modifier votreadresse mail</Link> < br/>
+        <Link to="/updatePassword" onClick={handleInit}>Modifier votre mot de passe</Link>< br/>< br/>
+        <Link to="/home"> Accueil </Link>
         </div>
 
     )

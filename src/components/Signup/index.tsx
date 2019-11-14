@@ -47,7 +47,7 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit, error, init}) => 
         <h1>Inscrivez-vous</h1>
          <form onSubmit={handleSubmit} action="/signup" method="POST" >
           <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input>
-          <input name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input>
+          <input name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input> 
           <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input>
           <button type="submit" >Valider</button>
         </form>

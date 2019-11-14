@@ -52,6 +52,11 @@ export default class AuthController {
                      
                                                
           } 
+          if (password.length <8){
+            response.status(400).json({
+                                         text: "mot de passe pas assez long"
+                                        });
+          }
 
           const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
           const regexMail = regex.test(mail);
@@ -118,8 +123,8 @@ export default class AuthController {
         an exception that will be catched inside a catch method on the promise */
         try { 
                 let {pseudo, password} = request.body;
-                pseudo = pseudo.trim();
-                password = password.trim();
+                 pseudo = pseudo.replace(/ /g,"");
+                 password = password.replace(/ /g,"");
 
                 
 

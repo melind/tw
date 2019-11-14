@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from 'react';
+import {Link} from 'react-router-dom';
 import movieAPI from '../../services/movieAPI';
 import './index.css';
 
@@ -34,11 +35,13 @@ const [medias, setMedias] = useState([]);
    console.log("media", medias);
    console.log("birth", medias["birthday"]);
 
+
     return (
 
-        <div>Média
-        {medias["birthday"]} {medias["title"]} {medias["name"]}
-
+        <div className="media" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${medias["backdrop_path"]})`, backgroundSize: 'cover'}}> 
+            Média 
+        {medias["birthday"]} {medias["title"]} {medias["name"]} {medias["release_date"]} <br/> {medias["overview"]} 
+        <Link to="/home">Accueil</Link>
     </div> 
     )
     
