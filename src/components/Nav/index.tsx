@@ -23,7 +23,13 @@ init();
   const [searchMediaResult, setSearchMediaResult] = useState([]);
   //const [pending, setPending] = useState(true);
 
- 
+  const handleChange = event => { 
+        
+    setSearch(event.target.value); 
+    console.log("search",search);
+    searchMedia(search);
+
+  }; 
 
 /*------------------movie genres------------------------*/
 
@@ -57,21 +63,16 @@ init();
 
     const regex = /( )*/;
     const regexSearch = regex.test(search);
-    const handleChange = event => { 
-        
-         setSearch(event.target.value); 
-         console.log("search",search);
-         searchMedia(search);
-
-       }; 
-
+    
+    
     async function searchMedia(search) { 
         console.log("search de media", search);
      const searchMedias = await movieAPI.search({"search":search})
      .then(res => {
          console.log("data collected search results:", res.data.media.results);
-         //setPending(false);
+         
          return res.data.media.results;
+         
      })
      .catch(err => {
          console.log(err);
@@ -115,6 +116,9 @@ init();
        useEffect(() => {
        listOfGenres(); listOfTvGenres(); 
        }, []); 
+       useEffect(() => {
+        searchMedia(search);
+      }, [search]);
 
    console.log("genre", genre,"genreTv", genreTv, "searchMediaResult", searchMediaResult);
   if(loggedout) return <Redirect to="/" />
@@ -123,11 +127,13 @@ init();
       <div className="nav">
         <div>Film <ul className="genres" >{genre.map((result) => <li key={result.id} ><Link  to={`/genres/${result.id}`} target="_parent" key={result.id}>{result.name} </Link></li>)}</ul></div>
         <div>Série <ul className="genres" > {genreTv.map((result) => <Link  to={`/genrestv/${result.id}`} target="_parent" key={result.id}> <li key={result.id}>{result.name}</li></Link>)}</ul></div>
-         <form  action="" method="POST ">
+         
             <div className="search-container" >
-                 <input name="search" placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
-                    <div className="searchresult"  >
-
+                <form  action="" method="POST ">
+                    <div className="searchplace"  >
+                         <input  placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
+                    
+<br/>
                         <div className="selectoption" onMouseOver={show}>
                         <a  href="#film"className="selected"><div>Film</div></a>
                         <a href="#serie"  className="selected"><div>Série</div></a>
@@ -153,12 +159,14 @@ init();
     
                         </ul>
 
-                     </div>
-         </div>
+                    </div>
+            </form>
       
-    </form>
-    <Link to="/account" ><div>Mon compte</div></Link>
-    <Link to="/" onClick={logOut}><div>deconnectez-vous</div></Link>
+         </div>
+    <div> 
+        <Link to="/account" >Mon compte</Link> <br />
+        <Link to="/" onClick={logOut}>deconnectez-vous</Link>
+    </div>
        
 </div>
         
