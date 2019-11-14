@@ -38,7 +38,7 @@ console.log("nowmovie",nowMovie);
         <div>
             
         <Nav   />
-        Hi <ul>{nowMovie.map((result) => <li key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/></li>)}</ul>
+        Hi <div className="nowmovies">{nowMovie.map((result) => <div className="now" key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> </div> )}</div>
         
         </div> 
     )

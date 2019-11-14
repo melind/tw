@@ -5,6 +5,7 @@
 
 .genres {
     max-height: 50px;
+    max-width: 150px;
     background-color: white;
     overflow-y: auto;
 }

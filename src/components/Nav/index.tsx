@@ -21,7 +21,6 @@ init();
   const [genreTv, setGenreTv] = useState([]);
   const [search, setSearch] = useState("");
   const [searchMediaResult, setSearchMediaResult] = useState([]);
-  //const [pending, setPending] = useState(true);
 
   const handleChange = event => { 
         
@@ -84,14 +83,14 @@ init();
 
   
   
-        /*const hide = event => {//eviter collection de htmlThat's because the getElementsByClassName returns a live collectio
-           const hidden = document.getElementsByClassName('.searchresult')[0] as HTMLElement;
-           hidden.style.display='none';onMouseOut={hide}
-        };*/
+       /* const hide = () => {//eviter collection de htmlThat's because the getElementsByClassName returns a live collectio
+           const hidden = document.getElementsByClassName('.result')[0] as HTMLElement;
+           hidden.style.display='none';
+        };
   
-        const show = event => {
+        const show = () => {
             if(regex.test(search) === false ){ 
-                const showing = document.getElementsByClassName('.searchresult')[0] as HTMLElement;
+                const showing = document.getElementsByClassName('.selectoption')[0] as HTMLElement;
                 showing.style.display='block';
             }
         };
@@ -111,7 +110,7 @@ init();
             const selectedTv = document.getElementById('#film')[0] as HTMLElement
             selectedTv.style.display='none';
           }
-      };
+      };*/
 
        useEffect(() => {
        listOfGenres(); listOfTvGenres(); 
@@ -125,42 +124,49 @@ init();
 
     return (
       <div className="nav">
-        <div>Film <ul className="genres" >{genre.map((result) => <li key={result.id} ><Link  to={`/genres/${result.id}`} target="_parent" key={result.id}>{result.name} </Link></li>)}</ul></div>
-        <div>Série <ul className="genres" > {genreTv.map((result) => <Link  to={`/genrestv/${result.id}`} target="_parent" key={result.id}> <li key={result.id}>{result.name}</li></Link>)}</ul></div>
+        <div>
+            Film 
+            <ul className="genres" > {genre.map((result) => <Link  to={`/genres/${result.id}`} target="_parent" key={result.id}>
+                <li key={result.id} >{result.name} </li> </Link> )}
+            </ul>
+        </div>
+
+        <div>
+            Série 
+            <ul className="genres" > {genreTv.map((result) => <Link  to={`/genrestv/${result.id}`} target="_parent" key={result.id}> 
+                <li key={result.id}>{result.name}</li> </Link>)}
+            </ul>
+        </div>
          
-            <div className="search-container" >
+        <div className="search-container" >
                 <form  action="" method="POST ">
                     <div className="searchplace"  >
-                         <input  placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
+                        <input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
                     
-<br/>
-                        <div className="selectoption" onMouseOver={show}>
+                        <br/>
+                        <div className="selectoption"  >
                         <a  href="#film"className="selected"><div>Film</div></a>
                         <a href="#serie"  className="selected"><div>Série</div></a>
                         <a href="#actor" className="selected"><div>Acteur</div></a>
                         </div>
 
-                         <ul className="result" id="film" onMouseOver={show} >{searchMediaResult && searchMediaResult.map((result => 
-                         result["media_type"] === "movie" ? ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}><li >{result.title}</li></Link>) : "")
-   
-                          )}
+                         <ul className="result" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
+                         result["media_type"] === "movie" ? ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
+                             <li >{result.title}</li></Link>) : ""))}
                         </ul>
 
-                         <ul className="result" id="serie" onMouseOver={show} >{searchMediaResult && searchMediaResult.map((result => 
-                         result["media_type"] === "tv" ?  ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}><li >{result.original_name}</li></Link>) : "")
-   
-                         )}
+                         <ul className="result" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
+                         result["media_type"] === "tv" ?  ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
+                             <li >{result.original_name}</li></Link>) : ""))}
                          </ul>
  
-                         <ul className="result" id="actor" onMouseOver={show} >{searchMediaResult && searchMediaResult.map((result =>   
-                         result["media_type"] === "person" ? (<Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}><li >{result.name}</li></Link>) : "")  
-   
-                        )}
-    
+                         <ul className="result" id="actor"  >{searchMediaResult && searchMediaResult.map((result =>   
+                         result["media_type"] === "person" ? (<Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
+                             <li >{result.name}</li></Link>) : ""))}
                         </ul>
 
                     </div>
-            </form>
+             </form>
       
          </div>
     <div> 

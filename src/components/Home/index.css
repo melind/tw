@@ -1,4 +1,5 @@
-/*img {
-    width:50%;
-    height:50%;
-}*/
+.nowmovies {
+  display: flex;
+  overflow-x: auto;
+}
+
