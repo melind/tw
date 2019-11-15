@@ -44,12 +44,15 @@
     "buildtsc": "tsc",
     "jest": "jest",
     "start-server": "ts-node-dev -r esm ./src/server/server.ts",
-    "ts-jest": "ts-jest"
+    "ts-jest": "ts-jest",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage" : "http://melind.github.io/tw",
+  "homepage": "http://melind.github.io/tw",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -100,6 +103,7 @@
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "gh-pages": "^2.1.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.10.1",
