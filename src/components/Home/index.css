@@ -1,5 +1,13 @@
+
 .nowmovies {
   display: flex;
-  overflow-x: auto;
+  height: 90%;
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+
+.now {
+margin: 1%;
 }
 

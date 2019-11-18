@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 
-import jsonwebtoken from 'jsonwebtoken';
+import * as jsonwebtoken from 'jsonwebtoken';
 export default function (request: Request, response: Response, next: NextFunction) {
   // check cookie presence and good jwt
 
@@ -19,19 +19,19 @@ export default function (request: Request, response: Response, next: NextFunctio
       const decodedToken: any = jsonwebtoken.verify(token,process.env.JWT_PRIVATE_KEY);
       console.log({decodedToken}); 
         
-        if (decodedToken.nickname && csrf) {
-        response.locals.nickname = decodedToken.nickname;
+        if (decodedToken && csrf) {
+        //response.locals.nickname = decodedToken.nickname;//passe des données jusqu’à la route – qui sont effacées une fois la réponse envoyée
         console.log("csrf ",csrf,"token pseudo",decodedToken.nickname)
         
         
         next();
       } else {
         
-        response.status(403).end();
+        response.status(401).end();
       }
     } catch (error) {
       console.log(error);
-      response.status(403).end();
+      response.status(401).end();
     }
     
   }

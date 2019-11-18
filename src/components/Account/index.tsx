@@ -3,7 +3,7 @@ import { Redirect, Link  } from 'react-router-dom';
 import './index.css';
 
 
-const Account = ({display,pseudo, mail, password, date, onSubmit, onClick, error, init}) => {
+const Account = ({display,pseudo, mail, password, date, onClick,  init}) => {
 
 display();
 
@@ -25,7 +25,7 @@ const handleInit = () => {
     return (
 
         <div className="account"><h1>Votre compte</h1>Pseudo: {pseudo} < br/> adresse mail: {mail} < br/>
-        Date d'inscription: {date} < br/>
+        Date d'inscription: {date} < br/>< br/> < br/> 
         <Link to="/" onClick={handleDelete}>Désinscription</Link> < br/>  
         <Link to="/updatePseudo" onClick={handleInit}>Modifier votre pseudo</Link> < br/>
         <Link to="/updateMail" onClick={handleInit}>Modifier votreadresse mail</Link> < br/>

@@ -3,7 +3,7 @@ import {Request, Response} from 'express';
 import {User, IUser} from '../models/user';
 
 
-import jsonwebtoken from 'jsonwebtoken';
+import * as jsonwebtoken from 'jsonwebtoken';
 
 export default class DeleteController {
 
@@ -53,4 +53,10 @@ export default class DeleteController {
                   console.log("Hello from delete delete");
             }
  }  
+
+ static async deleteOtherAccount(request: Request, response: Response) {
+
+
+} 
+ 
 }

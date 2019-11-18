@@ -1,15 +1,15 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
-import express from 'express';
+import * as express from 'express';
 
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 
-import cookieparser from 'cookie-parser';
+import * as cookieparser from 'cookie-parser';
 
-import expressSession from 'express-session';
+import * as expressSession from 'express-session';
 
-import cors from 'cors';
+import * as cors from 'cors';
 
 import router from '../router';
 

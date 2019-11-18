@@ -4,8 +4,11 @@ import './index.css';
 
 const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) => {
 
- 
- init();
+
+ setTimeout(function () {
+    init();
+
+  }, 1000);
 
   console.log("states come from reducer:", pseudo, "abonné ",subscriber, "erreur ",error);
   const [formState, setFormState] = useState({pseudo, password, loggedin, subscriber});
@@ -36,15 +39,15 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
     
     return (
 
-        <div>
-        <h1>Connectez-Vous</h1>
+        <div className="login"> 
+        <h1>Connectez-Vous</h1>< br/>
         <form onSubmit={handleSubmit} >
-          <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input>
-          <input name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input>
-          <button type="submit" >Valider</button>
+          Pseudo : <input className="inputLogin pseudo" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input> < br/>< br/>
+          Mot de passe : <input className="inputLogin" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input> < br/>< br/>< br/>
+          <button className="buttonLogin" type="submit" >Valider</button>
 
-        </form>
-        <p>{error}</p>
+        </form>< br/> 
+        <p>{error}</p> <br/> 
         <Link to="/signup">Pas encore inscrit ?</Link>
         </div>
 

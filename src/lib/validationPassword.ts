@@ -6,14 +6,14 @@ const displayError = (props) => {
              presence: true,
              length: {
                minimum: 8,
-               message: "Doit contenir 8 caractères"
+               message: ": Doit contenir 8 caractères"
              }
            }, 
            pseudo: {
              presence: true,
              length: {
               minimum: 1000,
-              message: "Doit contenir 8 caractères"
+              message: ": Doit contenir 8 caractères"
             }
            }
        };

@@ -2,9 +2,9 @@ import {Request, Response} from 'express';
 
 import {User, IUser} from '../models/user';
 
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 
-import jsonwebtoken from 'jsonwebtoken';
+import * as jsonwebtoken from 'jsonwebtoken';
 
 export default class AuthController {
 

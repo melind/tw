@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Link  } from 'react-router-dom';
+import {  Link  } from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
 import userAPI from '../../services/userAPI';
@@ -38,7 +38,7 @@ console.log("nowmovie",nowMovie);
         <div>
             
         <Nav   />
-        Hi <div className="nowmovies">{nowMovie.map((result) => <div className="now" key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> </div> )}</div>
+        Hi <div className="nowmovies">{nowMovie.map((result) => <Link className="now" to={`/media/movie/${result.id}`} target="_parent" ><div  key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> </div></Link> )}</div>
         
         </div> 
     )

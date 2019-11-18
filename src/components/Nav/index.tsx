@@ -141,7 +141,7 @@ init();
         <div className="search-container" >
                 <form  action="" method="POST ">
                     <div className="searchplace"  >
-                        <input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
+                        < img src="../../../images/projecteur.png" /><input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
                     
                         <br/>
                         <div className="selectoption"  >
@@ -169,7 +169,7 @@ init();
              </form>
       
          </div>
-    <div> 
+    <div className="user"> 
         <Link to="/account" >Mon compte</Link> <br />
         <Link to="/" onClick={logOut}>deconnectez-vous</Link>
     </div>

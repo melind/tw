@@ -1,6 +1,9 @@
 .nav {
     display: flex;
     justify-content: space-around;
+    height:10%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 100%;
 }
 
 .genres {
@@ -29,12 +32,14 @@
   flex-direction: column;
 }
 
-
+.searchplace input {
+  height:30%;
+}
 .selectoption {
   position: absolute;
   display: flex;
   width: 100%;
-  /*height: 100%;*/
+  height: 4%;
   background-color: white;
   justify-content: space-around;
 }
@@ -64,3 +69,7 @@
   display: block;
 }
 
+.user {
+    font-family: 'Modak', cursive;
+    font-size: 130%;
+}

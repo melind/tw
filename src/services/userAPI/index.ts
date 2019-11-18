@@ -53,7 +53,7 @@ export default {
 
     isAdmin: () => { 
         axios.defaults.withCredentials = true;
-        return true
+        return  axios.get( API_URL + '/admin')
     },
 
     deleteUser: () => { 

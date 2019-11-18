@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
 
-const Genres = (props) => {
+const GenresTv = (props) => {
 
 
   const [tvShows, setTvShows] = useState([]);
@@ -44,4 +44,4 @@ const Genres = (props) => {
   
 
 
-export default Genres;
+export default GenresTv;

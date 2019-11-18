@@ -7,21 +7,21 @@ const displayError = (props) => {
              presence: true,
              format: {
                pattern: "^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$",//limit 4 marche pas ???
-               message: "Format de mail invalide"
+               message: ": Format invalide"
              }
            },
            password: {
              presence: true,
              length: {
                minimum: 8,
-               message: "Doit contenir 8 caractères"
+               message: ": Doit contenir 8 caractères"
              }
            },
            pseudo: {
              presence: true,
              length: {
               minimum: 1000,
-              message: "Doit contenir 8 caractères"
+              message: ": Doit contenir 8 caractères"
             }
            }
        };

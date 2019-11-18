@@ -1,6 +1,6 @@
 
-import express from 'express';
-import bodyparser from 'body-parser';
+import * as express from 'express';
+import * as bodyparser from 'body-parser';
 
 
 import HomeController from './controllers/homeController';
@@ -11,9 +11,10 @@ import MovieController from './controllers/movieController';
 import SearchController from './controllers/searchController';
 import GenreController from './controllers/genreController';
 import MediaController from './controllers/mediaController';
+import AdminController from './controllers/adminController';
 
 import authMiddleware from './middlewares/authMiddleware';
-
+import adminMiddleware from './middlewares/adminMiddleware';
 
 const bodyParser = bodyparser.urlencoded({extended: true});
 
@@ -48,30 +49,32 @@ router.route('/login')
   .get(AuthController.getLogin)
   .post(bodyParser, AuthController.postLogin);
 
-router.get('/logout', AuthController.logout);
+router.get('/logout', authMiddleware, AuthController.logout);
 
-router.get('/account', AccountController.displayAccount);
+router.get('/account',authMiddleware, AccountController.displayAccount);
 
-router.put('/updatePseudo', bodyParser, AccountController.updatePseudo);
+router.put('/updatePseudo', bodyParser,authMiddleware, AccountController.updatePseudo);
 
-router.put('/updateMail', bodyParser, AccountController.updateMail);
+router.put('/updateMail', bodyParser,authMiddleware, AccountController.updateMail);
 
-router.put('/updatePassword', bodyParser, AccountController.updatePassword);
+router.put('/updatePassword', bodyParser,authMiddleware, AccountController.updatePassword);
 
-router.delete('/deleteAccount',   DeleteController.deleteAccount);
+router.delete('/deleteAccount', authMiddleware, DeleteController.deleteAccount);
 
-router.get('/nowplaying',  MovieController.nowPlaying);//rajouter middleware !!!
+router.get('/nowplaying', authMiddleware, MovieController.nowPlaying);
 
-router.post('/home', bodyParser, SearchController.searchMedia);
+router.post('/home', bodyParser,authMiddleware, SearchController.searchMedia);
 
-router.get('/genresMovieList',  GenreController.genresMovieList);
+router.get('/genresMovieList', authMiddleware, GenreController.genresMovieList);
 
-router.get('/moviesByGenres/:id',  GenreController.moviesByGenre);
+router.get('/moviesByGenres/:id', authMiddleware, GenreController.moviesByGenre);
 
-router.get('/genresTvShowList',  GenreController.genresListTvShow);
+router.get('/genresTvShowList', authMiddleware, GenreController.genresListTvShow);
 
-router.get('/tvShowsByGenres/:id',  GenreController.tvShowByGenre);
+router.get('/tvShowsByGenres/:id', authMiddleware, GenreController.tvShowByGenre);
 
-router.get('/media/:media/:id',  MediaController.mediaDetails);
+router.get('/media/:media/:id', authMiddleware, MediaController.mediaDetails);
+
+router.get('/admin',  adminMiddleware, AdminController.usersList);
 
 export default router;
