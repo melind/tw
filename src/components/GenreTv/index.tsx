@@ -32,10 +32,12 @@ const GenresTv = (props) => {
    
   
     return (
-      <div>
-      
-      <ul >{tvShows.map((result) => <Link  to={`/media/tv/${result.id}`} target="_parent" key={result.id}><li  key={result.id}>{result.name} </li></Link>)}</ul>
-      <Link to="/home">Accueil</Link>
+      <div className="genresTv"> 
+      <Link to="/home">Accueil</Link> < br/>
+      <ul >{tvShows.map((result) => <Link  to={`/media/tv/${result.id}`} target="_parent" key={result.id}>
+      <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de série"/>
+        <li  key={result.id}>{result.name} </li></Link>)}
+      </ul>
         </div>
         
     )

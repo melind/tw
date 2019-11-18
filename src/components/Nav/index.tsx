@@ -124,16 +124,17 @@ init();
 
     return (
       <div className="nav">
+        <div> <Link to="/admin" >< img src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" /><p>admin</p></Link></div>  
         <div>
             Film 
-            <ul className="genres" > {genre.map((result) => <Link  to={`/genres/${result.id}`} target="_parent" key={result.id}>
+            <ul className="genres" > {genre.map((result) => <Link  to={`/genre/${result.id}`} target="_parent" key={result.id}>
                 <li key={result.id} >{result.name} </li> </Link> )}
             </ul>
         </div>
 
         <div>
             Série 
-            <ul className="genres" > {genreTv.map((result) => <Link  to={`/genrestv/${result.id}`} target="_parent" key={result.id}> 
+            <ul className="genres" > {genreTv.map((result) => <Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}> 
                 <li key={result.id}>{result.name}</li> </Link>)}
             </ul>
         </div>
@@ -170,7 +171,8 @@ init();
       
          </div>
     <div className="user"> 
-        <Link to="/account" >Mon compte</Link> <br />
+        < img src="../../../images/star.png" alt="icone d'une étoile jaune" />
+        <Link to="/account" >Mon compte</Link>  
         <Link to="/" onClick={logOut}>deconnectez-vous</Link>
     </div>
        

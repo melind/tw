@@ -38,10 +38,14 @@ const [medias, setMedias] = useState([]);
 
     return (
 
-        <div className="media" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${medias["backdrop_path"]})`, backgroundSize: 'cover'}}> 
-            Média 
-        {medias["birthday"]} {medias["title"]} {medias["name"]} {medias["release_date"]} <br/> {medias["overview"]} 
-        <Link to="/home">Accueil</Link>
+        <div className="media" style={{backgroundImage:`url()`, backgroundSize: 'cover'}}> 
+            <Link to="/home">Accueil</Link>
+            <p>Média </p>
+            {medias["biography"]}
+            <img src={`https://image.tmdb.org/t/p/w500/${medias["backdrop_path"]}`} />
+            <img src={`https://image.tmdb.org/t/p/w500/${medias["profile_path"]}`} />
+               <p> {medias["title"]} {medias["name"]} {medias["release_date"]} {medias["birthday"]} <br/> Synopsis : {medias["overview"]} {medias["biography"]}</p> 
+        
     </div> 
     )
     

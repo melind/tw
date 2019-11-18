@@ -40,15 +40,18 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
     return (
 
         <div className="login"> 
-        <h1>Connectez-Vous</h1>< br/>
-        <form onSubmit={handleSubmit} >
-          Pseudo : <input className="inputLogin pseudo" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input> < br/>< br/>
-          Mot de passe : <input className="inputLogin" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input> < br/>< br/>< br/>
-          <button className="buttonLogin" type="submit" >Valider</button>
 
-        </form>< br/> 
-        <p>{error}</p> <br/> 
-        <Link to="/signup">Pas encore inscrit ?</Link>
+        <h1>Connectez-Vous</h1>< br/>
+        
+        <form onSubmit={handleSubmit} >
+        <p>Pseudo : </p> <input className="inputLogin" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input> < br/>< br/>
+        <p>Mot de passe : </p><input className="inputLogin" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input> < br/>< br/>< br/>
+          <button className="buttonLogin" type="submit" >Valider</button>
+          <p>{error}<br/>  
+            <Link to="/signup">Pas encore inscrit ?</Link>
+          </p> 
+        </form>
+        
         </div>
 
     )

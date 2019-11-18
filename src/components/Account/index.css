@@ -1,4 +1,24 @@
+.account {
+    text-align: center;
+}
+
 .account h1 {
+    height: 10%;
+    
+}
+
+.account button {
+    border: none;
+    background-color: white;
+    height: 8%;
+    width: 10%;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    color: #db9d01;
+    
+}
+
+.account p {
     height: 10%;
     
 }

@@ -1,4 +1,6 @@
-
+.app {
+  height: 100%;
+}
 
 .title {
   font-family: 'Modak', cursive;

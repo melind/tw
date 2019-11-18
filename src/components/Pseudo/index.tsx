@@ -27,8 +27,9 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
         
         const {pseudo} = formState;
         console.log("props update by input value:", pseudo,  );
+        
         onSubmit(formState);
-   
+    
     }
 
             if (update) return <Redirect to="/account" />
@@ -37,14 +38,18 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
 
     return (
 
-        <div>
+        <div className="pseudo">
         <h1>Modifications</h1>
+        <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePseudo" method="POST" >
           <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input>
          
-          <button type="submit" >Valider</button>
+          <button type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+
+          <p> {error}</p>
+
         </form>
-        <p>   {error}</p>
+        
         </div>
 
     )

@@ -29,8 +29,10 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
         
         const {mail} = formState;
         console.log("props update by input value:", mail,  );
-        
+        console.log(result);
+        if (!result[0]) { 
           onSubmit(formState);
+        }
         
         
    
@@ -42,14 +44,17 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
 
     return (
 
-        <div>
+        <div className="mail">
         <h1>Modifications</h1>
+        <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updateMail" method="POST" >
           <input name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} required></input>
          
-          <button type="submit" >Valider</button>
+          <button type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+
+          <p> {result}  {error}</p>
         </form>
-        <p> {result}  {error}</p>
+        
         </div>
 
     )

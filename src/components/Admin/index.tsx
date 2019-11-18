@@ -45,7 +45,12 @@ const Admin = () => {
             
     return (
         <div className="admin">
-            <h1>Hello admin !</h1> <br/><br/> <p>Liste des abonnés</p> <ul>{users.map((result) => <Link to="/admin" key={result._id} onClick={handleDelete}  ><li key={result._id}>{result.pseudo} </li></Link>)}</ul>
+            <h1>Hello admin !</h1> <br/><br/> 
+            <p>Liste des abonnés</p>
+             <ul>{users.map((result) => <Link to="/admin" key={result._id} onClick={handleDelete}  >
+                 <li key={result._id}>{result.pseudo} </li></Link>)}
+            </ul>
+            <Link to="/home"> Accueil </Link>
         </div>
     )
 }

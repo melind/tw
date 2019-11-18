@@ -16,8 +16,8 @@ import Admin from '../Admin';
 import Load from '../Load';
 import Forbidden from '../Forbidden';
 import Media from '../Media';
-import Genres from '../Genres';
-import GenresTv from '../GenresTv';
+import Genre from '../Genre';
+import GenreTv from '../GenreTv';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
 
@@ -35,7 +35,7 @@ const App = () => {
    
   return (
      
-    <div >
+    <div className="app" >
      <p className="title">To Watch </p>
      
       <Switch>
@@ -47,8 +47,8 @@ const App = () => {
                 <PrivateRoute path="/updateMail" component={Mail} />
                 <PrivateRoute path="/updatePassword" component={Password} />
                 <PrivateRoute path="/media/:media/:id"  component={Media} />
-                <PrivateRoute path="/genres/:id"  component={Genres} />
-                <PrivateRoute path="/genrestv/:id"  component={GenresTv} />
+                <PrivateRoute path="/genre/:id"  component={Genre} />
+                <PrivateRoute path="/genretv/:id"  component={GenreTv} />
                 <PrivateRoute path="/forbidden"  component={Forbidden} />
                 <PublicRoute path="/signup"  component={Signup} />
                 <PublicRoute path="/login" component={Login}/>

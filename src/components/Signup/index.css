@@ -3,22 +3,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 5%;
+    height: 100%;
+    width: 100%;
   }
 
 .inputSignup {
-    height:80%;
+    height:8%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
   }
 
-.input {
-    margin-left: 16%;
-  }
-
 .buttonSignup {
-    height: 100%;
-    width: 40%;
+    height: 7%;
+    width: 33%;
     border-radius: 10%;
     background-color: #d5b519;
     color: white;
@@ -27,8 +24,6 @@
     }
 
 .sign p {
-      margin-bottom: 3%;
-      margin-top: 13%;
       height: 5%;
       color: #d5b519;
     }

@@ -30,11 +30,17 @@ const Password = ({password, update, error, onSubmit, init}) => {
         const {password} = formState;
         console.log("props update by input value:", password,  );
       
-          onSubmit(formState);
-      
+        console.log(result);
         
+        if (!result[0]) { 
+          onSubmit(formState);
+        }
+      
+       
    
     }
+
+  
 
             if (update) return <Redirect to="/account" />
      
@@ -42,14 +48,17 @@ const Password = ({password, update, error, onSubmit, init}) => {
 
     return (
 
-        <div>
+        <div className="password">
         <h1>Modifications</h1>
+        <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePassword" method="POST" >
           <input name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></input>
          
-          <button type="submit"  >Valider</button>
+          <button type="submit"  >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+
+          <p>  {result} {error}</p>
         </form>
-        <p>  {result} {error}</p>
+       
         </div>
 
     )

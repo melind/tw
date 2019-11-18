@@ -3,24 +3,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 5%;
+    height: 100%;
+    width: 100%;
   }
 
-
-  .pseudo {
-    margin-left: 16%;
-  }
 
 .inputLogin {
-    height:80%;
+    height:8%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
     
   }
 
 .buttonLogin {
-    height: 100%;
-    width: 40%;
+    height: 10%;
+    width: 50%;
     border-radius: 10%;
     background-color: #d5b519;
     color: white;
@@ -30,8 +27,6 @@
   }
 
   .login p {
-    margin-bottom: 4%;
-    margin-top: 3%;
     height: 5%;
     color: #d5b519;
   }

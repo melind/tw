@@ -47,16 +47,19 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit, error, init}) => 
     return (
 
         <div className="sign">
+
         <h1>Inscrivez-vous</h1><br/>
+
          <form onSubmit={handleSubmit} action="/signup" method="POST" >
-          Pseudo : <input className="inputSignup input" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input> < br/><br/>
-          E-mail : <input className="inputSignup input" name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input> < br/><br/>
-          Mot de passe : <input className="inputSignup" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input>  <br/><br/>
-          < br/><button className="buttonSignup" type="submit" >Valider</button>
+          <p>Pseudo : </p><input className="inputSignup " name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input> <br/>
+          <p>E-mail : </p><input className="inputSignup " name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input> <br/>
+          <p>Mot de passe : </p><input className="inputSignup" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input> < br/><br/><br/>
+          <button className="buttonSignup" type="submit" >Valider</button>
+          <p>  {result[0]} <br/> {result[2]} {error} <br/>
+            <Link to="/login">Déjà inscrit ?</Link>
+          </p>
         </form>
         
-        <p>  {result} {error}</p>
-        <Link to="/login">Déjà inscrit ?</Link>
         </div>
 
     )

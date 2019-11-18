@@ -72,4 +72,13 @@
 .user {
     font-family: 'Modak', cursive;
     font-size: 130%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.user img {
+  width: 25%;
 }
