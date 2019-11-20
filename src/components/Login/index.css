@@ -1,32 +1,62 @@
 
+
 .login {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
+    color: #d5b519;
   }
 
+ .login h1 {
+    height: 10%;
+  }
 
 .inputLogin {
-    height:8%;
+    
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
-    
   }
 
+.inputLogin:hover {
+    border: 1px solid #db9d01;
+  }
+
+.inputLogin:focus {
+    border: 1px solid #d6b519;
+    box-shadow: 1px 1px #d6b519;
+  }
+
+
 .buttonLogin {
-    height: 10%;
-    width: 50%;
-    border-radius: 10%;
-    background-color: #d5b519;
+    background-color: #d6b519;
     color: white;
     font-size: 115%;
     margin-left: 30%;
+    border: none;
+  
+  }
+
+.buttonLogin:hover {
+    
+    background-color: #d6b519;
+    color: white;
+    font-size: 115%;
+    border: none;
+  
+  }
+
+.buttonLogin:visited{
+    
+    background-color: #d6b519;
+    color: white;
+    font-size: 115%;
+    border: none;
   
   }
 
   .login p {
     height: 5%;
-    color: #d5b519;
+    color: #d6b519;
   }

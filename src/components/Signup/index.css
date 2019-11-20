@@ -1,21 +1,32 @@
 
+
 .sign {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
+    color: #d5b519;
   }
-
+.sign h1 {
+      height: 10%;
+    }
 .inputSignup {
-    height:8%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
   }
 
+
+.inputSignup:hover {
+    border: 1px solid #db9d01;
+  }
+
+.inputSignup:focus {
+    border: 1px solid #d6b519;
+    box-shadow: 1px 1px #d6b519;
+  }
+
 .buttonSignup {
-    height: 7%;
-    width: 33%;
     border-radius: 10%;
     background-color: #d5b519;
     color: white;
@@ -23,8 +34,16 @@
     margin-left: 30%;
     }
 
+.buttonSignup:hover {
+    
+    background-color: #d6b519;
+    color: white;
+    font-size: 115%;
+    border: none;
+    }
+
 .sign p {
-      height: 5%;
+      height: 10%;
       color: #d5b519;
     }
   

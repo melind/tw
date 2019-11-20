@@ -62,10 +62,17 @@ export const signUp = (formState) => (dispatch, getState) => {
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err);
-            if (err.response.data.error.keyValue.pseudo || err.response.data.error.keyValue.mail) {
+            console.log("erreur",err, err.response);
+            if (err.response.data.text) {
+                alert(err.response.data.text);
+                }
+            else if (err.response.data.error.keyValue.pseudo || err.response.data.error.keyValue.mail) {
                 alert((err.response.data.error.keyValue.pseudo ||  err.response.data.error.keyValue.mail) + " existe déjà!");
                 }
+                else {
+
+                }
+ 
             //console.log( err.response.data.error.keyValue.pseudo, err.response.data.error.keyValue.mail );
             dispatch(signupError());
         });

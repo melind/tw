@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Redirect, Link} from 'react-router-dom';
+import {Button, Input} from 'antd';
 import './index.css';
 
 const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) => {
@@ -36,7 +37,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
     if(loggedin) return <Redirect to="/home" />
    
      
-    
+     
     return (
 
         <div className="login"> 
@@ -44,9 +45,9 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
         <h1>Connectez-Vous</h1>< br/>
         
         <form onSubmit={handleSubmit} >
-        <p>Pseudo : </p> <input className="inputLogin" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo}></input> < br/>< br/>
-        <p>Mot de passe : </p><input className="inputLogin" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password}></input> < br/>< br/>< br/>
-          <button className="buttonLogin" type="submit" >Valider</button>
+        Pseudo :  <Input className="inputLogin" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input> < br/>< br/>
+        Mot de passe : <Input className="inputLogin" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} required></Input> < br/>< br/>< br/>
+          <Button className="buttonLogin"  htmlType="submit" >Valider</Button>
           <p>{error}<br/>  
             <Link to="/signup">Pas encore inscrit ?</Link>
           </p> 

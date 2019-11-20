@@ -1,15 +1,20 @@
 .nav {
     display: flex;
     justify-content: space-around;
-    height:10%;
+    height:20%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
 }
 
+
+.nav :hover:nth-child(n) {/*(n)cible tous les fils*/
+color: yellow;
+}
+
+
 .genres {
     max-height: 50px;
     max-width: 150px;
-    background-color: white;
     overflow-y: auto;
 }
 
@@ -22,9 +27,8 @@
 }
 
 .searchplace {
-  margin: auto;
+  
   position: relative;
-  width: 100%;
   height: 100%;
   /*border: 2px solid rgb(15, 15, 15);*/
   display: flex;
@@ -32,51 +36,63 @@
   flex-direction: column;
 }
 
+
 .searchplace input {
-  height:30%;
-}
+    width: 85%;
+    font-family: 'Roboto Mono', monospace;
+    
+  }
+.searchplace img {
+    width: 15%;
+    height: 40%;
+    
+  }
+.searchplace input:hover {
+    border: 1px solid #db9d01;
+  }
+
+.searchplace input:focus {
+    border: 1px solid #d6b519;
+    box-shadow: yellow;
+  }
+
 .selectoption {
   position: absolute;
   display: flex;
-  width: 100%;
-  height: 4%;
+width: 80%;
+height: 5%;
   background-color: white;
   justify-content: space-around;
 }
 
 .selected  {
-  height: 100%;
-  width: 50%;
+width: 100%;
   
   /*border: 1px solid black;*/
 }
 
 .result {
   position: relative;
-  top:5%;
-  width: 10%;
+  width: 100%;
   max-height: 0;
   display: none;
 }
 
 .result:target {
-  position: relative;
-  width: 100%;
+ top: 20%;
   max-height: 100px;
-  max-width: 150px;
+  max-width:250px;
   background-color: white;
   overflow-y: auto;
   display: block;
 }
 
+
 .user {
     font-family: 'Modak', cursive;
-    font-size: 130%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+   
+    height:1%;
+    
     
 }
 .user img {

@@ -66,11 +66,6 @@ var AuthController = /** @class */ (function () {
                 text: "Requête invalide"
             });
         }
-        if (password.length < 8) {
-            response.status(400).json({
-                text: "mot de passe pas assez long"
-            });
-        }
         var regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
         var regexMail = regex.test(mail);
         console.log("regex: ", regexMail);
@@ -79,28 +74,37 @@ var AuthController = /** @class */ (function () {
                 text: "Format mail invalide"
             });
         }
-        /*------------------  Creation of a new user -- -----------*/
-        // crypt password  auto gen salt and hash
-        password = bcrypt.hashSync(password, 10);
-        // Creation of a document User
-        var newUser = new user_1.User({ pseudo: pseudo, mail: mail, password: password, date: date, admin: admin });
-        // Save in the database
-        newUser.save(function (error, product) {
-            if (error) {
-                console.log("saving error: ", error);
+        if (regexMail) {
+            if (password.length < 8) {
                 response.status(400).json({
-                    error: error
+                    text: "mot de passe pas assez long"
                 });
             }
             else {
-                response.status(200).json({
-                    text: "Succès for post signup",
-                    pseudo: pseudo, mail: mail, password: password
+                /*------------------  Creation of a new user -- -----------*/
+                // crypt password  auto gen salt and hash
+                password = bcrypt.hashSync(password, 10);
+                // Creation of a document User
+                var newUser = new user_1.User({ pseudo: pseudo, mail: mail, password: password, date: date, admin: admin });
+                // Save in the database
+                newUser.save(function (error, product) {
+                    if (error) {
+                        console.log("saving error: ", error);
+                        response.status(400).json({
+                            error: error
+                        });
+                    }
+                    else {
+                        response.status(200).json({
+                            text: "Succès for post signup",
+                            pseudo: pseudo, mail: mail, password: password
+                        });
+                        console.log('product = user ', product);
+                        console.log('user = ', pseudo, mail, password);
+                    }
                 });
-                console.log('product = user ', product);
-                console.log('user = ', pseudo, mail, password);
             }
-        });
+        }
     };
     AuthController.getLogin = function (request, response) {
         response.status(200).json({

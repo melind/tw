@@ -52,11 +52,7 @@ export default class AuthController {
                      
                                                
           } 
-          if (password.length <8){
-            response.status(400).json({
-                                         text: "mot de passe pas assez long"
-                                        });
-          }
+          
 
           const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
           const regexMail = regex.test(mail);
@@ -67,7 +63,14 @@ export default class AuthController {
                                         });   
             }
          
+          if (regexMail) {
 
+            if (password.length <8){
+            response.status(400).json({
+                                         text: "mot de passe pas assez long"
+                                        });
+          }
+          else { 
         /*------------------  Creation of a new user -- -----------*/
 
                 // crypt password  auto gen salt and hash
@@ -97,6 +100,8 @@ export default class AuthController {
                 console.log('user = ', pseudo, mail, password);
             }
         });
+      }
+     }
     }
 
 

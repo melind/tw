@@ -5,7 +5,7 @@ const displayError = (props) => {
            mail: {
              presence: true,
              format: {
-               pattern: "^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$",//limit 4 marche pas ???
+               pattern: /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/,
                message: ": Format invalide"
              }
            },

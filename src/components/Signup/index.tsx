@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
 import  displayError  from '../../lib/validation';
+import {Button, Input} from 'antd';
 // component = function return element to display
 const Signup = ({pseudo, mail, password, subscriber, onSubmit, error, init}) => {
     
@@ -51,11 +52,11 @@ const Signup = ({pseudo, mail, password, subscriber, onSubmit, error, init}) => 
         <h1>Inscrivez-vous</h1><br/>
 
          <form onSubmit={handleSubmit} action="/signup" method="POST" >
-          <p>Pseudo : </p><input className="inputSignup " name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input> <br/>
-          <p>E-mail : </p><input className="inputSignup " name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} ></input> <br/>
-          <p>Mot de passe : </p><input className="inputSignup" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} ></input> < br/><br/><br/>
-          <button className="buttonSignup" type="submit" >Valider</button>
-          <p>  {result[0]} <br/> {result[2]} {error} <br/>
+          Pseudo : <Input className="inputSignup " name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input> <br/>
+          E-mail : <Input className="inputSignup " name="mail" placeholder="Entrer votre e-mail" onChange={handleChange} value={formState.mail} required></Input> <br/>
+          Mot de passe : <Input className="inputSignup" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} required></Input> < br/><br/>
+          <Button className="buttonSignup"  htmlType="submit" >Valider</Button>
+          <p>  < br/>{result[0]} <br/> {result[2]} {error} <br/>
             <Link to="/login">Déjà inscrit ?</Link>
           </p>
         </form>
