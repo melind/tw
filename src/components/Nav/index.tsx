@@ -3,7 +3,7 @@ import './index.css';
 import { Redirect, Link} from 'react-router-dom';
 import userAPI from '../../services/userAPI';
 import movieAPI from '../../services/movieAPI';
-import {Menu, Input} from 'antd';
+import {Menu, Input, List} from 'antd';
 const Nav = ({loggedout, onClick, init}) => {
 
 init();
@@ -124,7 +124,7 @@ init();
 
     return (
       <Menu className="nav">
-        <Menu.Item> <Link to="/admin" >< img src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" />admin</Link></Menu.Item>  
+        <Menu.Item className="oscar">  <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" />admin</Link></Menu.Item>  
     
             <Menu.ItemGroup title="Film par genre" className="genres">  {genre.map((result) => <Link  to={`/genre/${result.id}`} target="_parent" key={result.id}>
                 <Menu.Item  key={result.id} >{result.name} </Menu.Item > </Link> )}
@@ -150,32 +150,32 @@ init();
                         <a href="#actor" className="selected"><div>Acteur</div></a>
                         </Menu>
 
-                         <ul className="result" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
+                         <List className="result" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "movie" ? ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
-                             <li >{result.title}</li></Link>) : ""))}
-                        </ul>
+                             <List.Item className="li">{result.title}</List.Item></Link>) : ""))}
+                        </List>
 
 
-                         <ul className="result" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
+                         <List className="result" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "tv" ?  ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
-                             <li >{result.original_name}</li></Link>) : ""))}
-                         </ul>
+                             <List.Item className="li">{result.original_name}</List.Item></Link>) : ""))}
+                         </List>
 
  
-                         <ul className="result" id="actor"  >{searchMediaResult && searchMediaResult.map((result =>   
+                         <List className="result" id="actor"  >{searchMediaResult && searchMediaResult.map((result =>   
                          result["media_type"] === "person" ? (<Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
-                             <li >{result.name}</li></Link>) : ""))}
-                        </ul>
+                             <List.Item className="li">{result.name}</List.Item></Link>) : ""))}
+                        </List>
 
                     </div>
              </form>
       
          </Menu> 
-    <Menu.ItemGroup className="user"> 
-       <Menu.Item> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></Menu.Item>
-       <Menu.Item> <Link to="/account" >Mon compte</Link>  </Menu.Item>
-       <Menu.Item> <Link to="/" onClick={logOut}>deconnectez-vous</Link></Menu.Item>
-    </Menu.ItemGroup>
+    <List className="user"> 
+       <List.Item className="limage"> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
+       <List.Item className="liu"> <Link  to="/account" >Mon compte</Link>  </List.Item>
+       <List.Item className="liu"> <Link to="/" onClick={logOut}>deconnectez-vous</Link></List.Item>
+    </List>
        
 </Menu>
         

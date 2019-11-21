@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import {Link} from 'react-router-dom';
 import movieAPI from '../../services/movieAPI';
 import './index.css';
-
+import { Card } from 'antd';
 
 const Media = (props) => {
 
@@ -35,17 +35,19 @@ const [medias, setMedias] = useState([]);
    console.log("media", medias);
    console.log("birth", medias["birthday"]);
 
+  const { Meta } = Card;
 
     return (
 
         <div className="media" style={{backgroundImage:`url()`, backgroundSize: 'cover'}}> 
             <Link to="/home">Accueil</Link>
             <p>Média </p>
-            {medias["biography"]}
-            <img src={`https://image.tmdb.org/t/p/w500/${medias["backdrop_path"]}`} />
-            <img src={`https://image.tmdb.org/t/p/w500/${medias["profile_path"]}`} />
-               <p> {medias["title"]} {medias["name"]} {medias["release_date"]} {medias["birthday"]} <br/> Synopsis : {medias["overview"]} {medias["biography"]}</p> 
-        
+            
+            <Card > 
+            <Card.Grid><img src={`https://image.tmdb.org/t/p/w500/${medias["backdrop_path"]}`} />
+            <img src={`https://image.tmdb.org/t/p/w500/${medias["profile_path"]}`} /></Card.Grid>
+               <p>  {medias["title"]} {medias["name"]} {medias["release_date"]} <br/> {medias["overview"]} {medias["biography"]} </p>
+        </Card >
     </div> 
     )
     

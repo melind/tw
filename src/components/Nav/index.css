@@ -11,13 +11,18 @@
 color: yellow;
 }
 
+.oscar {
+  left: -3%;
+  }
 
 .genres {
     max-height: 50px;
-    max-width: 150px;
+    max-width: 220px;
     overflow-y: auto;
-}
+    height: 50%;
 
+    
+}
 
 
 .search-container {
@@ -57,10 +62,11 @@ color: yellow;
   }
 
 .selectoption {
+  left: 20%;
   position: absolute;
   display: flex;
-width: 80%;
-height: 5%;
+  width: 80%;
+  height: 5%;
   background-color: white;
   justify-content: space-around;
 }
@@ -72,6 +78,7 @@ width: 100%;
 }
 
 .result {
+  left: 20%;
   position: relative;
   width: 100%;
   max-height: 0;
@@ -79,22 +86,36 @@ width: 100%;
 }
 
 .result:target {
- top: 20%;
+  top: 20%;
   max-height: 100px;
-  max-width:250px;
+  max-width:210px;
   background-color: white;
   overflow-y: auto;
+  white-space: nowrap;
   display: block;
 }
 
+.li{
+  height:50%;
+  padding: auto;
+}
 
 .user {
     font-family: 'Modak', cursive;
-   
-    height:1%;
-    
+    top: -30%;
+    height:70%;
     
 }
-.user img {
-  width: 25%;
+
+.liu{
+  height:40%;
+  font-size: 110%;
+  
+  
 }
+    
+
+.limage {
+text-align: center;
+}
+

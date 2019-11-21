@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
+import { Card } from 'antd';
 
 const Genres = (props) => {
 
@@ -33,18 +34,25 @@ const Genres = (props) => {
 
    console.log("movies", movies);
    
-   
+   const { Meta } = Card;
   
     return (
       <div className="genreMovie">
       <Link to="/home">Accueil</Link> < br/>
-      <ul >{movies.map((result) => <Link  to={`/media/movie/${result.id}`} target="_parent" key={result.id}>
-        <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/>
-        <li  key={result.id}>{result.title} </li></Link>)}
-      </ul>
+      {movies.map((result) => 
+             
+          <Link  to={`/media/movie/${result.id}`} target="_parent" key={result.id}>
 
+              <Card.Grid key={result.id}>
+                <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film" />
+                <Meta title={result.title}/>
+              </Card.Grid>
+
+          </Link>)}
+            
+         
       
-        </div>
+      </div>
         
     )
     
