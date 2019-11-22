@@ -124,17 +124,17 @@ init();
 
     return (
       <Menu className="nav">
-        <Menu.Item className="oscar">  <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" />admin</Link></Menu.Item>  
+        <Menu.Item className="oscar">  
+                <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" />admin</Link>
+        </Menu.Item>  
     
             <Menu.ItemGroup title="Film par genre" className="genres">  {genre.map((result) => <Link  to={`/genre/${result.id}`} target="_parent" key={result.id}>
-                <Menu.Item  key={result.id} >{result.name} </Menu.Item > </Link> )}
+                <Menu.Item  className="genre" key={result.id} >{result.name} </Menu.Item > </Link> )}
             </Menu.ItemGroup>
        
-       
-
         
             <Menu.ItemGroup title="Série par genre" className="genres" > {genreTv.map((result) => <Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}> 
-                <Menu.Item  key={result.id}>{result.name}</Menu.Item > </Link>)}
+                <Menu.Item className="genre" key={result.id}>{result.name}</Menu.Item > </Link>)}
             </Menu.ItemGroup>
        
          
@@ -172,9 +172,9 @@ init();
       
          </Menu> 
     <List className="user"> 
-       <List.Item className="limage"> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
-       <List.Item className="liu"> <Link  to="/account" >Mon compte</Link>  </List.Item>
-       <List.Item className="liu"> <Link to="/" onClick={logOut}>deconnectez-vous</Link></List.Item>
+       <List.Item> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
+       <List.Item> <Link  to="/account" >Mon compte</Link>  </List.Item>
+       <List.Item> <Link to="/" onClick={logOut}>déconnectez-vous</Link></List.Item>
     </List>
        
 </Menu>

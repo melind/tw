@@ -20,9 +20,9 @@ export default {
         return axios.get( API_URL + '/genresMovieList')
         },    
 
-    moviesByGenres: (id) => {
+    moviesByGenres: (id,number) => {
        axios.defaults.withCredentials = true;
-       return axios.get( API_URL + `/moviesByGenres/${id}`)
+       return axios.get( API_URL + `/moviesByGenres/${id}/${number}`)
        },  
 
     genresTv: () => {
@@ -30,9 +30,9 @@ export default {
        return axios.get( API_URL + '/genresTvShowList')
        }, 
 
-    tvShowsByGenres: (id) => {
+    tvShowsByGenres: (id,number) => {
        axios.defaults.withCredentials = true;
-       return axios.get( API_URL + `/tvShowsByGenres/${id}`)
+       return axios.get( API_URL + `/tvShowsByGenres/${id}/${number}`)
        }, 
 
     media: (media, id) => {

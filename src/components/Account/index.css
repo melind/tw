@@ -15,10 +15,12 @@
     font-family: 'Roboto Mono', monospace;
     text-align: center;
     color: #db9d01;
+    cursor: pointer;
     
 }
 
 .account p {
+    margin-top: 12%;
     height: 10%;
     
 }

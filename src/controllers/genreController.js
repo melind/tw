@@ -63,13 +63,14 @@ var GenreController = /** @class */ (function () {
     };
     GenreController.moviesByGenre = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, API_KEY, moviesGenreUrl, moviesGenre;
+            var id, number, API_KEY, moviesGenreUrl, moviesGenre;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
+                        number = request.params.number;
                         API_KEY = process.env.API_KEY;
-                        moviesGenreUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&with_genres=" + id + "&language=fr-FR";
+                        moviesGenreUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&with_genres=" + id + "&page=" + number + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(moviesGenreUrl)
                                 .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
                     case 1:
@@ -106,13 +107,14 @@ var GenreController = /** @class */ (function () {
     };
     GenreController.tvShowByGenre = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, API_KEY, tvShowsGenreUrl, tvShowGenre;
+            var id, number, API_KEY, tvShowsGenreUrl, tvShowGenre;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         id = request.params.id;
+                        number = request.params.number;
                         API_KEY = process.env.API_KEY;
-                        tvShowsGenreUrl = "https://api.themoviedb.org/3/discover/tv?api_key=" + API_KEY + "&with_genres=" + id + "&language=fr-FR";
+                        tvShowsGenreUrl = "https://api.themoviedb.org/3/discover/tv?api_key=" + API_KEY + "&with_genres=" + id + "&page=" + number + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(tvShowsGenreUrl)
                                 .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
                     case 1:

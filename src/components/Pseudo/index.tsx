@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
+import {Input} from 'antd';
 // component = function return element to display
 const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
     
@@ -42,9 +43,9 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
         <h1>Modifications</h1>
         <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePseudo" method="POST" >
-          <input name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></input>
+          <Input className="input" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input>
          
-          <button type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+          <button  type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
 
           <p> {error}</p>
 

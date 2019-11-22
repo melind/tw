@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
 import  displayError  from '../../lib/validationPassword';
+import {Input} from 'antd';
 // component = function return element to display
 const Password = ({password, update, error, onSubmit, init}) => {
     
@@ -52,7 +53,7 @@ const Password = ({password, update, error, onSubmit, init}) => {
         <h1>Modifications</h1>
         <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePassword" method="POST" >
-          <input name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></input>
+          <Input className="input" name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></Input>
          
           <button type="submit"  >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
 

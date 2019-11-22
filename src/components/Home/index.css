@@ -1,10 +1,13 @@
-
+.home {
+  height: 80%;
+}
 .nowmovies {
   display: flex;
-  height: 90%;
+  height: 70%;
   font-family: 'Roboto Mono', monospace;
   margin-top: 5%;
   overflow-y: hidden;
+   overflow-x: thin;
   max-width: 100%;
 }
 
@@ -12,3 +15,10 @@
 margin: 1%;
 }
 
+.now h4{
+height: 5%;
+color: #d6b519;
+}
+.now img{
+height: 85%;
+}

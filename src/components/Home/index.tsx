@@ -4,6 +4,7 @@ import './index.css';
 import movieAPI from '../../services/movieAPI';
 import userAPI from '../../services/userAPI';
 import Nav from '../../containers/Nav';
+import { Carousel } from 'antd';
 
 const Home = () => {
 
@@ -32,10 +33,18 @@ const [nowMovie, setNowMovie] = useState([]);
 console.log("nowmovie",nowMovie);
 
     return (
-        <div>
+        <div className="home" >
             
         <Nav   />
-        <div className="nowmovies">{nowMovie.map((result) => <Link className="now" to={`/media/movie/${result.id}`} key={result.id} target="_parent" ><div  key={result.id}>{result.title} <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> </div></Link> )}</div>
+        <div className="nowmovies">
+            {nowMovie.map((result) => 
+                 <Link className="now" to={`/media/movie/${result.id}`} key={result.id} target="_parent" >
+                            <div  key={result.id}><h4>{result.title}</h4><img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> 
+                            </div>
+                 </Link> 
+           )}
+            
+        </div>
         <a target="_blank" href="/icons/set/searchlight">Projecteur icon</a> by <a target="_blank" href="https://icones8.fr">Icons8</a>
         </div> 
     )

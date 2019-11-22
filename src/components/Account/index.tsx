@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import { Redirect, Link  } from 'react-router-dom';
+import {Popconfirm, message} from 'antd';
 import './index.css';
 
 
@@ -16,7 +17,7 @@ const handleDelete = () => {
     if(window.confirm("Etes-vous sur?")) { 
         onClick();
         setSubscriber(false);
-    }
+    } 
 }
 
 const handleInit = () => {
@@ -37,6 +38,7 @@ if(!subscriber) { return <Redirect to="/" />}
         <Link to="/home"> Accueil </Link>< br/>< br/>
         <button onClick={handleDelete}><img src="https://media.giphy.com/media/3o7aD7TFLsZjgzXrZS/giphy.gif" alt="regard de john travoltat dans grease"/>Désinscription</button> 
         <p>“Powered by Giphy” add and the Giphy logo</p>
+       
         </div>
 
     )

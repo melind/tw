@@ -46,9 +46,9 @@ router["delete"]('/deleteAccount', authMiddleware_1["default"], deleteController
 router.get('/nowplaying', authMiddleware_1["default"], movieController_1["default"].nowPlaying);
 router.post('/home', bodyParser, authMiddleware_1["default"], searchController_1["default"].searchMedia);
 router.get('/genresMovieList', authMiddleware_1["default"], genreController_1["default"].genresMovieList);
-router.get('/moviesByGenres/:id', authMiddleware_1["default"], genreController_1["default"].moviesByGenre);
+router.get('/moviesByGenres/:id/:number', authMiddleware_1["default"], genreController_1["default"].moviesByGenre);
 router.get('/genresTvShowList', authMiddleware_1["default"], genreController_1["default"].genresListTvShow);
-router.get('/tvShowsByGenres/:id', authMiddleware_1["default"], genreController_1["default"].tvShowByGenre);
+router.get('/tvShowsByGenres/:id/:number', authMiddleware_1["default"], genreController_1["default"].tvShowByGenre);
 router.get('/media/:media/:id', authMiddleware_1["default"], mediaController_1["default"].mediaDetails);
 router.get('/admin', adminMiddleware_1["default"], adminController_1["default"].usersList);
 exports["default"] = router;

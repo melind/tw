@@ -88,6 +88,13 @@ var DeleteController = /** @class */ (function () {
             });
         });
     };
+    DeleteController.deleteOtherAccount = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
     return DeleteController;
 }());
 exports["default"] = DeleteController;

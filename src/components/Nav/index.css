@@ -1,7 +1,7 @@
 .nav {
     display: flex;
     justify-content: space-around;
-    height:20%;
+    height: 20%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
 }
@@ -12,21 +12,26 @@ color: yellow;
 }
 
 .oscar {
-  left: -3%;
+  margin-left: -10%;
+  margin-right: -5%;
   }
 
+
 .genres {
-    max-height: 50px;
-    max-width: 220px;
+    max-height: 45%;
+    max-width: 13%;
     overflow-y: auto;
     height: 50%;
+    margin-right: -2%;
+    margin-top: 1%;
+    white-space: nowrap;
+}
+.genre {
+  padding-top: 4%;
 
-    
 }
 
-
 .search-container {
-  
   display: flex;
   flex-direction: column;
 }
@@ -43,13 +48,17 @@ color: yellow;
 
 
 .searchplace input {
+  
     width: 85%;
     font-family: 'Roboto Mono', monospace;
+    top: 7%;
     
   }
 .searchplace img {
-    width: 15%;
-    height: 40%;
+    width: 17%;
+    height: 38%;
+    margin-left: -13%;
+    margin-right: 6%;
     
   }
 .searchplace input:hover {
@@ -62,7 +71,8 @@ color: yellow;
   }
 
 .selectoption {
-  left: 20%;
+  left: 14%;
+  bottom: 44%;
   position: absolute;
   display: flex;
   width: 80%;
@@ -78,7 +88,7 @@ width: 100%;
 }
 
 .result {
-  left: 20%;
+  left: 14%;
   position: relative;
   width: 100%;
   max-height: 0;
@@ -86,7 +96,7 @@ width: 100%;
 }
 
 .result:target {
-  top: 20%;
+  top: 30%;
   max-height: 100px;
   max-width:210px;
   background-color: white;
@@ -103,19 +113,16 @@ width: 100%;
 .user {
     font-family: 'Modak', cursive;
     top: -30%;
-    height:70%;
+    height:40%;
+    width: 17%;
+    text-align: center;
+    font-size: 120%;
+    margin-left: -5%;
+    margin-right: -7%;
     
 }
 
-.liu{
-  height:40%;
-  font-size: 110%;
-  
-  
-}
+
     
 
-.limage {
-text-align: center;
-}
 

@@ -1,11 +1,22 @@
 
 .media {
     height:100%;
+    text-align: center;
 }
 
 .media p {
     height:7%;
+     margin-left: -90%;
+
+}
+
+.media h1 {
+    height:7%;
+   
 }
 .media img {
     height:45%;
+}
+.grid{
+    box-shadow: 1px 0 #d6b519;
 }

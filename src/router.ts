@@ -67,11 +67,11 @@ router.post('/home', bodyParser,authMiddleware, SearchController.searchMedia);
 
 router.get('/genresMovieList', authMiddleware, GenreController.genresMovieList);
 
-router.get('/moviesByGenres/:id', authMiddleware, GenreController.moviesByGenre);
+router.get('/moviesByGenres/:id/:number', authMiddleware, GenreController.moviesByGenre);
 
 router.get('/genresTvShowList', authMiddleware, GenreController.genresListTvShow);
 
-router.get('/tvShowsByGenres/:id', authMiddleware, GenreController.tvShowByGenre);
+router.get('/tvShowsByGenres/:id/:number', authMiddleware, GenreController.tvShowByGenre);
 
 router.get('/media/:media/:id', authMiddleware, MediaController.mediaDetails);
 

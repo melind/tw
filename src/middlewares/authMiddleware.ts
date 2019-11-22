@@ -20,17 +20,17 @@ export default function (request: Request, response: Response, next: NextFunctio
       console.log({decodedToken}); 
         
         if (decodedToken && csrf) {
-        //response.locals.nickname = decodedToken.nickname;//passe des données jusqu’à la route – qui sont effacées une fois la réponse envoyée
+        
         console.log("csrf ",csrf,"token pseudo",decodedToken.nickname)
         
         
         next();
       } else {
-        
         response.status(401).end();
       }
     } catch (error) {
-      console.log(error);
+      console.log("auht error",error, error.message);
+      response.clearCookie('jwt');
       response.status(401).end();
     }
     

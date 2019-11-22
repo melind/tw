@@ -17,7 +17,6 @@ function default_1(request, response, next) {
             var decodedToken = jsonwebtoken.verify(token, process.env.JWT_PRIVATE_KEY);
             console.log({ decodedToken: decodedToken });
             if (decodedToken && csrf) {
-                //response.locals.nickname = decodedToken.nickname;//passe des données jusqu’à la route – qui sont effacées une fois la réponse envoyée
                 console.log("csrf ", csrf, "token pseudo", decodedToken.nickname);
                 next();
             }
@@ -26,7 +25,8 @@ function default_1(request, response, next) {
             }
         }
         catch (error) {
-            console.log(error);
+            console.log("auht error", error, error.message);
+            response.clearCookie('jwt');
             response.status(401).end();
         }
     }

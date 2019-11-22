@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { Redirect, Link } from 'react-router-dom';
 import  displayError  from '../../lib/validationMail';
+import {Input} from 'antd';
 // component = function return element to display
 const Mail = ({mail, update, error, onSubmit, init}) => {
     
@@ -48,7 +49,7 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
         <h1>Modifications</h1>
         <Link to="/account"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updateMail" method="POST" >
-          <input name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} required></input>
+          <Input className="input" name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} required></Input>
          
           <button type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
 

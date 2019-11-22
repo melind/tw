@@ -30,10 +30,11 @@ export default class GenreController {
        static async moviesByGenre(request: Request, response: Response) {
 
         let id = request.params.id;
+        let number = request.params.number;
 /*--------------get api key and the url of the  external api -------------------*/
         const API_KEY = process.env.API_KEY
           
-        const moviesGenreUrl =  `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}&language=fr-FR`
+        const moviesGenreUrl =  `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${number}&language=fr-FR`
        /* -------------get data of the external api---------*/
           
         const moviesGenre = await axios.get(moviesGenreUrl)
@@ -76,10 +77,11 @@ export default class GenreController {
               static async tvShowByGenre(request: Request, response: Response) {
        
                let id = request.params.id;
+               let number = request.params.number;
        /*--------------get api key and the url of the  external api -------------------*/
                const API_KEY = process.env.API_KEY
                  
-               const tvShowsGenreUrl =  `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=${id}&language=fr-FR`
+               const tvShowsGenreUrl =  `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=${id}&page=${number}&language=fr-FR`
               /* -------------get data of the external api---------*/
                  
                const tvShowGenre = await axios.get(tvShowsGenreUrl)

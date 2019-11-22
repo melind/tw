@@ -41,18 +41,18 @@ const App = () => {
       <Switch>
                 
                 <Route path="/" exact component={H} />
-                <PrivateRoute  path="/home"  component={Home} />
-                <PrivateRoute path="/account" component={Account} />
-                <PrivateRoute path="/updatePseudo" component={Pseudo} />
+                <PrivateRoute  path="/home" exact component={Home} />
+                <PrivateRoute path="/account"exact  component={Account} />
+                <PrivateRoute path="/updatePseudo" exact component={Pseudo} />
                 <PrivateRoute path="/updateMail" component={Mail} />
-                <PrivateRoute path="/updatePassword" component={Password} />
-                <PrivateRoute path="/media/:media/:id"  component={Media} />
-                <PrivateRoute path="/genre/:id"  component={Genre} />
-                <PrivateRoute path="/genretv/:id"  component={GenreTv} />
-                <PrivateRoute path="/forbidden"  component={Forbidden} />
-                <PublicRoute path="/signup"  component={Signup} />
-                <PublicRoute path="/login" component={Login}/>
-                <PrivateRoute path="/admin" component={Admin}/>
+                <PrivateRoute path="/updatePassword" exact component={Password} />
+                <PrivateRoute path="/media/:media/:id" exact  component={Media} />
+                <PrivateRoute path="/genre/:id" exact component={Genre} />
+                <PrivateRoute path="/genretv/:id" exact component={GenreTv} />
+                <PrivateRoute path="/forbidden" exact  component={Forbidden} />
+                <PublicRoute path="/signup" exact  component={Signup} />
+                <PublicRoute path="/login" exact  component={Login}/>
+                <PrivateRoute path="/admin" exact component={Admin}/>
                 <Route path="/404" component={NotFoundPage} />
                     <Redirect to="/404" />
             </Switch> 

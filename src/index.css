@@ -30,3 +30,54 @@ a:visited {
   text-decoration:none;
   color: #db9d01;
 }
+
+.input {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 100%;
+  }
+
+.input:hover {
+    border: 1px solid #db9d01;
+  }
+
+.input:focus {
+    border: 1px solid #d6b519;
+    box-shadow: 1px 1px #d6b519;
+  }
+
+.button{
+    background-color: #d6b519;
+    color: white;
+    font-size: 115%;
+    margin-left: 30%;
+    }
+
+.button:hover {
+    
+    background-color: #d6b519;
+    color: white;
+    font-size: 115%;
+    border: none;
+    }
+    .button::selection {
+    
+      background-color: #d6b519;
+      color: white;
+      font-size: 115%;
+      border: none;
+      }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: #d6b519;
+}
+.form h1 {
+  height: 10%;
+}
+.form p {
+  height: 5%;
+  color: #d6b519;
+}
