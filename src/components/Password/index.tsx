@@ -49,9 +49,9 @@ const Password = ({password, update, error, onSubmit, init}) => {
 
     return (
 
-        <div className="password">
-        <h1>Modifications</h1>
-        <Link to="/account"> Retour </Link>
+        <div className="setAccount">
+        <h1>Modifier votre mot de passe</h1>
+        <Link to="/account" className="return"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePassword" method="POST" >
           <Input className="input" name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></Input>
          

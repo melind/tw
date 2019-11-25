@@ -45,9 +45,9 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
 
     return (
 
-        <div className="mail">
-        <h1>Modifications</h1>
-        <Link to="/account"> Retour </Link>
+        <div className="setAccount">
+        <h1>Modifier votre e-mail</h1>
+        <Link to="/account" className="return"> Retour </Link>
          <form onSubmit={handleSubmit} action="/updateMail" method="POST" >
           <Input className="input" name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} required></Input>
          

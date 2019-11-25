@@ -1,7 +1,9 @@
 .app {
   height: 100%;
 }
-
+header {
+height: 12%;
+}
 .title {
   font-family: 'Modak', cursive;
   font-size: 400%;

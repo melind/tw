@@ -60,9 +60,10 @@ init();
      }
 /*------------------ search bar ------------------------*/
 
-    const regex = /( )*/;
+    const regex = /^("  ")*$/;
     const regexSearch = regex.test(search);
-    
+    const regexT = regex.test("az");
+    console.log("reg",regexSearch,regexT);
     
     async function searchMedia(search) { 
         console.log("search de media", search);
@@ -79,38 +80,69 @@ init();
      setSearchMediaResult(searchMedias);
      console.log("const searchMedias = ",searchMedias);
      }
+ 
 
-
+ /* const g = () => {
+        const element = document.getElementsByClassName('genre');
+                for(var i=0;i<element.length;i++) 
+                {
+                        let showing = document.getElementsByClassName('genre')[i] as HTMLElement; 
+                        showing[i].style.display='block';
+                }
+/*let showing = document.getElementsByClassName('genre')[0] as HTMLElement; 
+                        showing.style.display='block';
+        };*/
   
-  
-       /* const hide = () => {//eviter collection de htmlThat's because the getElementsByClassName returns a live collectio
-           const hidden = document.getElementsByClassName('.result')[0] as HTMLElement;
-           hidden.style.display='none';
+        const h = () => {//eviter collection de htmlThat's because the getElementsByClassName returns a live collectio
+           const element = document.getElementsByClassName('genre');
+                for(var i=0;i<element.length;i++) 
+                {
+                   let showing = document.getElementsByClassName('genre')[i] as HTMLElement; 
+                                showing[i].style.display='none';
+                }
         };
+       
   
         const show = () => {
-            if(regex.test(search) === false ){ 
-                const showing = document.getElementsByClassName('.selectoption')[0] as HTMLElement;
-                showing.style.display='block';
-            }
-        };
+            
+                const film = document.getElementsByClassName('selected')[0] as HTMLElement;
+                const serie = document.getElementsByClassName('selected')[1] as HTMLElement;
+                const acteur = document.getElementsByClassName('selected')[2] as HTMLElement;
+                const res = document.getElementsByClassName('res')[0] as HTMLElement;
+                film.style.display='block';serie.style.display='block';acteur.style.display='block';
+                res.style.display='block';
+        
+       };
+       const hide = () => {
+              
+                const film = document.getElementsByClassName('selected')[0] as HTMLElement;
+                const serie = document.getElementsByClassName('selected')[1] as HTMLElement;
+                const acteur = document.getElementsByClassName('selected')[2] as HTMLElement;
+                const res = document.getElementsByClassName('res')[0] as HTMLElement;
+                film.style.display='none';serie.style.display='none';acteur.style.display='none';
+                res.style.display='none';
+       };
+
+      
+       
         const selectedFilm = event => {
-          if(regex.test(search) === false ){ 
+         if (document.getElementById('#film')) { 
         const selectedMovie = document.getElementById('#film')[0] as HTMLElement;
          selectedMovie.style.display='block';
 
         const selectedTv = document.getElementById('#serie')[0] as HTMLElement;
         selectedTv.style.display='none';
           }
+          
       };
       const selectedSerie = event => {
-          if(regex.test(search) === false ){ 
-            const selectedMovie = document.getElementById('#serie')[0] as HTMLElement
-            selectedMovie.style.display='block';
-            const selectedTv = document.getElementById('#film')[0] as HTMLElement
-            selectedTv.style.display='none';
-          }
-      };*/
+         if( document.getElementById('#serie')){
+            const selectedTv = document.getElementById('#serie')[0] as HTMLElement
+            selectedTv.style.display='block';
+            const selectedMovie = document.getElementById('#film')[0] as HTMLElement
+            selectedMovie.style.display='none';
+           }
+      };
 
        useEffect(() => {
        listOfGenres(); listOfTvGenres(); 
@@ -123,57 +155,57 @@ init();
   if(loggedout) return <Redirect to="/" />
 
     return (
-      <Menu className="nav">
+      <Menu className="nav" >
         <Menu.Item className="oscar">  
-                <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" />admin</Link>
+                <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" /></Link>
         </Menu.Item>  
-    
-            <Menu.ItemGroup title="Film par genre" className="genres">  {genre.map((result) => <Link  to={`/genre/${result.id}`} target="_parent" key={result.id}>
+            
+            <Menu.ItemGroup title="Film par genre" className="genres" >  {genre.map((result) => <Link   to={`/genre/${result.id}`} target="_parent" key={result.id}>
                 <Menu.Item  className="genre" key={result.id} >{result.name} </Menu.Item > </Link> )}
             </Menu.ItemGroup>
-       
+   
         
             <Menu.ItemGroup title="Série par genre" className="genres" > {genreTv.map((result) => <Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}> 
                 <Menu.Item className="genre" key={result.id}>{result.name}</Menu.Item > </Link>)}
             </Menu.ItemGroup>
        
          
-        <Menu className="search-container" >
-                <form  action="" method="POST ">
-                    <div className="searchplace"  >
-                        < img src="../../../images/projecteur.png" /><Input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} />
+        <Menu className="search-container">
+                <form  action="" method="POST "onClick={h}>
+                    <div className="searchplace"onMouseOut={hide} onClick={show} onMouseOver={show}>
+                        < img src="../../../images/projecteur.png" /><Input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} onClick={show}  />
                     
-                        
-                        <Menu className="selectoption"  >
-                        <a  href="#film"className="selected"><div>Film</div></a>
-                        <a href="#serie"  className="selected"><div>Série</div></a>
-                        <a href="#actor" className="selected"><div>Acteur</div></a>
+                        <div className="res">
+                        <Menu className="selectoption" >
+                        <a href="#film"className="selected"  onClick={selectedFilm} ><div >Film</div></a>
+                        <a href="#serie"  className="selected"  onClick={selectedSerie} ><div >Série</div></a>
+                        <a href="#actor" className="selected"  ><div>Acteur</div></a>
                         </Menu>
 
-                         <List className="result" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
+                         <List className="result"header="film" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "movie" ? ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
                              <List.Item className="li">{result.title}</List.Item></Link>) : ""))}
                         </List>
 
 
-                         <List className="result" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
+                         <List className="result" header="série" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "tv" ?  ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
                              <List.Item className="li">{result.original_name}</List.Item></Link>) : ""))}
                          </List>
 
  
-                         <List className="result" id="actor"  >{searchMediaResult && searchMediaResult.map((result =>   
+                         <List className="result"  header="acteur" id="actor"  >{searchMediaResult && searchMediaResult.map((result =>   
                          result["media_type"] === "person" ? (<Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
                              <List.Item className="li">{result.name}</List.Item></Link>) : ""))}
                         </List>
-
+</div>
                     </div>
              </form>
       
          </Menu> 
     <List className="user"> 
        <List.Item> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
-       <List.Item> <Link  to="/account" >Mon compte</Link>  </List.Item>
+       <List.Item className="t"> <Link  to="/account" >Mon compte</Link>  </List.Item>
        <List.Item> <Link to="/" onClick={logOut}>déconnectez-vous</Link></List.Item>
     </List>
        

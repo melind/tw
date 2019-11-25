@@ -36,7 +36,7 @@ const App = () => {
   return (
      
     <div className="app" >
-     <p className="title">To Watch </p>
+     <header><p className="title">To Watch </p></header>
      
       <Switch>
                 

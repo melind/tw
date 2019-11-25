@@ -47,7 +47,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
         <form onSubmit={handleSubmit} >
         Pseudo :  <Input className="input" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input> < br/>< br/>
         Mot de passe : <Input className="input" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} required></Input> < br/>< br/>< br/>
-          <Button className="button"  htmlType="submit" >Valider</Button>
+          <Button  htmlType="submit" >Valider</Button>
           <p>{error}<br/>  
             <Link to="/signup">Pas encore inscrit ?</Link>
           </p> 

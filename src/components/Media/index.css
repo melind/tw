@@ -15,8 +15,13 @@
    
 }
 .media img {
-    height:45%;
+    height:100%;
+    width: 100%;
+
 }
-.grid{
-    box-shadow: 1px 0 #d6b519;
+
+.m {
+    height:60%;
+    width: 35%;
+
 }

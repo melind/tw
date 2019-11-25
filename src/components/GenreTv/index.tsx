@@ -8,12 +8,32 @@ const GenresTv = (props) => {
 
 
   const [tvShows, setTvShows] = useState([]);
+  const [genreTv, setGenreTv] = useState([]);
   const [pages, setPages] = useState();
   const [page, setPage] = useState(1);
 
+
+/*------------------tv shows genres------------------------*/
+
+    async function listOfTvGenres() { 
+     const listGenres = await movieAPI.genresTv()
+     .then(res => {
+         console.log("data collected tv genre:", res.data);
+         return res.data;
+     })
+     .catch(err => {
+         console.log(err);
+     });
+     setGenreTv(listGenres.genres.genres);
+     console.log("const listgenreTv = ",listGenres, listGenres.genres.genres);
+     }
+
+    
+    
+/*------------------tv shows by genre list------------------------*/
     console.log("props",props.match.params.id); 
     let id = props.match.params.id;
-    
+
     async function tvShowsByGenreList() { 
        const genreTvShows = await movieAPI.tvShowsByGenres(id,page)
        .then(res => {
@@ -28,7 +48,11 @@ const GenresTv = (props) => {
        setPages(genreTvShows.tvShowGenre.total_pages);
        console.log("const list of tvShows  = ", genreTvShows, genreTvShows.tvShowGenre.results);
        }
-   
+
+      useEffect(() => {
+      listOfTvGenres(); 
+       }, []); 
+
        useEffect(() => {
        tvShowsByGenreList();
        }, [page]); 
@@ -43,8 +67,10 @@ const GenresTv = (props) => {
    const { Meta } = Card;
   
     return (
-      <div className="genresTv"> <Pagination current={page} total={pages} onChange={onChange} />
-      <Link to="/home">Accueil</Link> < br/>
+      <div className="genresTv">
+         <div className="acc"><Link to="/home">Accueil</Link> </div>
+  
+      <Card title ={genreTv.map((result)=> (result.id != id) ? "" : result.name)} className="card">
       {tvShows.map((result) => 
         <Link  to={`/media/tv/${result.id}`} target="_parent" key={result.id}>
       
@@ -52,8 +78,9 @@ const GenresTv = (props) => {
              <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de série"/>
              <Meta title={result.name}/> 
           </Card.Grid>
-        </Link>)}
-      
+        </Link>)} 
+        </Card>
+        <div className="pagination"><Pagination  current={page} total={pages} onChange={onChange} /></div>
         </div>
         
     )

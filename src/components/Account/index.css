@@ -1,5 +1,8 @@
 .account {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .account h1 {
@@ -18,9 +21,17 @@
     cursor: pointer;
     
 }
-
+.account img {
+    
+    height: 90px;
+    
+}
 .account p {
     margin-top: 12%;
     height: 10%;
     
+}
+.info {
+    display: flex;
+    justify-content: center;
 }

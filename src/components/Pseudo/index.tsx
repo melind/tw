@@ -39,9 +39,9 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
 
     return (
 
-        <div className="pseudo">
-        <h1>Modifications</h1>
-        <Link to="/account"> Retour </Link>
+        <div className="setAccount">
+        <h1>Modifier votre pseudo</h1>
+        <Link to="/account" className="return">  Retour </Link>
          <form onSubmit={handleSubmit} action="/updatePseudo" method="POST" >
           <Input className="input" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input>
          

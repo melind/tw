@@ -1,17 +1,12 @@
+.genreMovie {
+    height: 74%;
+    display: flex;
+    flex-direction: column;
+}
+
 .genreMovie h1 {
     height: 1%;
     
-}
-.grid {
-    box-shadow: 1px 1px #db9d01;
-    
-    text-align: center;
-}
-
-
-.grid img{
-    height: 100%;
-    width: 100%;
 }
 
 

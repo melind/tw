@@ -1,9 +1,6 @@
  @import '~antd/dist/antd.css';
  
- * {
-   /*width: 100%;*/
-   height:100%;
-}
+ 
 body {
   margin: 0;
   font-family: 'Roboto Mono', monospace; 
@@ -45,27 +42,26 @@ a:visited {
     box-shadow: 1px 1px #d6b519;
   }
 
-.button{
+
+   
+.ant-btn {
     background-color: #d6b519;
     color: white;
     font-size: 115%;
     margin-left: 30%;
-    }
-
-.button:hover {
-    
-    background-color: #d6b519;
+}
+.ant-btn:hover {
+    background-color: #db9d01;
     color: white;
     font-size: 115%;
     border: none;
-    }
-    .button::selection {
-    
-      background-color: #d6b519;
-      color: white;
-      font-size: 115%;
-      border: none;
-      }
+}
+.ant-btn:focus {
+    background-color: white;
+    color: yellow;
+    border: none;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -81,3 +77,83 @@ a:visited {
   height: 5%;
   color: #d6b519;
 }
+
+.setAccount {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.setAccount h1 {
+  height: 7%;
+  color: #db9d01;
+  font-weight: bold;
+  text-shadow: 5px 5px 10px yellow;
+}
+
+.setAccount button {
+  margin-left: 39%;
+  margin-top: 10%; 
+
+}
+
+button img {
+  height: 30px;
+}
+.setAccount p {
+  height: 7%;
+  margin-top: 10%;
+}
+.return {
+  height: 7%;
+  font-family: 'Modak', cursive;
+  font-size: 115%;
+}
+
+.pagination {
+height: 8%;
+margin-top: 2%;
+margin-left: 20%;
+}
+
+.acc{
+  height: 5%;
+}
+.card {
+  border: none;
+  text-align: center;
+}
+
+.grid {
+  box-shadow: 1px 1px #db9d01 ;
+  text-align: center;
+  padding: 1%;
+}
+
+.grid img {
+  height: 90%;
+  width: 80%;
+}
+
+
+
+.ant-pagination-next:hover {
+color: yellow;
+border: none;
+}
+
+
+
+.ant-pagination-item:hover{
+  color: yellow;
+  border:  none;
+  background: white;
+}
+.ant-pagination-item-active{
+  color: yellow;
+  border-color: #d6b519;
+  background: white;
+}
+

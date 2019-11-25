@@ -1,7 +1,13 @@
 .notFound h1 {
     height: 4%;
+    text-align:center;
 }
 
 .notFound p {
     height: 1%;
+}
+
+.notFound img {
+    height: 100%;
+    width:100%;
 }

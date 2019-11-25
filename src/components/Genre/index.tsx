@@ -8,11 +8,30 @@ const Genres = (props) => {
 
 
   const [movies, setMovies] = useState([]);
+  const [genre, setGenre] = useState([]);
   const [pages, setPages] = useState();
   const [page, setPage] = useState(1);
     console.log("props",props.match.params.id); 
 
+/*------------------movie genre------------------------*/
+
+async function listOfGenres() { 
+       const listGenres = await movieAPI.genres()
+       .then(res => {
+           console.log("data collected movie genre:", res.data);
+           return res.data;
+       })
+       .catch(err => {
+           console.log(err);
+       });
+       setGenre(listGenres.genres.genres);
+       console.log("const listgenre (movie) = ",listGenres.genres.genres);
+       }
+
+/*------------------movies by genre list------------------------*/
+
     let id = props.match.params.id;
+
     async function moviesByGenreList() { 
 
        const genreMovies = await movieAPI.moviesByGenres(id,page)
@@ -30,8 +49,14 @@ const Genres = (props) => {
        }
    
        useEffect(() => {
+       listOfGenres();  
+       }, []); 
+
+       useEffect(() => {
        moviesByGenreList();
        }, [page]); 
+
+    
 
    console.log("movies", movies);
    
@@ -42,9 +67,14 @@ const Genres = (props) => {
 
    const { Meta } = Card;
   
+
+
+
     return (
-      <div className="genreMovie"><Pagination current={page} total={pages} onChange={onChange} />
-      <Link to="/home">Accueil</Link> < br/>
+      <div className="genreMovie">
+      <div className="acc"><Link to="/home">Accueil</Link> </div>
+
+      <Card title={genre.map((result)=> (result.id != id) ? "" : result.name)} className="card" >
       {movies.map((result) => 
              
           <Link  to={`/media/movie/${result.id}`} target="_parent" key={result.id}>
@@ -55,8 +85,8 @@ const Genres = (props) => {
               </Card.Grid>
 
           </Link>)}
-            
-         
+          </Card>
+         <div className="pagination"><Pagination className="pagination" current={page} total={pages} onChange={onChange} /></div>
       
       </div>
         

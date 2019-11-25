@@ -1,7 +1,6 @@
 .nav {
     display: flex;
     justify-content: space-around;
-    height: 20%;
     font-family: 'Roboto Mono', monospace;
     font-size: 100%;
 }
@@ -12,25 +11,29 @@ color: yellow;
 }
 
 .oscar {
-  margin-left: -10%;
-  margin-right: -5%;
+  margin-left: -8%;
   }
 
+.oscar img{
+  height: 45px;
+  }
 
 .genres {
-    max-height: 45%;
-    max-width: 13%;
-    overflow-y: auto;
-    height: 50%;
-    margin-right: -2%;
-    margin-top: 1%;
+    max-height: 100%;/*45px*/
+    max-width: 15%;/*15*/
+    overflow: auto;
     white-space: nowrap;
 }
-.genre {
-  padding-top: 4%;
-
+#g {
+  display:block;
 }
-
+.genre {
+  padding-top: 10%;
+ display: block;
+}
+.ant-menu-item-group-list {
+  
+}
 .search-container {
   display: flex;
   flex-direction: column;
@@ -39,7 +42,7 @@ color: yellow;
 .searchplace {
   
   position: relative;
-  height: 100%;
+  height: 10%;
   /*border: 2px solid rgb(15, 15, 15);*/
   display: flex;
   display:block;
@@ -52,6 +55,7 @@ color: yellow;
     width: 85%;
     font-family: 'Roboto Mono', monospace;
     top: 7%;
+   
     
   }
 .searchplace img {
@@ -72,49 +76,59 @@ color: yellow;
 
 .selectoption {
   left: 14%;
-  bottom: 44%;
+  bottom: -85%;
   position: absolute;
   display: flex;
+  align-items:center;
   width: 80%;
-  height: 5%;
-  background-color: white;
+  height: 100%;
+  /*background-color: yellow;*/
   justify-content: space-around;
+  
 }
 
 .selected  {
 width: 100%;
-  
+height: 100%;
+padding-top: 10%;
+  display:none;
+  /*background-color:black;*/
   /*border: 1px solid black;*/
 }
 
 .result {
+  margin-top: 10%;
   left: 14%;
-  position: relative;
+  position: absolute;
   width: 100%;
   max-height: 0;
   display: none;
 }
 
 .result:target {
-  top: 30%;
-  max-height: 100px;
-  max-width:210px;
+  
+  max-height: 200%;
+  max-width: 80%;
   background-color: white;
-  overflow-y: auto;
+  overflow: auto;
   white-space: nowrap;
   display: block;
 }
 
+
+
+
+
 .li{
-  height:50%;
-  padding: auto;
+
+  
 }
 
 .user {
     font-family: 'Modak', cursive;
     top: -30%;
     height:40%;
-    width: 17%;
+    width: 15%;
     text-align: center;
     font-size: 120%;
     margin-left: -5%;
@@ -122,7 +136,9 @@ width: 100%;
     
 }
 
-
-    
+.user img {
+    height:40%;
+    width: 17%;
+}
 
 
