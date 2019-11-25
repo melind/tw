@@ -60,10 +60,6 @@ init();
      }
 /*------------------ search bar ------------------------*/
 
-    const regex = /^("  ")*$/;
-    const regexSearch = regex.test(search);
-    const regexT = regex.test("az");
-    console.log("reg",regexSearch,regexT);
     
     async function searchMedia(search) { 
         console.log("search de media", search);
@@ -82,26 +78,7 @@ init();
      }
  
 
- /* const g = () => {
-        const element = document.getElementsByClassName('genre');
-                for(var i=0;i<element.length;i++) 
-                {
-                        let showing = document.getElementsByClassName('genre')[i] as HTMLElement; 
-                        showing[i].style.display='block';
-                }
-/*let showing = document.getElementsByClassName('genre')[0] as HTMLElement; 
-                        showing.style.display='block';
-        };*/
-  
-        const h = () => {//eviter collection de htmlThat's because the getElementsByClassName returns a live collectio
-           const element = document.getElementsByClassName('genre');
-                for(var i=0;i<element.length;i++) 
-                {
-                   let showing = document.getElementsByClassName('genre')[i] as HTMLElement; 
-                                showing[i].style.display='none';
-                }
-        };
-       
+
   
         const show = () => {
             
@@ -153,25 +130,25 @@ init();
 
    console.log("genre", genre,"genreTv", genreTv, "searchMediaResult", searchMediaResult);
   if(loggedout) return <Redirect to="/" />
-
+  const { SubMenu } = Menu;
     return (
       <Menu className="nav" >
         <Menu.Item className="oscar">  
                 <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" /></Link>
         </Menu.Item>  
             
-            <Menu.ItemGroup title="Film par genre" className="genres" >  {genre.map((result) => <Link   to={`/genre/${result.id}`} target="_parent" key={result.id}>
-                <Menu.Item  className="genre" key={result.id} >{result.name} </Menu.Item > </Link> )}
-            </Menu.ItemGroup>
+            <SubMenu title="Film par genre"  className="genres" >  {genre.map((result) => 
+                <Menu.Item  className="genre" key={result.id} ><Link   to={`/genre/${result.id}`} target="_parent" key={result.id}>{result.name} </Link></Menu.Item > )}
+            </SubMenu>
    
         
-            <Menu.ItemGroup title="Série par genre" className="genres" > {genreTv.map((result) => <Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}> 
-                <Menu.Item className="genre" key={result.id}>{result.name}</Menu.Item > </Link>)}
-            </Menu.ItemGroup>
+            <SubMenu title="Série par genre" className="genres" > {genreTv.map((result) => 
+                <Menu.Item className="genre" key={result.id}><Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}>{result.name}</Link></Menu.Item> )}
+            </SubMenu>
        
          
         <Menu className="search-container">
-                <form  action="" method="POST "onClick={h}>
+                <form  action="" method="POST ">
                     <div className="searchplace"onMouseOut={hide} onClick={show} onMouseOver={show}>
                         < img src="../../../images/projecteur.png" /><Input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} onClick={show}  />
                     
@@ -204,9 +181,9 @@ init();
       
          </Menu> 
     <List className="user"> 
-       <List.Item> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
+       <List.Item className="t"> < img src="../../../images/star.png" alt="icone d'une étoile jaune" /></List.Item>
        <List.Item className="t"> <Link  to="/account" >Mon compte</Link>  </List.Item>
-       <List.Item> <Link to="/" onClick={logOut}>déconnectez-vous</Link></List.Item>
+       <List.Item className="t"> <Link to="/" onClick={logOut}>déconnectez-vous</Link></List.Item>
     </List>
        
 </Menu>

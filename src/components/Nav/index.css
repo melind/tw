@@ -23,24 +23,57 @@ color: yellow;
     max-width: 15%;/*15*/
     overflow: auto;
     white-space: nowrap;
+    width: 14%;
+}/*
+.ant-menu-submenu :hover{
+  color:brown;
+
 }
-#g {
-  display:block;
+.ant-menu-submenu-active{
+  color:gray;
+
 }
-.genre {
-  padding-top: 10%;
- display: block;
+.ant-menu-submenu-open{
+  color:black;
+
 }
-.ant-menu-item-group-list {
-  
+.ant-menu-submenu-arrow:after{
+  color:yellow;
+
 }
+.ant-menu:not(.ant-menu-inline){
+  color:orange;
+}
+.ant-menu:active{
+  color:green;
+}
+.ant-menu-inline:active{
+  color:purple}
+
+.ant-menu-item-active {
+  color:lightcoral;
+}
+.ant-menu-item:hover {
+  color:violet;
+}
+.ant-menu-submenu-title :active{
+  color:green;
+}
+.ant-menu-submenu-title :hover{
+  color:red;
+}
+.ant-menu-submenu-vertical :hover{
+  color:orangered;
+
+}*/
 .search-container {
   display: flex;
   flex-direction: column;
+ 
 }
 
 .searchplace {
-  
+
   position: relative;
   height: 10%;
   /*border: 2px solid rgb(15, 15, 15);*/
@@ -52,17 +85,18 @@ color: yellow;
 
 .searchplace input {
   
-    width: 85%;
+    width: 45%;
     font-family: 'Roboto Mono', monospace;
-    top: 7%;
-   
     
+  }
+  .searchplace input:focus{
+    width: 65%;
   }
 .searchplace img {
     width: 17%;
     height: 38%;
-    margin-left: -13%;
-    margin-right: 6%;
+    margin-left: 8%;
+    margin-right: 4%;
     
   }
 .searchplace input:hover {
@@ -75,8 +109,8 @@ color: yellow;
   }
 
 .selectoption {
-  left: 14%;
-  bottom: -85%;
+  left: 15%;
+  bottom: -90%;
   position: absolute;
   display: flex;
   align-items:center;
@@ -117,25 +151,19 @@ padding-top: 10%;
 
 
 
-
-
-.li{
-
-  
-}
-
 .user {
+  margin-top: -3%;
     font-family: 'Modak', cursive;
-    top: -30%;
-    height:40%;
-    width: 15%;
     text-align: center;
-    font-size: 120%;
-    margin-left: -5%;
-    margin-right: -7%;
+    /*font-size: 100%;*/
     
 }
-
+.t{
+  
+  padding: 0;
+  
+ 
+}
 .user img {
     height:40%;
     width: 17%;

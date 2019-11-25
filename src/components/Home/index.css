@@ -7,18 +7,23 @@
   font-family: 'Roboto Mono', monospace;
   margin-top: 5%;
   overflow-y: hidden;
-   overflow-x: thin;
+  overflow-x: thin;
   max-width: 100%;
+}
+
+.nowmovies {
+  margin: 1%;
 }
 
 .now {
 margin: 1%;
+white-space: nowrap;
 }
 
 .now h4{
-height: 5%;
+height: 4%;
 color: #d6b519;
 }
 .now img{
-height: 380px;
+height: 280px;
 }
