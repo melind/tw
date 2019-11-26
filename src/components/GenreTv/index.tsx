@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
-import { Card, Pagination } from 'antd';
+import { Card, Pagination, BackTop } from 'antd';
 
 const GenresTv = (props) => {
 
@@ -80,7 +80,10 @@ const GenresTv = (props) => {
           </Card.Grid>
         </Link>)} 
         </Card>
-        <div className="pagination"><Pagination  current={page} total={pages} onChange={onChange} /></div>
+        <div className="paginations"><Pagination  current={page} total={pages} onChange={onChange} /></div>
+        <BackTop>
+           <div className="up">UP</div>
+         </BackTop>
         </div>
         
     )

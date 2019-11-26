@@ -1,9 +1,16 @@
-.greet img {
-   
-    width: 100%;
+.greet  {
+    margin-top: -3%;
+    text-align: center;
+    background-color: black;
     }
 
-
+.greet  img {
+  
+    height:100%;
+    width: 75%;
+    }
+    
+    
 .greet p {
     height: 2%;
     }

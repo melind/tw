@@ -34,8 +34,9 @@ console.log("nowmovie",nowMovie);
     return (
         <div className="home" >
             
-        <Nav   />
+        <Nav   /> <br/>Films à l'affiche
         <div className="nowmovies">
+           
             {nowMovie.map((result) => 
                  <Link className="now" to={`/media/movie/${result.id}`} key={result.id} target="_parent" >
                             <div  key={result.id}><h4>{result.title}</h4><img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> 

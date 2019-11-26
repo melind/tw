@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './index.css';
 import movieAPI from '../../services/movieAPI';
-import { Card, Pagination } from 'antd';
+import { Card, Pagination, BackTop } from 'antd';
 
 const Genres = (props) => {
 
@@ -87,7 +87,9 @@ async function listOfGenres() {
           </Link>)}
           </Card>
          <div className="pagination"><Pagination className="pagination" current={page} total={pages} onChange={onChange} /></div>
-      
+         <BackTop>
+           <div className="up">UP</div>
+         </BackTop>
       </div>
         
     )

@@ -1,6 +1,6 @@
 import React, { useState}  from 'react';
 import { Redirect, Link  } from 'react-router-dom';
-import {Popconfirm, message} from 'antd';
+import {Popconfirm} from 'antd';
 import './index.css';
 
 
