@@ -45,7 +45,7 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
          <form onSubmit={handleSubmit} action="/updatePseudo" method="POST" >
           <Input className="input" name="pseudo" placeholder="Entrer votre pseudo" onChange={handleChange} value={formState.pseudo} required></Input>
          
-          <button  type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+          <button  type="submit" >< img src="../../../images/clap2.png" alt="un clap de cinéma " /></button>
 
           <p> {error}</p>
 

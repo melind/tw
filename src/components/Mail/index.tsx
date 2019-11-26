@@ -51,7 +51,7 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
          <form onSubmit={handleSubmit} action="/updateMail" method="POST" >
           <Input className="input" name="mail" placeholder="Entrer votre mail" onChange={handleChange} value={formState.mail} required></Input>
          
-          <button type="submit" >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+          <button type="submit" >< img src="../../../images/clap2.png" alt="un clap de cinéma " /></button>
 
           <p> {result}  {error}</p>
         </form>

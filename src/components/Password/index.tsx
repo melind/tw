@@ -55,7 +55,7 @@ const Password = ({password, update, error, onSubmit, init}) => {
          <form onSubmit={handleSubmit} action="/updatePassword" method="POST" >
           <Input className="input" name="password" type="password" placeholder="Entrer votre password" onChange={handleChange} value={formState.password} required></Input>
          
-          <button type="submit"  >< img src="../../../images/clap2.png" alt="image d'un clap de cinéma " /></button>
+          <button type="submit"  >< img src="../../../images/clap2.png" alt="clap de cinéma " /></button>
 
           <p>  {result} {error}</p>
         </form>

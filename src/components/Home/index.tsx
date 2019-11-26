@@ -4,7 +4,6 @@ import './index.css';
 import movieAPI from '../../services/movieAPI';
 import userAPI from '../../services/userAPI';
 import Nav from '../../containers/Nav';
-import { Carousel } from 'antd';
 
 const Home = () => {
 
@@ -45,7 +44,8 @@ console.log("nowmovie",nowMovie);
            )}
             
         </div>
-        <a target="_blank" href="/icons/set/searchlight">Projecteur icon</a> by <a target="_blank" href="https://icones8.fr">Icons8</a>
+        <Link to="/mentions"><p>Mentions Légales</p></Link>
+        <a target="_blank" href="/icons/set/searchlight" rel="noopener noreferrer">Projecteur icon</a> by <a target="_blank" href="https://icones8.fr" rel="noopener noreferrer">Icons8</a>
         </div> 
     )
     

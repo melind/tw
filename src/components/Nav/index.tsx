@@ -4,6 +4,8 @@ import { Redirect, Link} from 'react-router-dom';
 import userAPI from '../../services/userAPI';
 import movieAPI from '../../services/movieAPI';
 import {Menu, Input, List} from 'antd';
+
+
 const Nav = ({loggedout, onClick, init}) => {
 
 init();
@@ -78,7 +80,7 @@ init();
      }
  
 
-
+/*------------------ search bar effect ------------------------*/
   
         const show = () => {
             
@@ -129,28 +131,49 @@ init();
       }, [search]);
 
    console.log("genre", genre,"genreTv", genreTv, "searchMediaResult", searchMediaResult);
+
   if(loggedout) return <Redirect to="/" />
+
   const { SubMenu } = Menu;
+
     return (
       <Menu className="nav" >
+          
         <Menu.Item className="oscar">  
-                <Link to="/admin" >< img  src="../../../images/oscar.png" alt="image d'un oscar avec des rouleaux de diapositives de film en arrière plan" /></Link>
+                <Link to="/admin" >< img  src="../../../images/oscar.png" alt="un oscar avec des rouleaux de diapositives de film en arrière plan" /></Link>
         </Menu.Item>  
-            
-            <SubMenu title="Film par genre"  className="genres" >  {genre.map((result) => 
-                <Menu.Item  className="genre" key={result.id} ><Link   to={`/genre/${result.id}`} target="_parent" key={result.id}>{result.name} </Link></Menu.Item > )}
+       
+        
+            <SubMenu title="Film par genre"  className="genres" > 
+                <Menu.ItemGroup className="genre"> 
+                    {genre.map((result) => 
+                         <Menu.Item   key={result.id} >
+                             <Link   to={`/genre/${result.id}`} target="_parent" key={result.id}>
+                                 {result.name} 
+                             </Link>
+                          </Menu.Item >
+                    )}
+                </Menu.ItemGroup>
             </SubMenu>
    
-        
-            <SubMenu title="Série par genre" className="genres" > {genreTv.map((result) => 
-                <Menu.Item className="genre" key={result.id}><Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}>{result.name}</Link></Menu.Item> )}
+      
+            <SubMenu title="Série par genre" className="genres" > 
+                 <Menu.ItemGroup className="genre"> 
+                    {genreTv.map((result) => 
+                         <Menu.Item className="genre" key={result.id}>
+                             <Link  to={`/genretv/${result.id}`} target="_parent" key={result.id}>
+                                {result.name}
+                            </Link>
+                        </Menu.Item> 
+                    )}
+                </Menu.ItemGroup>
             </SubMenu>
        
          
         <Menu className="search-container">
                 <form  action="" method="POST ">
                     <div className="searchplace"onMouseOut={hide} onClick={show} onMouseOver={show}>
-                        < img src="../../../images/projecteur.png" /><Input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} onClick={show}  />
+                        < img src="../../../images/projecteur.png" alt="un projecteur de film"/><Input placeholder="Recherche de films/séries/aceurs..." value={search} onChange={handleChange} onClick={show}  />
                     
                         <div className="res">
                         <Menu className="selectoption" >
@@ -158,12 +181,12 @@ init();
                         <a href="#serie"  className="selected"  onClick={selectedSerie} ><div >Série</div></a>
                         <a href="#actor" className="selected"  ><div>Acteur</div></a>
                         </Menu>
-
-                         <List className="result"header="film" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
+                       
+                         <List className="result"  header="film" id="film"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "movie" ? ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>
-                             <List.Item className="li">{result.title}</List.Item></Link>) : ""))}
+                             <List.Item   className="li">{result.title}</List.Item></Link>) : ""))}
                         </List>
-
+                       
 
                          <List className="result" header="série" id="serie"  >{searchMediaResult && searchMediaResult.map((result => 
                          result["media_type"] === "tv" ?  ( <Link  to={`/media/${result.media_type}/${result.id}`} target="_parent" key={result.id}>

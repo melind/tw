@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './index.css';
-
+import {Redirect } from 'react-router-dom';
 const Forbidden = () => {
-
+    const [redirect, setRedirect] = useState(false);
+    
+    setTimeout(function () { 
+     setRedirect(true);
+   }, 4000);
+   if (redirect) {
+          return <Redirect to="/home" />;
+        }
     return (
 
         <div className="forbidden"> <h1>VIP  ONLY !</h1> <br/>

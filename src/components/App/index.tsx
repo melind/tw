@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import { Route, Switch, Redirect} from 'react-router-dom';
 import userAPI from '../../services/userAPI';
 import './index.css';
 
@@ -18,6 +18,7 @@ import Forbidden from '../Forbidden';
 import Media from '../Media';
 import Genre from '../Genre';
 import GenreTv from '../GenreTv';
+import Mentions from '../Mentions';
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
 
@@ -49,6 +50,7 @@ const App = () => {
                 <PrivateRoute path="/media/:media/:id" exact  component={Media} />
                 <PrivateRoute path="/genre/:id" exact component={Genre} />
                 <PrivateRoute path="/genretv/:id" exact component={GenreTv} />
+                <PrivateRoute path="/mentions" exact component={Mentions} />
                 <PrivateRoute path="/forbidden" exact  component={Forbidden} />
                 <PublicRoute path="/signup" exact  component={Signup} />
                 <PublicRoute path="/login" exact  component={Login}/>
