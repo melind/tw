@@ -49,14 +49,12 @@ var MovieController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         url = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY + "&language=fr-FR&region=FR";
                         return [4 /*yield*/, axios_1["default"].get(url)
-                                .then(function (res) { /*console.log("res", res.data);*/ return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
                     case 1:
                         moviePlaying = _a.sent();
-                        //console.log("moviePlaying: ", moviePlaying);
                         response.status(200).json({
                             moviePlaying: moviePlaying
                         });
-                        console.log("Hello from movie now playing");
                         return [2 /*return*/];
                 }
             });

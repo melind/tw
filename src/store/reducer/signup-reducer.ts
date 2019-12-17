@@ -47,22 +47,16 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
         // action creator which return function
 export const signUp = (formState) => (dispatch, getState) => {
     // name of the input
-    // collect user info of the stateInitial
-    // state.signup
-   const { signup } = getState();
-    console.log("state dfrom reducer: ", signup, "state from component: ", formState);
     // axios collect post info from the user via name input
     return  userAPI.signupUser(formState)
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of auhtController.postSignup
             
-            console.log("data collected: ",  res.data);
             dispatch(signupSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log("erreur",err, err.response);
             if (err.response.data.text) {
                 alert(err.response.data.text);
                 }
@@ -73,7 +67,6 @@ export const signUp = (formState) => (dispatch, getState) => {
 
                 }
  
-            //console.log( err.response.data.error.keyValue.pseudo, err.response.data.error.keyValue.mail );
             dispatch(signupError());
         });
 };

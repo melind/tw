@@ -6,7 +6,7 @@ const Load = () => {
   
     return (
       <div className="load" >
-        <img src="https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif" alt="gif d'un décompte"/><p>“Powered by Giphy” add and the Giphy logo</p>
+        <img src="https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif" alt="gif d'un décompte"/><p>“Powered by Giphy”</p>
       </div>
         
     )

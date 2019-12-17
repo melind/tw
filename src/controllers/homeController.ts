@@ -8,7 +8,7 @@ export default class HomeController {
                                     text: "Hi from non subscriber home"
                                    });
 
-           console.log("Hello from non subscriber home");
+          
     }
     
     static home(request: Request, response: Response) {
@@ -17,6 +17,6 @@ export default class HomeController {
                                     text: "Hi from home"
                                    });
 
-           console.log("Hello from home");
+           
     }
 }

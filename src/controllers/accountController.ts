@@ -14,7 +14,7 @@ export default class AccountController {
 
     static async displayAccount(request: Request, response: Response) {
 
-           //get info in jwt
+           //get info in thejwt
            const token: any = request.cookies.jwt;
            if (!token) {
                       response.status(400).json({
@@ -35,7 +35,6 @@ export default class AccountController {
                  }
             }
             
-           console.log("Hello from account display");
         
           
     } 
@@ -47,8 +46,6 @@ export default class AccountController {
       static async updatePseudo(request: Request, response: Response) {
 
 
-
-        console.log("body", request.body, "body",request.body.pseudo.replace(/ /g,""));
         /*-----------------   data of the form   -----------------*/
         /* when a promise encounters an error it throws 
         an exception that will be catched inside a catch method on the promise */
@@ -63,8 +60,8 @@ export default class AccountController {
                 }
 
                  if (pseudo) { 
-                   pseudo = pseudo.replace(/ /g,""); //marche pas
-                   console.log(pseudo);
+                   pseudo = pseudo.replace(/ /g,""); 
+                  
               
                    const token: any = request.cookies.jwt;
 
@@ -89,14 +86,13 @@ export default class AccountController {
                            oldUser.update({pseudo},async (error, product) => {
                                   if (error) {
                                   
-                                      console.log("update error: ",error);
                                       response.status(400).json({
                                                                  error
                                       });
                             }
                             
                             const user =  await User.findOne({pseudo});
-                            console.log("user",user,"oldUser",oldUser);
+                           
                             const newToken = jsonwebtoken.sign({
                               nickname: user.pseudo,
                               admin: user.admin,
@@ -106,10 +102,10 @@ export default class AccountController {
                              process.env.JWT_PRIVATE_KEY,
                              /*{
                                 "algorithm": process.env.ALGORYTHME,
-                              } marche pas du coup par défaut HS256*/
+                              } doesn't work but by default is HS256*/
 
                              ); 
-                             console.log("n", newToken) ;
+                             
                               response.cookie('jwt', newToken, { 
                                  //httpOnly: true, //cookie not available through client js code (xss)!!! pas de cookie.load
                                  //secure: true // true to force https
@@ -127,7 +123,7 @@ export default class AccountController {
             err
           }
 
-           console.log("Hello from account update Pseudo");
+          
 }     
 
 
@@ -137,7 +133,7 @@ export default class AccountController {
 
 
 
-        console.log("body", request.body);
+        
         /*-----------------   data of the form   -----------------*/
         /* when a promise encounters an error it throws 
         an exception that will be catched inside a catch method on the promise */
@@ -152,13 +148,11 @@ export default class AccountController {
                 }
 
                  if (mail) { 
-                   mail = mail.replace(/ /g,""); //marche pas
-                   console.log(mail);
+                   mail = mail.replace(/ /g,""); 
 
                    const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
                    const regexMail = regex.test(mail);
 
-                   console.log("regex: ",regexMail);
 
                    if (!regexMail) {
                        response.status(400).json({
@@ -189,14 +183,14 @@ export default class AccountController {
                               oldUser.update({mail},async (error, product) => {
                                      if (error) {
                                      
-                                         console.log("update error: ",error);
+                                         
                                          response.status(400).json({
                                                                     error
                                          });
                                }
 
                                const user =  await User.findOne({mail});
-                               console.log("user",user,"oldUser",oldUser);
+                              
                                const newToken = jsonwebtoken.sign({
                                  nickname: user.pseudo,
                                  admin: user.admin,
@@ -206,10 +200,10 @@ export default class AccountController {
                                 process.env.JWT_PRIVATE_KEY,
                                 /*{
                                    "algorithm": process.env.ALGORYTHME,
-                                 } marche pas du coup par défaut HS256*/
+                                 } doesn't work but by default is HS256*/
 
                                 ); 
-                                console.log("n", newToken) ;
+                              
                                  response.cookie('jwt', newToken, { 
                                     //httpOnly: true, //cookie not available through client js code (xss)!!! pas de cookie.load
                                     //secure: true // true to force https
@@ -229,7 +223,7 @@ export default class AccountController {
             err
           }
 
-           console.log("Hello from account update Mail");
+          
       }    
 
 
@@ -237,7 +231,7 @@ export default class AccountController {
 
 
 
-             console.log("body", request.body);
+             
              /*-----------------   data of the form   -----------------*/
              /* when a promise encounters an error it throws 
              an exception that will be catched inside a catch method on the promise */
@@ -257,8 +251,8 @@ export default class AccountController {
                  }
 
                  if (password) { 
-                   password = password.replace(/ /g,""); //marche pas
-                   console.log(password);
+                   password = password.replace(/ /g,""); 
+                  
 
                    password = bcrypt.hashSync(password, 10);
               
@@ -266,7 +260,7 @@ export default class AccountController {
 
                    if (!token) {
                               response.status(400).json({
-                                text: "No user coockie"
+                                text: "No user cookie"
                               });
                    } 
 
@@ -285,14 +279,14 @@ export default class AccountController {
                            oldUser.update({password},async (error, product) => {
                                   if (error) {
                                   
-                                      console.log("update error: ",error);
+                                      
                                       response.status(400).json({
                                                                  error
                                       });
                             }
                             
                             const user =  await User.findOne({password});
-                            console.log("user",user,"oldUser",oldUser);
+                         
                             const newToken = jsonwebtoken.sign({
                               nickname: user.pseudo,
                               admin: user.admin,
@@ -302,10 +296,10 @@ export default class AccountController {
                              process.env.JWT_PRIVATE_KEY,
                              /*{
                                 "algorithm": process.env.ALGORYTHME,
-                              } marche pas du coup par défaut HS256*/
+                              } doesn't work but by default is HS256*/
 
                              ); 
-                             console.log("n", newToken) ;
+                          
                               response.cookie('jwt', newToken, { 
                                  //httpOnly: true, //cookie not available through client js code (xss)!!! pas de cookie.load
                                  //secure: true // true to force https
@@ -323,7 +317,7 @@ export default class AccountController {
                 err
               }
         
-           console.log("Hello from account update Password");
+        
         }     
        
 

@@ -49,13 +49,12 @@ var GenreController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         genresUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + API_KEY + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(genresUrl)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { })];
                     case 1:
                         genres = _a.sent();
                         response.status(200).json({
                             genres: genres
                         });
-                        console.log("Hello from list of genres");
                         return [2 /*return*/];
                 }
             });
@@ -72,13 +71,12 @@ var GenreController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         moviesGenreUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&with_genres=" + id + "&page=" + number + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(moviesGenreUrl)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { })];
                     case 1:
                         moviesGenre = _a.sent();
                         response.status(200).json({
                             moviesGenre: moviesGenre
                         });
-                        console.log("Hello from list of movie by genre");
                         return [2 /*return*/];
                 }
             });
@@ -93,13 +91,12 @@ var GenreController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         genresTvShowUrl = "https://api.themoviedb.org/3/genre/tv/list?api_key=" + API_KEY + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(genresTvShowUrl)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { ; })];
                     case 1:
                         genres = _a.sent();
                         response.status(200).json({
                             genres: genres
                         });
-                        console.log("Hello from list of genres for the tv shows");
                         return [2 /*return*/];
                 }
             });
@@ -116,13 +113,12 @@ var GenreController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         tvShowsGenreUrl = "https://api.themoviedb.org/3/discover/tv?api_key=" + API_KEY + "&with_genres=" + id + "&page=" + number + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(tvShowsGenreUrl)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { })];
                     case 1:
                         tvShowGenre = _a.sent();
                         response.status(200).json({
                             tvShowGenre: tvShowGenre
                         });
-                        console.log("Hello from list of tv shows by genre");
                         return [2 /*return*/];
                 }
             });

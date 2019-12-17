@@ -7,27 +7,22 @@ const Pseudo = ({pseudo, update, error, onSubmit, init}) => {
     
     init();
 
-    console.log("states come from update:", pseudo, error);
+   
 
-    const [formState, setFormState] = useState({pseudo, });
+    const [formState, setFormState] = useState({pseudo});
     const handleChange = (e) => {
         const name: string = e.target.name;
         const value: string = e.target.value;
         
         setFormState({...formState, [name]: value}); // name_input : input_value
         
-        console.log("handleChange update:", name, "value: ", value);
+       
             
     }
 
 
  const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("props of update after submit: ",  formState);
-        console.log("value input: ",formState.pseudo);
-        
-        const {pseudo} = formState;
-        console.log("props update by input value:", pseudo,  );
         
         onSubmit(formState);
     

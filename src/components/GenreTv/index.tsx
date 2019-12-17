@@ -6,6 +6,7 @@ import { Card, Pagination, BackTop } from 'antd';
 
 const GenresTv = (props) => {
 
+// creation of a variables that will contain the data researched
 
   const [tvShows, setTvShows] = useState([]);
   const [genreTv, setGenreTv] = useState([]);
@@ -14,39 +15,41 @@ const GenresTv = (props) => {
 
 
 /*------------------tv shows genres------------------------*/
-
+// collect of data by our API movieAPI
     async function listOfTvGenres() { 
      const listGenres = await movieAPI.genresTv()
      .then(res => {
-         console.log("data collected tv genre:", res.data);
+         
          return res.data;
      })
      .catch(err => {
-         console.log(err);
+         
      });
+
+     // setting variable with the datacolected
      setGenreTv(listGenres.genres.genres);
-     console.log("const listgenreTv = ",listGenres, listGenres.genres.genres);
+     
      }
 
     
     
 /*------------------tv shows by genre list------------------------*/
-    console.log("props",props.match.params.id); 
+  
     let id = props.match.params.id;
 
     async function tvShowsByGenreList() { 
        const genreTvShows = await movieAPI.tvShowsByGenres(id,page)
        .then(res => {
-           console.log("data collected :", res.data);
+           
            return res.data;
            
        })
        .catch(err => {
-           console.log(err);
+           
        });
        setTvShows(genreTvShows.tvShowGenre.results);
        setPages(genreTvShows.tvShowGenre.total_pages);
-       console.log("const list of tvShows  = ", genreTvShows, genreTvShows.tvShowGenre.results);
+       
        }
 
       useEffect(() => {
@@ -57,10 +60,10 @@ const GenresTv = (props) => {
        tvShowsByGenreList();
        }, [page]); 
 
-   console.log("tvShows", tvShows);
+
 
    const onChange = page => {
-    console.log(page);
+    
     setPage( page);
   };
    

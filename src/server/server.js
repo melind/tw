@@ -49,7 +49,7 @@ var SERVER_PORT = process.env.SERVER_PORT || 5050;
 var MONGODB_URI = process.env.MONGODB_URI || '';
 var URL_CORS = process.env.URL_CORS;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
-console.log(MONGODB_URI);
+
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
@@ -74,12 +74,12 @@ function run() {
                 // connexion à la BD
                 return [4 /*yield*/, mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (err) {
                         if (err) {
-                            console.error(err);
+                            
                             return;
                         }
                         // lancer l'appli
                         app.listen(SERVER_PORT, function () {
-                            console.log("App running on port " + SERVER_PORT);
+                            
                         });
                     })];
                 case 1:

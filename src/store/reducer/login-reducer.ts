@@ -49,21 +49,16 @@ const reducer = (state = stateInitial, action : {type: string, payload: any}) =>
         /*-----------    redux thunk  -------------*/
         // action creator which return function
 export const login = (formState) => (dispatch, getState) => {
-    // collect user info of the stateInitial
-    // state.login
-   // const { login } = getState();
+
     // axios check post info from the user
     return userAPI.loginUser(formState)
         .then(res => {
             // inform my reducer this is a success
             //and take data from response of auhtController.postLogin
-            console.log("data collected :", res.data, res.data.text);
-            //alert( res.data.text);
             dispatch(loginSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err);
             if (err.response.data.text) {alert(err.response.data.text);}
             dispatch(loginError());
         })

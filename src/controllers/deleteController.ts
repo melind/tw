@@ -29,7 +29,7 @@ export default class DeleteController {
                          user.remove((error, product) => {
                             if (error) {
                             
-                                console.log("delete error: ",error);
+                               
                                 response.status(400).json({
                                                            error
                                 })
@@ -40,7 +40,7 @@ export default class DeleteController {
 
                                request.session.destroy( (err) => {
                                      if(err) {
-                                       console.error(err);
+                                   
                                      }
                                });
                                response.status(200).json({
@@ -50,7 +50,7 @@ export default class DeleteController {
                           });
                 }
 
-                  console.log("Hello from delete delete");
+                
             }
  }  
 

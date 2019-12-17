@@ -62,7 +62,6 @@ var DeleteController = /** @class */ (function () {
                         if (user) {
                             user.remove(function (error, product) {
                                 if (error) {
-                                    console.log("delete error: ", error);
                                     response.status(400).json({
                                         error: error
                                     });
@@ -72,7 +71,6 @@ var DeleteController = /** @class */ (function () {
                                     response.clearCookie('jwt');
                                     request.session.destroy(function (err) {
                                         if (err) {
-                                            console.error(err);
                                         }
                                     });
                                     response.status(200).json({
@@ -81,7 +79,6 @@ var DeleteController = /** @class */ (function () {
                                 }
                             });
                         }
-                        console.log("Hello from delete delete");
                         _a.label = 2;
                     case 2: return [2 /*return*/];
                 }

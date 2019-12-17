@@ -10,14 +10,14 @@ const Password = ({password, update, error, onSubmit, init}) => {
 
     console.log("states come from update:", password, error);
 
-    const [formState, setFormState] = useState({password, });
+    const [formState, setFormState] = useState({password});
     const handleChange = (e) => {
         const name: string = e.target.name;
         const value: string = e.target.value;
         
         setFormState({...formState, [name]: value}); // name_input : input_value
         
-        console.log("handleChange update:", name, "value: ", value);
+     
             
     }
 
@@ -25,13 +25,6 @@ const Password = ({password, update, error, onSubmit, init}) => {
 
  const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("props of update after submit: ",  formState);
-        console.log("value input: ",formState.password);
-        
-        const {password} = formState;
-        console.log("props update by input value:", password,  );
-      
-        console.log(result);
         
         if (!result[0]) { 
           onSubmit(formState);

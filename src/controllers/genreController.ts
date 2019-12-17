@@ -14,14 +14,14 @@ export default class GenreController {
        /* -------------get data of the external api---------*/
         const genres = await axios.get(genresUrl)
             .then((res) =>{ return res.data})
-            .catch(err => {console.log(err); });
+            .catch(err => { });
         
 
         response.status(200).json({
                                     genres
                                    });
 
-           console.log("Hello from list of genres");
+   
 
         
           
@@ -39,14 +39,14 @@ export default class GenreController {
           
         const moviesGenre = await axios.get(moviesGenreUrl)
         .then((res) =>{ return res.data})
-        .catch(err => {console.log(err); });
+        .catch(err => { });
           
           
         response.status(200).json({
                                     moviesGenre
                                    });
                                   
-           console.log("Hello from list of movie by genre");
+       
     
       
     }
@@ -61,14 +61,14 @@ export default class GenreController {
               /* -------------get data of the external api---------*/
                const genres = await axios.get(genresTvShowUrl)
                    .then((res) =>{ return res.data})
-                   .catch(err => {console.log(err); });
+                   .catch(err => {; });
                
        
                response.status(200).json({
                                            genres
                                           });
        
-                  console.log("Hello from list of genres for the tv shows");
+             
        
                
                  
@@ -86,14 +86,13 @@ export default class GenreController {
                  
                const tvShowGenre = await axios.get(tvShowsGenreUrl)
                .then((res) =>{ return res.data})
-               .catch(err => {console.log(err); });
+               .catch(err => { });
                  
                  
                response.status(200).json({
                                            tvShowGenre
                                           });
-                                         
-                  console.log("Hello from list of tv shows by genre");
+                
            
              
            }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect, Link} from 'react-router-dom';
 import userAPI from '../../services/userAPI';
 import './index.css';
 
@@ -58,6 +58,7 @@ const App = () => {
                 <Route path="/404" component={NotFoundPage} />
                     <Redirect to="/404" />
             </Switch> 
+      <footer><p><Link to="/mentions">Mentions Légales</Link></p></footer>   
     </div>
     
   );

@@ -10,15 +10,13 @@ const Admin = () => {
         const list = await userAPI.isAdmin()
         .then(res => {
            
-            console.log("data collected :", res.data, res.data.users);
-            
-            
+ 
             return res.data.users;
             
         })
         .catch(err => {
 
-            console.log(err);
+            
         });
 
         setUsers(list);
@@ -35,7 +33,6 @@ const Admin = () => {
             
             }, []); 
      
-            console.log("users: ",users);
 
             
             if(users === undefined) {

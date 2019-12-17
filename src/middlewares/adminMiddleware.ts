@@ -9,19 +9,17 @@ export default function (request: Request, response: Response, next: NextFunctio
     next();
   } else {
     
-    console.log("cookies", JSON.stringify(request.cookies));
-    console.log("session", JSON.stringify(request.session));
+    /*console.log("cookies", JSON.stringify(request.cookies));
+    console.log("session", JSON.stringify(request.session));*/
     const token: any = request.cookies.jwt;
     const csrf: any = request.session.csrf;
-    console.log("middleware csrf", csrf);
+  
     
     try {
       const decodedToken: any = jsonwebtoken.verify(token,process.env.JWT_PRIVATE_KEY);
-      console.log({decodedToken}); 
     
         if ((decodedToken.admin === true ) && csrf) {
-        //response.locals.nickname = decodedToken.nickname;//passe des données jusqu’à la route – qui sont effacées une fois la réponse envoyée
-        console.log("csrf ",csrf,"token pseudo",decodedToken.admin)
+        
         
         
         next();
@@ -30,7 +28,7 @@ export default function (request: Request, response: Response, next: NextFunctio
         response.status(403).end();
       }
     } catch (error) {
-      console.log(error);
+      
       response.status(403).end();
     }
     

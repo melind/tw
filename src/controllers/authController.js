@@ -47,11 +47,9 @@ var AuthController = /** @class */ (function () {
         response.status(200).json({
             text: "Hi from get signup"
         });
-        console.log("Hello from get signup");
     };
     AuthController.postSignup = function (request, response) {
         /*-----------------   data of the form   -----------------*/
-        console.log("body", request.body);
         var _a = request.body, pseudo = _a.pseudo, mail = _a.mail, password = _a.password;
         var date = new Date();
         var admin = false;
@@ -68,7 +66,6 @@ var AuthController = /** @class */ (function () {
         }
         var regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
         var regexMail = regex.test(mail);
-        console.log("regex: ", regexMail);
         if (!regexMail) {
             response.status(400).json({
                 text: "Format mail invalide"
@@ -89,7 +86,6 @@ var AuthController = /** @class */ (function () {
                 // Save in the database
                 newUser.save(function (error, product) {
                     if (error) {
-                        console.log("saving error: ", error);
                         response.status(400).json({
                             error: error
                         });
@@ -99,8 +95,6 @@ var AuthController = /** @class */ (function () {
                             text: "Succès for post signup",
                             pseudo: pseudo, mail: mail, password: password
                         });
-                        console.log('product = user ', product);
-                        console.log('user = ', pseudo, mail, password);
                     }
                 });
             }
@@ -110,7 +104,6 @@ var AuthController = /** @class */ (function () {
         response.status(200).json({
             text: "Hi from get login"
         });
-        console.log("Hello from get login");
     };
     AuthController.postLogin = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
@@ -148,8 +141,8 @@ var AuthController = /** @class */ (function () {
                         // JSONWEBTOKEN and cookie stocké  cote client qui le renverra
                         if (pseudo && password) {
                             csrf = Math.random().toString(36).substr(2, 9);
+                            // saving of the uuid in a session
                             request.session.csrf = csrf;
-                            console.log("csrf", csrf);
                             token = jsonwebtoken.sign({
                                 nickname: user.pseudo,
                                 admin: user.admin,
@@ -164,7 +157,6 @@ var AuthController = /** @class */ (function () {
                                 token: token,
                                 pseudo: pseudo, password: password, csrf: csrf
                             });
-                            console.log("user :", user, "token is :", token);
                         }
                         return [3 /*break*/, 4];
                     case 3:
@@ -180,14 +172,11 @@ var AuthController = /** @class */ (function () {
         response.clearCookie('jwt');
         request.session.destroy(function (err) {
             if (err) {
-                console.error(err);
             }
         });
-        //response.clearCookie('connect.sid');
         response.status(200).json({
             text: "Succès for logout"
         });
-        console.log("hello from get logout!");
     };
     return AuthController;
 }());

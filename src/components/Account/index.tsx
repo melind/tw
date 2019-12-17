@@ -1,6 +1,6 @@
 import React, { useState}  from 'react';
 import { Redirect, Link  } from 'react-router-dom';
-import {Popconfirm} from 'antd';
+import {Popconfirm, message} from 'antd';
 import './index.css';
 
 
@@ -8,16 +8,17 @@ const Account = ({display, pseudo, mail, password, date, onClick, init}) => {
 
 display();
 const [subscriber, setSubscriber] = useState(true);
-console.log({pseudo, mail, password, date});
+
 
 date = date.slice(0, 10);
 
-console.log(date.slice(0, 10));
+
 const handleDelete = () => {
-   // if(window.confirm("Etes-vous sur?")) { 
+  
         onClick();
         setSubscriber(false);
-    //} 
+        message.success('Suppression réussie !');
+ 
 }
 
 const handleInit = () => {
@@ -56,7 +57,7 @@ if(!subscriber) { return <Redirect to="/" />}
             Désinscription
          </Popconfirm>
           
-        <p>“Powered by Giphy” add and the Giphy logo</p>
+        <p>“Powered by Giphy”</p>
        
  
   

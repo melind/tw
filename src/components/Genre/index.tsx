@@ -11,21 +11,21 @@ const Genres = (props) => {
   const [genre, setGenre] = useState([]);
   const [pages, setPages] = useState();
   const [page, setPage] = useState(1);
-    console.log("props",props.match.params.id); 
+   
 
 /*------------------movie genre------------------------*/
 
 async function listOfGenres() { 
        const listGenres = await movieAPI.genres()
        .then(res => {
-           console.log("data collected movie genre:", res.data);
+           
            return res.data;
        })
        .catch(err => {
-           console.log(err);
+         
        });
        setGenre(listGenres.genres.genres);
-       console.log("const listgenre (movie) = ",listGenres.genres.genres);
+      
        }
 
 /*------------------movies by genre list------------------------*/
@@ -36,16 +36,16 @@ async function listOfGenres() {
 
        const genreMovies = await movieAPI.moviesByGenres(id,page)
        .then(res => {
-           console.log("data collected :", res.data);
+           
            return res.data;
            
        })
        .catch(err => {
-           console.log(err);
+          
        });
        setMovies(genreMovies.moviesGenre.results);
        setPages(genreMovies.moviesGenre.total_pages);
-       console.log("const list of movies  = ", genreMovies, genreMovies.moviesGenre.results, "pages",genreMovies.moviesGenre.total_pages, "page", genreMovies.moviesGenre.page);
+      
        }
    
        useEffect(() => {
@@ -58,10 +58,10 @@ async function listOfGenres() {
 
     
 
-   console.log("movies", movies);
+  
    
      const onChange = page => {
-      console.log(page);
+     
       setPage( page);
     };
 

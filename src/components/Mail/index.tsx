@@ -8,16 +8,16 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
     
     init();
 
-    console.log("states come from update:", mail, error);
 
-    const [formState, setFormState] = useState({mail, });
+
+    const [formState, setFormState] = useState({mail});
     const handleChange = (e) => {
         const name: string = e.target.name;
         const value: string = e.target.value;
         
         setFormState({...formState, [name]: value}); // name_input : input_value
         
-        console.log("handleChange update:", name, "value: ", value);
+     
             
     }
 
@@ -25,12 +25,9 @@ const Mail = ({mail, update, error, onSubmit, init}) => {
 
  const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("props of update after submit: ",  formState);
-        console.log("value input: ",formState.mail);
         
-        const {mail} = formState;
-        console.log("props update by input value:", mail,  );
-        console.log(result);
+       
+      
         if (!result[0]) { 
           onSubmit(formState);
         }

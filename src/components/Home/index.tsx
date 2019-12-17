@@ -9,27 +9,30 @@ const Home = () => {
 
 
 userAPI.home();
-
+// creation of a variable that will contain the data researched
 const [nowMovie, setNowMovie] = useState([]);
 
+// collect of data by our API movieAPI
  async function movies() { 
     const movie = await movieAPI.nowPlaying()
     .then(res => {
-        console.log("data collected :", res.data);
+        
         return res.data; 
         
     })
     .catch(err => {
-        console.log(err);
+        
     });
+
+    // setting variable with the datacolected
     setNowMovie(movie.moviePlaying.results);
-    console.log("const movie = ",movie);
+    
     }
 
     useEffect(() => {
-    movies();;
+    movies();
     }, []); 
-console.log("nowmovie",nowMovie);
+
 
     return (
         <div className="home" >
@@ -45,7 +48,6 @@ console.log("nowmovie",nowMovie);
            )}
             
         </div>
-        <Link to="/mentions"><p>Mentions Légales</p></Link>
         <a target="_blank" href="/icons/set/searchlight" rel="noopener noreferrer">Projecteur icon</a> by <a target="_blank" href="https://icones8.fr" rel="noopener noreferrer">Icons8</a>
         </div> 
     )

@@ -17,14 +17,14 @@ export default class MediaController {
                  
                const mediaDetails = await axios.get(mediaUrl)
                .then((res) =>{ return res.data})
-               .catch(err => {console.log(err); });
+               .catch(err => { });
                  
                  
                response.status(200).json({
                                            mediaDetails
                                           });
                                          
-                  console.log("Hello from media details");
+                
            
              
            }

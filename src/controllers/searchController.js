@@ -48,18 +48,16 @@ var SearchController = /** @class */ (function () {
                     case 0:
                         search = request.body.search;
                         search = search.trim();
-                        console.log("search", search);
                         if (!search) return [3 /*break*/, 2];
                         API_KEY = process.env.API_KEY;
                         url = "https://api.themoviedb.org/3/search/multi?api_key=" + API_KEY + "&language=fr-FR&include_adult=false&query=" + search;
                         return [4 /*yield*/, axios_1["default"].get(url)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { })];
                     case 1:
                         media = _a.sent();
                         response.status(200).json({
                             media: media
                         });
-                        console.log("Hello from movie media searched");
                         _a.label = 2;
                     case 2: return [2 /*return*/];
                 }

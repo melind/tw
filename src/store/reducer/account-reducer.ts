@@ -77,44 +77,35 @@ const reducer = (state = stateInitial, action : {type: string, payload : any}) =
         // action creator which return function
 export const displayAccount = () => (dispatch, getState) => {
     
-    // collect user info of the stateInitial
-    
-    const { account } = getState();
-    console.log("state du reducer: ", account);
+
     // collect user info
     return  userAPI.infoUser()
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.displayAccount
             
-            console.log("data collected : ",  res.data);
             dispatch(accountSuccess(res.data.user));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err);
+ 
             dispatch(accountError());
         });
 };
 
 export const accountPseudo = (formState) => (dispatch, getState) => {
     // name of the input
-    // collect user info of the stateInitial
-    
-    const { account } = getState();
-    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
+  
     // axios collect post info from the user via name input
     return  userAPI.updatePseudo(formState)
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.updateAccount
             
-            console.log("data collected update: ",  res.data);
             dispatch(updateSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err.response);
             if (err.response.data.error.keyValue.pseudo ) {
                 alert((err.response.data.error.keyValue.pseudo)  + " existe déjà!");};
           
@@ -123,23 +114,19 @@ export const accountPseudo = (formState) => (dispatch, getState) => {
 };
 
 export const accountMail = (formState) => (dispatch, getState) => {
-    // name of the input
-    // collect user info of the stateInitial
+    // name of the inputateInitial
     
-    const { account } = getState();
-    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
     // axios collect post info from the user via name input
     return  userAPI.updateMail(formState)
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.updateAccount
             
-            console.log("data collected update: ",  res.data);
             dispatch(updateSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err.response);
+      
             if (err.response.data.error.keyValue.mail) {
                 alert((err.response.data.error.keyValue.mail) + " existe déjà!");};
           
@@ -150,22 +137,16 @@ export const accountMail = (formState) => (dispatch, getState) => {
 
 export const accountPassword = (formState) => (dispatch, getState) => {
     // name of the input
-    // collect user info of the stateInitial
-    
-    const { account } = getState();
-    console.log("state du reducer update: ", account, "state provenent du composant: ", formState);
     // axios collect post info from the user via name input
     return  userAPI.updatePassword(formState)
         .then( (res) => {
             // inform my reducer this is a success 
             //and take data from response of accountController.updateAccount
             
-            console.log("data collected update: ",  res.data);
             dispatch(updateSuccess(res.data));
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err);
           
             dispatch(updateError());
         });
@@ -181,7 +162,6 @@ export const deleteAccount = () => (dispatch, getState) => {
         })
         .catch(err => {
             // inform my reducer there is an error
-            console.log(err);
             dispatch(deleteError());
         });
 };

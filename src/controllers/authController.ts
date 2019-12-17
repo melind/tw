@@ -22,7 +22,7 @@ export default class AuthController {
                                     text: "Hi from get signup"
                                    });
 
-           console.log("Hello from get signup");
+           
     }
 
 
@@ -30,7 +30,7 @@ export default class AuthController {
     static postSignup(request: Request, response: Response) {
 
         /*-----------------   data of the form   -----------------*/
-        console.log("body", request.body);
+  
         let {pseudo, mail, password}  = request.body;
 
         let date= new Date();
@@ -56,7 +56,7 @@ export default class AuthController {
 
           const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
           const regexMail = regex.test(mail);
-          console.log("regex: ",regexMail);
+         
            if (!regexMail) {
              response.status(400).json({
                                          text: "Format mail invalide"
@@ -84,7 +84,7 @@ export default class AuthController {
         newUser.save( (error, product) => {
             if (error) {
                
-                console.log("saving error: ",error);
+                
                 response.status(400).json({
                                            error
                                                  })
@@ -96,8 +96,6 @@ export default class AuthController {
                   text: "Succès for post signup",
                   pseudo, mail, password
                        });
-                console.log('product = user ', product);
-                console.log('user = ', pseudo, mail, password);
             }
         });
       }
@@ -113,7 +111,7 @@ export default class AuthController {
           text: "Hi from get login"
         });
 
-        console.log("Hello from get login");
+       
     }
 
 
@@ -170,11 +168,12 @@ export default class AuthController {
                       
                        
                   
-                 
+                // creation of an uuid : Universally Unique IDentifier
                 let csrf = Math.random().toString(36).substr(2, 9);
+
+                // saving of the uuid in a session
                 request.session.csrf = csrf;
-                
-                console.log("csrf", csrf);
+              
                     
                 const token = jsonwebtoken.sign({
                               nickname: user.pseudo,
@@ -185,7 +184,7 @@ export default class AuthController {
                           process.env.JWT_PRIVATE_KEY,
                           /*{
                              "algorithm": process.env.ALGORYTHME,
-                           } marche pas du coup par défaut HS256*/
+                           } doesn't work but by default is HS256*/
                            
                           );  
                  response.cookie('jwt', token, { 
@@ -198,7 +197,7 @@ export default class AuthController {
                     pseudo, password,csrf
                     });
                     
-                 console.log("user :", user, "token is :", token);
+                
                      
         }   
                  } 
@@ -219,15 +218,15 @@ export default class AuthController {
         
         request.session.destroy( (err) => {
                      if(err) {
-                       console.error(err);
+                       
                      }
                });
-        //response.clearCookie('connect.sid');
+     
         response.status(200).json({
             text: "Succès for logout"
         });
 
-        console.log("hello from get logout!");
+       
         
              
     }

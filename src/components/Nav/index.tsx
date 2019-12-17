@@ -9,14 +9,14 @@ import {Menu, Input, List} from 'antd';
 const Nav = ({loggedout, onClick, init}) => {
 
 init();
-  console.log( "loggedout",loggedout);
+  
 
   const logOut = () => {
   userAPI.logOut();
    onClick();
 
   }
-   console.log(  "loggedout after", loggedout);
+  
  
 
   const [genre, setGenre] = useState([]);
@@ -27,7 +27,7 @@ init();
   const handleChange = event => { 
         
     setSearch(event.target.value); 
-    console.log("search",search);
+   
     searchMedia(search);
 
   }; 
@@ -37,46 +37,46 @@ init();
     async function listOfGenres() { 
        const listGenres = await movieAPI.genres()
        .then(res => {
-           console.log("data collected movie genre:", res.data);
+          
            return res.data;
        })
        .catch(err => {
-           console.log(err);
+          
        });
        setGenre(listGenres.genres.genres);
-       console.log("const listgenre (movie) = ",listGenres, listGenres.genres.genres);
+       
        }
    /*------------------tv shows genres------------------------*/
 
     async function listOfTvGenres() { 
      const listGenres = await movieAPI.genresTv()
      .then(res => {
-         console.log("data collected tv genre:", res.data);
+         
          return res.data;
      })
      .catch(err => {
-         console.log(err);
+        
      });
      setGenreTv(listGenres.genres.genres);
-     console.log("const listgenreTv = ",listGenres, listGenres.genres.genres);
+   
      }
 /*------------------ search bar ------------------------*/
 
-    
+
     async function searchMedia(search) { 
-        console.log("search de media", search);
+        
      const searchMedias = await movieAPI.search({"search":search})
      .then(res => {
-         console.log("data collected search results:", res.data.media.results);
+         
          
          return res.data.media.results;
          
      })
      .catch(err => {
-         console.log(err);
+         
      });
      setSearchMediaResult(searchMedias);
-     console.log("const searchMedias = ",searchMedias);
+
      }
  
 
@@ -130,7 +130,7 @@ init();
         searchMedia(search);
       }, [search]);
 
-   console.log("genre", genre,"genreTv", genreTv, "searchMediaResult", searchMediaResult);
+
 
   if(loggedout) return <Redirect to="/" />
 

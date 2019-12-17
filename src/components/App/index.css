@@ -2,7 +2,7 @@
   height: 100%;
 }
 header {
-height: 12%;
+height: 10%;
 }
 .title {
   font-family: 'Modak', cursive;
@@ -12,5 +12,8 @@ height: 12%;
   margin-top: 0;
 }
 
-
+footer {
+  margin-top: 0;
+height: 1%;
+}
 

@@ -51,13 +51,12 @@ var MediaController = /** @class */ (function () {
                         API_KEY = process.env.API_KEY;
                         mediaUrl = "https://api.themoviedb.org/3/" + media + "/" + id + "?api_key=" + API_KEY + "&language=fr-FR";
                         return [4 /*yield*/, axios_1["default"].get(mediaUrl)
-                                .then(function (res) { return res.data; })["catch"](function (err) { console.log(err); })];
+                                .then(function (res) { return res.data; })["catch"](function (err) { })];
                     case 1:
                         mediaDetails = _a.sent();
                         response.status(200).json({
                             mediaDetails: mediaDetails
                         });
-                        console.log("Hello from media details");
                         return [2 /*return*/];
                 }
             });
