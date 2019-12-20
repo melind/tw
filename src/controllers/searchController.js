@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var axios_1 = require("axios");
+var htmlspecialchars = require("htmlspecialchars");
 var SearchController = /** @class */ (function () {
     function SearchController() {
     }
@@ -48,6 +49,7 @@ var SearchController = /** @class */ (function () {
                     case 0:
                         search = request.body.search;
                         search = search.trim();
+                        search = htmlspecialchars(search);
                         if (!search) return [3 /*break*/, 2];
                         API_KEY = process.env.API_KEY;
                         url = "https://api.themoviedb.org/3/search/multi?api_key=" + API_KEY + "&language=fr-FR&include_adult=false&query=" + search;

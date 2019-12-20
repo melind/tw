@@ -39,6 +39,7 @@ exports.__esModule = true;
 var user_1 = require("../models/user");
 var bcrypt = require("bcryptjs");
 var jsonwebtoken = require("jsonwebtoken");
+var htmlspecialchars_1 = require("htmlspecialchars");
 var AuthController = /** @class */ (function () {
     function AuthController() {
     }
@@ -56,6 +57,9 @@ var AuthController = /** @class */ (function () {
         pseudo = pseudo.replace(/ /g, "");
         mail = mail.replace(/ /g, "");
         password = password.replace(/ /g, "");
+        pseudo = htmlspecialchars_1(pseudo);
+        password = htmlspecialchars_1(password);
+        mail = htmlspecialchars_1(mail);
         /* pas besoin de verifier si user existe dans bdd vu que je use unique in bdd
         pas besoin de async await*/
         if (!pseudo || !mail || !password) {
@@ -115,6 +119,8 @@ var AuthController = /** @class */ (function () {
                         _a = request.body, pseudo = _a.pseudo, password = _a.password;
                         pseudo = pseudo.replace(/ /g, "");
                         password = password.replace(/ /g, "");
+                        pseudo = htmlspecialchars_1(pseudo);
+                        password = htmlspecialchars_1(password);
                         if (!pseudo || !password) {
                             response.status(400).json({
                                 text: "Requete invalide"

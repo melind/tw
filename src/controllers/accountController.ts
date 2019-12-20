@@ -6,6 +6,8 @@ import * as bcrypt from 'bcryptjs';
 
 import * as jsonwebtoken from 'jsonwebtoken';
 
+import  htmlspecialchars from 'htmlspecialchars';
+
 export default class AccountController {
 
   pseudo: string;
@@ -61,7 +63,7 @@ export default class AccountController {
 
                  if (pseudo) { 
                    pseudo = pseudo.replace(/ /g,""); 
-                  
+                   pseudo = htmlspecialchars(pseudo);
               
                    const token: any = request.cookies.jwt;
 
@@ -83,7 +85,7 @@ export default class AccountController {
          
                        const oldUser: IUser  = await User.findOne({"pseudo":name});
                        if (oldUser) {
-                           oldUser.update({pseudo},async (error, product) => {
+                           oldUser.updateOne({pseudo},async (error, product) => {
                                   if (error) {
                                   
                                       response.status(400).json({
@@ -149,6 +151,7 @@ export default class AccountController {
 
                  if (mail) { 
                    mail = mail.replace(/ /g,""); 
+                   mail = htmlspecialchars(mail);
 
                    const regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
                    const regexMail = regex.test(mail);
@@ -180,7 +183,7 @@ export default class AccountController {
          
                           const oldUser: IUser  = await User.findOne({"pseudo":name});
                           if (oldUser) {
-                              oldUser.update({mail},async (error, product) => {
+                              oldUser.updateOne({mail},async (error, product) => {
                                      if (error) {
                                      
                                          
@@ -251,9 +254,10 @@ export default class AccountController {
                  }
 
                  if (password) { 
-                   password = password.replace(/ /g,""); 
+                   password = password.replace(/ /g,"");
+                   password = htmlspecialchars(password);
                   
-
+                  
                    password = bcrypt.hashSync(password, 10);
               
                    const token: any = request.cookies.jwt;
@@ -276,7 +280,7 @@ export default class AccountController {
          
                        const oldUser: IUser  = await User.findOne({"pseudo":name});
                        if (oldUser) {
-                           oldUser.update({password},async (error, product) => {
+                           oldUser.updateOne({password},async (error, product) => {
                                   if (error) {
                                   
                                       

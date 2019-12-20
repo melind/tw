@@ -6,6 +6,8 @@ import * as bcrypt from 'bcryptjs';
 
 import * as jsonwebtoken from 'jsonwebtoken';
 
+import  htmlspecialchars from 'htmlspecialchars';
+
 export default class AuthController {
 
   pseudo: string;
@@ -40,7 +42,11 @@ export default class AuthController {
         mail = mail.replace(/ /g,"");
         password = password.replace(/ /g,"");
 
-        
+
+        pseudo = htmlspecialchars(pseudo);
+        password = htmlspecialchars(password);
+        mail = htmlspecialchars(mail);
+     
         /* pas besoin de verifier si user existe dans bdd vu que je use unique in bdd
         pas besoin de async await*/
         if (!pseudo || !mail || !password) {
@@ -129,7 +135,8 @@ export default class AuthController {
                  pseudo = pseudo.replace(/ /g,"");
                  password = password.replace(/ /g,"");
 
-                
+                 pseudo = htmlspecialchars(pseudo);
+                 password = htmlspecialchars(password);
 
                 if (!pseudo|| !password) {
                   response.status(400).json({

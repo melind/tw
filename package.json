@@ -13,6 +13,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "htmlspecialchars": "^1.0.5",
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.1",

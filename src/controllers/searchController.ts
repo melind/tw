@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import axios from 'axios';
-
+import  htmlspecialchars from 'htmlspecialchars';
 export default class SearchController {
 
 
@@ -8,6 +8,7 @@ export default class SearchController {
          let search = request.body.search;
 
              search = search.trim();
+             search = htmlspecialchars(search);
           
         if(search) { 
         

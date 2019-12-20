@@ -5058,6 +5058,10 @@ htmlparser2@^3.3.0, htmlparser2@^3.9.1:
     inherits "^2.0.1"
     readable-stream "^3.1.1"
 
+htmlspecialchars@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/htmlspecialchars/-/htmlspecialchars-1.0.5.tgz#f430f8c1d5f3709be7bebaea696dc04824306a30"
+
 http-deceiver@^1.2.7:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/http-deceiver/-/http-deceiver-1.2.7.tgz#fa7168944ab9a519d337cb0bec7284dc3e723d87"

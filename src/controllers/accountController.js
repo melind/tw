@@ -39,6 +39,7 @@ exports.__esModule = true;
 var user_1 = require("../models/user");
 var bcrypt = require("bcryptjs");
 var jsonwebtoken = require("jsonwebtoken");
+var htmlspecialchars_1 = require("htmlspecialchars");
 var AccountController = /** @class */ (function () {
     function AccountController() {
     }
@@ -87,6 +88,8 @@ var AccountController = /** @class */ (function () {
                         }
                         if (!pseudo_1) return [3 /*break*/, 2];
                         pseudo_1 = pseudo_1.replace(/ /g, "");
+                        pseudo_1 = htmlspecialchars_1(pseudo_1);
+                        
                         token = request.cookies.jwt;
                         if (!token) {
                             response.status(400).json({
@@ -100,7 +103,7 @@ var AccountController = /** @class */ (function () {
                     case 1:
                         oldUser = _a.sent();
                         if (oldUser) {
-                            oldUser.update({ pseudo: pseudo_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
+                            oldUser.updateOne({ pseudo: pseudo_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
                                 var user, newToken;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
@@ -158,6 +161,7 @@ var AccountController = /** @class */ (function () {
                         }
                         if (!mail_1) return [3 /*break*/, 2];
                         mail_1 = mail_1.replace(/ /g, "");
+                        mail_1 = htmlspecialchars_1(mail_1);
                         regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
                         regexMail = regex.test(mail_1);
                         if (!regexMail) {
@@ -179,7 +183,7 @@ var AccountController = /** @class */ (function () {
                     case 1:
                         oldUser = _a.sent();
                         if (oldUser) {
-                            oldUser.update({ mail: mail_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
+                            oldUser.updateOne({ mail: mail_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
                                 var user, newToken;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
@@ -242,6 +246,7 @@ var AccountController = /** @class */ (function () {
                         }
                         if (!password_1) return [3 /*break*/, 2];
                         password_1 = password_1.replace(/ /g, "");
+                        password_1 = htmlspecialchars_1(password_1);
                         password_1 = bcrypt.hashSync(password_1, 10);
                         token = request.cookies.jwt;
                         if (!token) {
@@ -256,7 +261,7 @@ var AccountController = /** @class */ (function () {
                     case 1:
                         oldUser = _a.sent();
                         if (oldUser) {
-                            oldUser.update({ password: password_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
+                            oldUser.updateOne({ password: password_1 }, function (error, product) { return __awaiter(_this, void 0, void 0, function () {
                                 var user, newToken;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
