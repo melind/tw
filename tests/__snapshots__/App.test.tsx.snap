@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App App should render correctly 1`] = `ShallowWrapper {}`;
+exports[`App App should render correctly 1`] = `
+<div
+  className="load"
+>
+  <img
+    alt="gif d'un décompte"
+    src="https://media.giphy.com/media/VxbP9tLeKzazm/giphy.gif"
+  />
+  <p>
+    “Powered by Giphy”
+  </p>
+</div>
+`;

@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`h h should render correctly 1`] = `ShallowWrapper {}`;
+exports[`h h should render correctly 1`] = `
+<div
+  className="greet"
+>
+  <img
+    alt="gif d'une personne qui dit lumilères caméra action "
+    src="https://media.giphy.com/media/3o6ZsU2SMeuAzhwyEo/giphy.gif"
+  />
+  <p>
+    “Powered by Giphy”
+  </p>
+</div>
+`;

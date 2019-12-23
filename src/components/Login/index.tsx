@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Redirect, Link} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import {Button, Input} from 'antd';
 import './index.css';
 
@@ -44,7 +44,7 @@ const Login = ({pseudo, password, loggedin, subscriber, onSubmit, error, init}) 
         <label htmlFor="password">Mot de passe : </label><Input className="input" id="password" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} required></Input> < br/>< br/>< br/>
           <Button  htmlType="submit" >Valider</Button>
           <p>{error}<br/>  
-            <Link to="/signup">Pas encore inscrit ?</Link>
+            <a href="/signup">Pas encore inscrit ?</a>
           </p> 
         </form>
         

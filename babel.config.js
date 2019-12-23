@@ -1,9 +1,9 @@
 
 module.exports = {
-  presets: [
-    "@babel/env",
-    "@babel/react",
-    "@babel/preset-typescript"
+  presets: [ // for babel cn suport others langages
+    "@babel/env",//ES6 
+    "@babel/react",// React/JSX 
+    "@babel/preset-typescript" // typescript 
   ],
   plugins: [
     "@babel/plugin-syntax-dynamic-import"
@@ -13,7 +13,7 @@ module.exports = {
       plugins: [
         "@babel/plugin-syntax-dynamic-import",
         "transform-decorators-legacy",
-        "transform-class-properties"
+        "transform-class-properties" //Plugin babel pour prendre en compte les propriétés de classe
       ]
     },
     build: {
