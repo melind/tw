@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount, render} from 'enzyme';
-import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
 import App from '../src/components/App';
 /** test to check that we don't broke our code in the evolution */
