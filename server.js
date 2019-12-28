@@ -39,11 +39,12 @@ exports.__esModule = true;
 var dotenv = require("dotenv");
 dotenv.config();
 var express = require("express");
+const path = require("path");
 var mongoose = require("mongoose");
 var cookieparser = require("cookie-parser");
 var expressSession = require("express-session");
 var cors = require("cors");
-var router_1 = require("../router");
+var router_1 = require("./router");
 var app = express();
 var SERVER_PORT = process.env.SERVER_PORT || 5050;
 var MONGODB_URI = process.env.MONGODB_URI || '';
@@ -65,6 +66,7 @@ app.use(cors({
     "maxAge": 3600 //cache this information for 3600 seconds ,  need to make a new OPTIONS request every single time.
 }));
 //routing
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
@@ -78,6 +80,9 @@ function run() {
                             return;
                         }
                         // lancer l'appli
+                        app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
                         app.listen(SERVER_PORT, function () {
                             
                         });

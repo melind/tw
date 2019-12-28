@@ -3,7 +3,7 @@
     "module": "esnext",
     "esModuleInterop": true,
     "target": "es6",
-    "outDir": "./dist",
+    "outDir": "./client",
     "baseUrl": "src",
     "lib": [
       "dom",
