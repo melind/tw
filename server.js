@@ -63,7 +63,7 @@ store: new MemoryStore({
     }),
 }));
 app.use(cors({
-    "origin": ['https://watchto.herokuapp.com', URL_CORS_TWO],
+    "origin": [URL_CORS, URL_CORS_TWO],
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "allowedHeaders": ["Origin", " X-Requested-With", "Content-Type", "Accept"],
     "credentials": true,
