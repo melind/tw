@@ -48,7 +48,7 @@ var cors = require("cors");
 var router_1 = require("./router");
 var app = express();
 var SERVER_PORT = process.env.SERVER_PORT || 5050;
-var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/towatch';
+var MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/towatch';
 var URL_CORS = process.env.URL_CORS;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
 const MongoStore = require('connect-mongo')(expressSession);
@@ -78,7 +78,7 @@ function run() {
             switch (_a.label) {
                 case 0: 
                 // connexion à la BD
-                return [4 /*yield*/, mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (err) {
+                return [4 /*yield*/, mongoose.connect(MONGODB, { useNewUrlParser: true }, function (err) {
                         if (err) {
                             
                             return;
