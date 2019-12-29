@@ -43,7 +43,7 @@ const path = require("path");
 var mongoose = require("mongoose");
 var cookieparser = require("cookie-parser");
 var expressSession = require("express-session");
-var MemoryStore = require('memorystore')(session);
+var MemoryStore = require('memorystore')(expressSession);
 var cors = require("cors");
 var router_1 = require("./router");
 var app = express();
@@ -51,7 +51,7 @@ var SERVER_PORT = process.env.SERVER_PORT || 5050;
 var MONGODB_URI = process.env.MONGODB_URI || '';
 var URL_CORS = process.env.URL_CORS;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(expressSession);
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
@@ -60,7 +60,7 @@ app.use(expressSession({
     secret: 'melimelo', //key used for encrypting cookies
   store: new MemoryStore({
       checkPeriod: 86400000 // prune expired entries every 24h
-    }),
+    })
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
