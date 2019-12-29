@@ -47,7 +47,7 @@ var MemoryStore = require('memorystore')(expressSession);
 var cors = require("cors");
 var router_1 = require("./router");
 var app = express();
-var SERVER_PORT = process.env.SERVER_PORT || 5050;
+var PORT = process.env.PORT || 5050;
 var MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/towatch';
 var URL_CORS = process.env.URL_CORS;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
@@ -84,7 +84,7 @@ function run() {
                             return;
                         }
                         // lancer l'appli
-                        app.listen(SERVER_PORT, function () {
+                        app.listen(PORT, function () {
                             
                         });
                     })];
