@@ -58,7 +58,9 @@ app.use(expressSession({
     resave: true, //to tell session is still active(update) even isn't modified
     saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
     secret: 'melimelo', //key used for encrypting cookies
-
+    store: new (require('express-sessions'))({
+        storage: 'mongodb'
+    })
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
@@ -73,4 +75,25 @@ app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.la
+            switch (_a.label) {
+                case 0: 
+                // connexion à la BD
+                return [4 /*yield*/, mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (err) {
+                        if (err) {
+                            
+                            return;
+                        }
+                        // lancer l'appli
+                        app.listen(SERVER_PORT, function () {
+                            
+                        });
+                    })];
+                case 1:
+                    // connexion à la BD
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+run();
