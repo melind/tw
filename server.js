@@ -58,9 +58,7 @@ app.use(expressSession({
     resave: true, //to tell session is still active(update) even isn't modified
     saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
     secret: 'melimelo', //key used for encrypting cookies
-  store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    })
+  store: new MongoStore(options)
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
