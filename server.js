@@ -51,7 +51,7 @@ var SERVER_PORT = process.env.SERVER_PORT || 5050;
 var MONGODB_URI = process.env.MONGODB_URI || '';
 var URL_CORS = process.env.URL_CORS;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
-const MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo')(session);
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
