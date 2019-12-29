@@ -56,7 +56,10 @@ app.use(cookieparser());
 app.use(expressSession({
     resave: true, //to tell session is still active(update) even isn't modified
     saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
-    secret: 'melimelo' //key used for encrypting cookies
+    secret: 'melimelo', //key used for encrypting cookies
+    store: new (require('express-sessions'))({
+        storage: 'mongodb'
+    })
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
