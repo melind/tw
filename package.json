@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    /*"build": "react-scripts build",*/
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "tsc",
@@ -51,8 +51,8 @@
     "start-server": "ts-node-dev -r esm ./src/server/server.ts",
     "prod-server": "node server.js",
     "ts-jest": "ts-jest",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+   /* "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",*/
     "heroku-postbuild": " yarn install && yarn run build"
   },
   "eslintConfig": {
@@ -121,8 +121,8 @@
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+   /* "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"*/
   },
   "engines": {
     "node": "12.10.0"
