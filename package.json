@@ -45,7 +45,7 @@
   },
   "scripts": {
     
-    "heroku-postbuild": " npm install && npm run build",
+    "heroku-postbuild": "cd public npm install && npm run build",
     "start": "node server.js"
   },
   "eslintConfig": {
