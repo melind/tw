@@ -54,12 +54,10 @@ var URL_CORS_TWO = process.env.URL_CORS_TWO;
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
-    resave: true, //to tell session is still active(update) even isn't modified
-    saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
-    secret: 'melimelo', //key used for encrypting cookies
-    store: new (require('express-sessions'))({
-        storage: 'mongodb'
-    })
+    resave: false, //to tell session is still active(update) even isn't modified
+    saveUninitialized: true,//not store in session store if session isn't modified for such time(delete session)
+    secret: 'melimelo' //key used for encrypting cookies
+   
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
