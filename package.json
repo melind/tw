@@ -49,8 +49,8 @@
     "tsc": "tsc",
     "jest": "jest",
     "start-server": "ts-node-dev -r esm ./src/server/server.ts",*/
-    "prod-server": "node server.js",
-   /* "ts-jest": "ts-jest",
+    "start": "node server.js",
+    /*"ts-jest": "ts-jest",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",*/
     "heroku-postbuild": " yarn install && yarn run build"
