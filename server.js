@@ -85,6 +85,7 @@ function run() {
                         }
                         // lancer l'appli
                         app.listen(PORT, '0.0.0.0', function () {
+                            console.log("port",PORT);
                             
                         });
                     })];
