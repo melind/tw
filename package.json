@@ -42,17 +42,9 @@
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
-    /*"build": "react-scripts build",*/
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "tsc": "tsc",
-    "jest": "jest",
-    "start-server": "ts-node-dev -r esm ./src/server/server.ts",
-    "prod-server": "node server.js",
-    "ts-jest": "ts-jest",
-   /* "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",*/
+   
+    "start": "node server.js",
+    
     "heroku-postbuild": " yarn install && yarn run build"
   },
   "eslintConfig": {
