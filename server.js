@@ -70,7 +70,7 @@ app.use(cors({
     "maxAge": 3600 //cache this information for 3600 seconds ,  need to make a new OPTIONS request every single time.
 }));
 //routing
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "public", "build")));
 app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
