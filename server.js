@@ -43,6 +43,7 @@ const path = require("path");
 var mongoose = require("mongoose");
 var cookieparser = require("cookie-parser");
 var expressSession = require("express-session");
+var MemoryStore = require('memorystore')(session);
 var cors = require("cors");
 var router_1 = require("./router");
 var app = express();
@@ -54,10 +55,12 @@ var URL_CORS_TWO = process.env.URL_CORS_TWO;
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
-    resave: false, //to tell session is still active(update) even isn't modified
-    saveUninitialized: true,//not store in session store if session isn't modified for such time(delete session)
-    secret: 'melimelo' //key used for encrypting cookies
-   
+    resave: true, //to tell session is still active(update) even isn't modified
+    saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
+    secret: 'melimelo', //key used for encrypting cookies
+    store: new (require('express-sessions'))({
+        storage: 'mongodb'
+    })
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
@@ -72,28 +75,4 @@ app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: 
-                // connexion à la BD
-                return [4 /*yield*/, mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (err) {
-                        if (err) {
-                            
-                            return;
-                        }
-                        // lancer l'appli
-                        app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-                        app.listen(SERVER_PORT, function () {
-                            
-                        });
-                    })];
-                case 1:
-                    // connexion à la BD
-                    _a.sent();
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-run();
+            switch (_a.la
