@@ -21,7 +21,7 @@ var displayError = function (props) {
     //result = undefined if input is empty so let error for pseudo
     var result = validate(props, constraints);
     if (result)
-        console.log("result: ", result);
+      
     return [result.password];
 };
 exports["default"] = displayError;

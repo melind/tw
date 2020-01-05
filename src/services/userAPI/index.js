@@ -8,7 +8,7 @@ var headers = {
     'Accept': 'application/json'
 };
 var API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL);
+
 exports["default"] = {
     signupUser: function (formState) {
         return axios_1["default"].post(API_URL + '/signup', qs.stringify(formState), { headers: headers });

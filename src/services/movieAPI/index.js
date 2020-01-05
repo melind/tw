@@ -7,7 +7,7 @@ var headers = {
     'Accept': 'application/json'
 };
 var API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL);
+
 exports["default"] = {
     nowPlaying: function () {
         axios_1["default"].defaults.withCredentials = true;

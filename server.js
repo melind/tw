@@ -39,28 +39,23 @@ exports.__esModule = true;
 var dotenv = require("dotenv");
 dotenv.config();
 var express = require("express");
-const path = require("path");
 var mongoose = require("mongoose");
 var cookieparser = require("cookie-parser");
 var expressSession = require("express-session");
-var MemoryStore = require('memorystore')(expressSession);
 var cors = require("cors");
 var router_1 = require("./router");
 var app = express();
-var PORT = process.env.PORT ;
-var MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/towatch';
-var URL_CORS = process.env.URL_CORS;
+var SERVER_PORT = process.env.SERVER_PORT || 8080;
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/towatch';
+var URL_CORS = process.env.URL_CORS ;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
-const MongoStore = require('connect-mongo')(expressSession);
+
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
     resave: true, //to tell session is still active(update) even isn't modified
     saveUninitialized: false,//not store in session store if session isn't modified for such time(delete session)
-    secret: 'melimelo', //key used for encrypting cookies
-store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
+    secret: 'melimelo' //key used for encrypting cookies
 }));
 app.use(cors({
     "origin": [URL_CORS, URL_CORS_TWO],
@@ -70,7 +65,6 @@ app.use(cors({
     "maxAge": 3600 //cache this information for 3600 seconds ,  need to make a new OPTIONS request every single time.
 }));
 //routing
-app.use(express.static(path.join(__dirname, "public", "build")));
 app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
@@ -78,13 +72,13 @@ function run() {
             switch (_a.label) {
                 case 0: 
                 // connexion à la BD
-                return [4 /*yield*/, mongoose.connect(MONGODB, { useNewUrlParser: true }, function (err) {
+                return [4 /*yield*/, mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, function (err) {
                         if (err) {
                             
                             return;
                         }
                         // lancer l'appli
-                        app.listen(PORT, function () {
+                        app.listen(SERVER_PORT, function () {
                             
                         });
                     })];
