@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 const ComponentToRender = () => (
     <Provider store={store}>
-        <Router baseneme="/">
+        <Router>
             <App />
         </Router>
     </Provider>
