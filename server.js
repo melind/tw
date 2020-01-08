@@ -49,7 +49,7 @@ var SERVER_PORT = process.env.SERVER_PORT || 8080;
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/towatch';
 var URL_CORS = process.env.URL_CORS ;
 var URL_CORS_TWO = process.env.URL_CORS_TWO;
-
+const path = require("path");
 // middleware cookie-parser pour stocker info
 app.use(cookieparser());
 app.use(expressSession({
@@ -65,6 +65,12 @@ app.use(cors({
     "maxAge": 3600 //cache this information for 3600 seconds ,  need to make a new OPTIONS request every single time.
 }));
 //routing
+app.use(express.static(path.join(__dirname, "tw","public")));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "tw", "public", "index.html"));
+});
+
+
 app.use(router_1["default"]);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
