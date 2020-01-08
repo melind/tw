@@ -7,7 +7,7 @@ var headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json'
 };
-var API_URL ="http://ec2-15-188-194-36.eu-west-3.compute.amazonaws.com";
+var API_URL ="http://ec2-15-188-194-36.eu-west-3.compute.amazonaws.com:8080";
 
 exports["default"] = {
     signupUser: function (formState) {
