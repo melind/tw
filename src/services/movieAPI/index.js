@@ -6,7 +6,7 @@ var headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json'
 };
-var API_URL = process.env.REACT_APP_API_URL;
+var API_URL ="http://172.31.19.206:8080";
 
 exports["default"] = {
     nowPlaying: function () {
