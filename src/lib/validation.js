@@ -14,7 +14,7 @@ var displayError = function (props) {
             presence: true,
             length: {
                 minimum: 8,
-                message: ": Doit contenir 8 caractères"
+                message: ": Doit contenir minimum 8 caractères"
             }
         },
         pseudo: {
