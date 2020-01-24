@@ -19,7 +19,7 @@ exports["default"] = {
     },
     moviesByGenres: function (id, number) {
         axios_1["default"].defaults.withCredentials = true;
-        return axios_1["default"].get(API_URL + ("/moviesByGenres/" + id + "/" + number));
+        return axios_1["default"].get(API_URL + ('/moviesByGenres/' + id + '/' + number));
     },
     genresTv: function () {
         axios_1["default"].defaults.withCredentials = true;
@@ -27,11 +27,11 @@ exports["default"] = {
     },
     tvShowsByGenres: function (id, number) {
         axios_1["default"].defaults.withCredentials = true;
-        return axios_1["default"].get(API_URL + ("/tvShowsByGenres/" + id + "/" + number));
+        return axios_1["default"].get(API_URL + ('/tvShowsByGenres/' + id + '/' + number));
     },
     media: function (media, id) {
         axios_1["default"].defaults.withCredentials = true;
-        return axios_1["default"].get(API_URL + ("/media/" + media + "/" + id));
+        return axios_1["default"].get(API_URL + ('/media/' + media + '/' + id));
     },
     search: function (search) {
         axios_1["default"].defaults.withCredentials = true;
