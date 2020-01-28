@@ -43,7 +43,8 @@ var Login = function (_a) {
         <label htmlFor="password">Mot de passe : </label><antd_1.Input className="input" id="password" name="password" type="password" placeholder="Entrer votre mot de passe" onChange={handleChange} value={formState.password} required></antd_1.Input> <br /><br /><br />
           <antd_1.Button htmlType="submit">Valider</antd_1.Button>
           <p>{error}<br />  
-            <a href="/signup">Pas encore inscrit ?</a>
+            <a href="/signup">Pas encore inscrit ?</a> <br /> 
+            <a href="#">Mot de passe oublié?</a>
           </p> 
         </form>
         

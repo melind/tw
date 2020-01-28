@@ -50,7 +50,7 @@ const App = () => {
                 <PrivateRoute path="/media/:media/:id" exact  component={Media} />
                 <PrivateRoute path="/genre/:id" exact component={Genre} />
                 <PrivateRoute path="/genretv/:id" exact component={GenreTv} />
-                <PublicRoute path="/mentions" exact component={Mentions} />
+                <Route path="/mentions" exact component={Mentions} />
                 <PrivateRoute path="/forbidden" exact  component={Forbidden} />
                 <PublicRoute path="/signup" exact  component={Signup} />
                 <PublicRoute path="/login" exact  component={Login}/>

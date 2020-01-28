@@ -71,10 +71,12 @@ var Media = function (props) {
             <p><react_router_dom_1.Link to="/home">Accueil</react_router_dom_1.Link></p><p><a href="javascript:history.go(-1)">Retour</a></p>
             <h1>Média </h1>
             
-            <antd_1.Card> 
+        <antd_1.Card> 
             <antd_1.Card.Grid className=" m"><img src={medias["profile_path"] ? "https://image.tmdb.org/t/p/w500/" + medias["profile_path"] : "https://image.tmdb.org/t/p/w500/" + medias["backdrop_path"]} alt="du média sélectionné"/>
+            <antd_1.Rate />
             </antd_1.Card.Grid>
             <p>  {medias["name"] ? medias["name"] : medias["title"]} {medias["release_date"] ? medias["release_date"] : ""} <br /> <br /> {medias["biography"] ? medias["biography"] : medias["overview"]} </p>
+        
         </antd_1.Card>
     </div>);
 };

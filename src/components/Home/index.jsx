@@ -4,7 +4,7 @@ import './index.css';
 import movieAPI from '../../services/movieAPI';
 import userAPI from '../../services/userAPI';
 import Nav from '../../containers/Nav';
-
+import { Card, Col, Row } from 'antd';
 const Home = () => {
 
 
@@ -39,14 +39,16 @@ const [nowMovie, setNowMovie] = useState([]);
             
         <Nav   /> <br/>Films à l'affiche
         <div className="nowmovies">
-           
+
             {nowMovie.map((result) => 
                  <Link className="now" to={`/media/movie/${result.id}`} key={result.id} target="_parent" >
-                            <div  key={result.id}><h4>{result.title}</h4><img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> 
-                            </div>
+                            <Col span={8}  key={result.id}>
+                                <Card style={{ width: 250 }} bordered={false} title= {result.title}> <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt="affiche de film"/> 
+                                </Card>
+                            </Col>
                  </Link> 
            )}
-            
+  
         </div>
         <a target="_blank" href="/icons/set/searchlight" rel="noopener noreferrer">Projecteur icon</a> by <a target="_blank" href="https://icones8.fr" rel="noopener noreferrer">Icons8</a>
         </div> 
