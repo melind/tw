@@ -16,7 +16,7 @@
     "htmlspecialchars": "^1.0.5",
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "qs": "^6.9.0",
     "react": "^16.9.0",
     "react-cookie": "1.0.5",
